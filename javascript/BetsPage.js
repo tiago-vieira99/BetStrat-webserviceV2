@@ -223,12 +223,13 @@ function addBetsToTable(bets) {
 function addButtonMonthBetsTable (month, monthBalance) {
     $(document).ready(function() {
         $('#betsList').append(
-        '<button id="'+month+'" type="button"  closed="'+monthBalance+'  €      ➕" open="'+monthBalance+'  €      ➖" class="collapsible-  u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1" style="margin-top: 50px; margin-bottom: auto; overflow: hidden; max-width: 60%; background-color: #4b6256;"><b>'+ month +'</b></button> <div class="content-" style="max-width: 60%;margin-left: auto;margin-right: auto;padding: unset;"> <div id="'+month.replace(' ', '_')+'content" class="u-table u-table-responsive u-table-1" style="margin-top: auto;margin-left: auto;margin-right: auto;">  </div> </div> '
+        '<button id="'+month+'" type="button"  closed="'+monthBalance.toFixed(2)+'  €      ➕" open="'+monthBalance.toFixed(2)+'  €      ➖" class="collapsible-  u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1" style="margin-top: 50px; margin-bottom: auto; overflow: hidden; max-width: 60%; background-color: #4b6256;"><b>'+ month +'</b></button> <div class="content-" style="max-width: 60%;margin-left: auto;margin-right: auto;padding: unset;"> <div id="'+month.replace(' ', '_')+'content" class="u-table u-table-responsive u-table-1" style="margin-top: auto;margin-left: auto;margin-right: auto;">  </div> </div> '
             )});
 }
 
 function addWeekBetsTable (month, week, weekBalance) {
     month = month.replace(' ', '_');
+    weekBalance = weekBalance.toFixed(2);
 
     $(document).ready(function() {
         $('#' + month + 'content').append(

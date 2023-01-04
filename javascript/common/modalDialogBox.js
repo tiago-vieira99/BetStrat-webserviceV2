@@ -30,7 +30,7 @@ function modalBox(header, body) {
 function setModalBoxInfo(header, body) {
     return "<div id='myModal' class='modal'>" +
     "<!-- Modal content -->" +
-    "<div class='modal-content'>" +
+    "<div class='modal-content' style='max-width: 30%;'>" +
     "<div class='modal-header'>" +
     "<span class='closeModal'>&times;</span>" +
     "<h2 style='font-size: 99%; margin: 15px 0px; width: 80%'><b>" + header + "</b></h2>" +
