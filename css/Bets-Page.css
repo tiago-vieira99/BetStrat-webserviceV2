@@ -46,7 +46,7 @@
 }
 
 .u-section-1 .u-table-1 {
-  width: 677px;
+  width: 677px;/**/
   margin: 65px auto 0;
 }
 
@@ -186,6 +186,14 @@
     margin-right: initial;
     margin-left: initial;
     width: auto;
+  }
+
+  [class^="collapsible-"] {
+    max-width: 100% !important;
+  }
+
+  .content- {
+    max-width: 100% !important;
   }
 }
 

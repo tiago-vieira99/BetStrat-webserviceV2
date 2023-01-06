@@ -488,6 +488,7 @@
 @media (max-width: 575px) {
   .u-section-3 .u-sheet-1 {
     min-height: 470px;
+    max-width: 100% !important;
   }
 
   .u-section-3 .u-list-1 {
@@ -540,6 +541,14 @@
   .u-section-4 .u-table-1 {
     width: 340px;
     margin: 0 0 60px;
+  }
+
+  [class^="collapsible"] {
+    max-width: 80% !important;
+  }
+
+  .content {
+    max-width: 80% !important;
   }
 }
 
