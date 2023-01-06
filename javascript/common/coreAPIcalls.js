@@ -230,13 +230,16 @@ function callGetTeamsNamesList(stratPath) {
     .then(function(resp) {
       teams = resp.teams;
 
-      var namesArray = [];
+      var array = [];
 
       teams.forEach(function(team) {
-        namesArray.push(team.name);
+        var teamObj = new Map();
+        teamObj.set("name", team.name);
+        teamObj.set("admin", team.admin);
+        array.push(teamObj);
       });
 
-      teamsNames = namesArray;
+      teamsArray = array;
 
     })
     .catch(function(error) {

@@ -19581,7 +19581,7 @@ a.pswp__share--download:hover {
 }
 .u-table th,
 .u-table td {
-  padding: 10px;
+  padding: 2px 10px 2px 10px;
   font-weight: inherit;
   position: inherit;
 }

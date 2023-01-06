@@ -1,7 +1,7 @@
 var x, y;
 var context = document.querySelector('#graph').getContext('2d');
 var chart;
-var teamsNames;
+var teamsArray;
 
 callGetTeamsNamesList(DRAWS_HUNTER_PATH);
 waitForElement();
@@ -10,7 +10,7 @@ callGetSeqInfo(DRAWS_HUNTER_PATH);
 
 
 function waitForElement(){
-  if(typeof teamsNames !== "undefined"){
+  if(typeof teams !== "undefined"){
       //variable exists, do what you want
       callGetCandidateTeams();
   }
@@ -107,9 +107,18 @@ function addCandidateTeamToTable(team) {
 }
 
 function teamBackgroundColor(name) {
-  if (teamsNames.includes(name)) {
-    return '#dadcb9'
-  }
+  var color;
+  teamsArray.forEach(function(team) {
+    // console.log("ttt: " + team.get("name"));
+    if (team.get('name') === name && team.get('admin') === true) {
+      color = '#9fd5ef';
+      return
+    } else if (team.get('name') === name) {
+      color = '#dadcb9';
+      return
+    }
+  });
+  return color;  
 }
 
 

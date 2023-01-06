@@ -550,6 +550,20 @@
   .content {
     max-width: 80% !important;
   }
+
+  .legendDiv {
+    max-width: 100% !important;
+  }
+
+  .mytable {
+    font-size: 10px !important;
+  }
+}
+
+.mytable {
+  border-spacing: 10px !important;
+  border-collapse: unset !important;
+  font-size: 12px;
 }
 
 .collapsible {
