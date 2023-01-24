@@ -36,15 +36,17 @@ function chartSetup(days, profit) {
     data: {
       labels: limitedDaysArray,
       datasets: [{
-        backgroundColor: "rgba(220,220,220,0.2)",
-        strokeColor: "rgba(220,220,220,1)",
-        pointColor: "rgba(220,220,220,1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(220,220,220,1)",
+        backgroundColor: "rgba(39, 245, 191, 0.2)",
+        strokeColor: "red",
+        pointColor: "red",
+        pointStrokeColor: "red",
+        pointHighlightFill: "red",
+        pointHighlightStroke: "red",
         data: limitedProfitArray,
         fill: true,
-        tension: 0.2
+        tension: 0.3,
+      borderColor: 'rgba(52,155,69, 1)',
+      borderWidth: 1
       }]
     },
     options: {
@@ -62,7 +64,7 @@ function chartSetup(days, profit) {
           text: 'Strategy Profit Evolution',
           font: {
             size: 26
-          },
+          }
         }
       },
       scales: {
@@ -70,7 +72,10 @@ function chartSetup(days, profit) {
           stacked: true,
           title: {
             display: true,
-            text: 'Profit (€)'
+            text: 'Profit (€)',
+            font: {
+              size: 16
+            }
           }
         }
       }

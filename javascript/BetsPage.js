@@ -63,7 +63,7 @@ function addBtnListeners() {
       data: {
         labels: limitedDaysArray,
         datasets: [{
-          backgroundColor: "rgba(39, 245, 191, 0.59)",
+          backgroundColor: "rgba(39, 245, 191, 0.3)",
           strokeColor: "red",
           pointColor: "red",
           pointStrokeColor: "red",
@@ -71,9 +71,9 @@ function addBtnListeners() {
           pointHighlightStroke: "red",
           data: limitedProfitArray,
           fill: true,
-          tension: 0.2,
-        borderColor: 'rgba(27, 239, 62, 1)',
-        borderWidth: 5
+          tension: 0.3,
+        borderColor: 'rgba(52,155,69, 1)',
+        borderWidth: 1
         }]
       },
       options: {
@@ -89,7 +89,6 @@ function addBtnListeners() {
           title: {
             display: true,
             text: 'Bankroll Profit Evolution',
-            color: "white",
             font: {
               size: 26
             },
@@ -101,24 +100,11 @@ function addBtnListeners() {
             title: {
               display: true,
               text: 'Profit (€)',
-              color: "white"
-            },
-            ticks: {
-                color: "white"
-              },
-              grid: {
-                color: "white"
+              font: {
+                size: 16
               }
-          },
-          x: {
-            ticks: {
-                color: "white"
-              },
-              grid: {
-                color: "white"
-              }
+            }
           }
-
         }
       },
     };
