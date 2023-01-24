@@ -56,6 +56,10 @@ function getBtnId(elt) {
 
 
 function addTeamToTable(idTeam, team, admin, firstStake) {
+  if (team.strategyId != 2) {
+    addTeamToTableDrawsStrat(idTeam, team, admin, firstStake);
+    return;
+  }
   if (team.name.includes("_")) {
     $(document).ready(function() {
       $('#archTeamsTable').append(
@@ -95,6 +99,47 @@ function addTeamToTable(idTeam, team, admin, firstStake) {
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + calculateROI(firstStake, team.balance) + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.initialStake + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> <table>  <tr><td style="padding: 0px;"><input id="stake' + idTeam + '" type="text" placeholder="goal" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white u-input-1" required="required" style="padding-top: 0; padding-bottom: 0;"></td> <td> <form><input class="updateStakeBtn" type=button value="✔️" style="width:100%"></form></td> </tr></table></td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> <form><input class="archiveBtn" type=button value="📜" style="max-width:100%; position: center;"></form> </td></tr>'
+      );
+    });
+  }
+}
+
+function addTeamToTableDrawsStrat(idTeam, team, admin, firstStake) {
+  if (team.name.includes("_")) {
+    $(document).ready(function() {
+      $('#archTeamsTable').append(
+        '<tr id="' + idTeam + '" style="background-color: '+teamBackgroundColor(team.balance.toString().slice(0, 5))+';"><td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a style="color: black; font-weight: bold;" href="TeamInfoPage.html?'+idTeam+'&'+team.name+'"><u>' + team.name + '</u></a></td>' +
+        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style="padding-top: 0; padding-bottom: 0; ' + checkLeftMatchesToPlayColor(team.numMatchesToPlay, team.name, team.admin) +'">' + team.numMatchesPlayed + ' / ' + team.numMatchesToPlay + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.season + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.oddAvg + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.balance.toString().slice(0, 5) + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + calculateROI(firstStake, team.balance) + '</td></tr>'
+      );
+    });
+  } else if (!admin) {
+    $(document).ready(function() {
+      $('#disableTeamsTable').append(
+        '<tr id="' + idTeam + '" style="background-color: '+teamBackgroundColor(team.balance.toString().slice(0, 5))+';"><td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a style="color: black; font-weight: bold;" href="TeamInfoPage.html?'+idTeam+'&'+team.name+'"><u>' + team.name + '</u></a></td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><label class="switch"><input id="' + idTeam + '" onclick="toggleButton(this);"  type="checkbox" ' + admin + '><span class="slider round"></span></label></td>' +
+        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style= "padding-top: 0; padding-bottom: 0; ' + checkLeftMatchesToPlayColor(team.numMatchesToPlay, team.name, team.admin) +'">' + team.numMatchesPlayed + ' / ' + team.numMatchesToPlay + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.season + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.oddAvg + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.balance.toString().slice(0, 5) + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + calculateROI(firstStake, team.balance) + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> <form><input class="archiveBtn" type=button value="📜" style="max-width:100%; position: center;"></form> </td></tr>'
+      );
+    });
+  } else {
+    $(document).ready(function() {
+      $('#teamsTable').append(
+        '<tr id="' + idTeam + '" style="background-color: '+teamBackgroundColor(team.balance.toString().slice(0, 5))+';"><td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a style="color: black; font-weight: bold;" href="TeamInfoPage.html?'+idTeam+'&'+team.name+'"><u>' + team.name + '</u></a></td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><label class="switch"><input id="' + idTeam + '" onclick="toggleButton(this);"  type="checkbox" ' + admin + '><span class="slider round"></span></label></td>' +
+        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style="padding-top: 0; padding-bottom: 0; ' + checkLeftMatchesToPlayColor(team.numMatchesToPlay, team.name, team.admin) +'">' + team.numMatchesPlayed + ' / ' + team.numMatchesToPlay + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.season + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.oddAvg + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.balance.toString().slice(0, 5) + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + calculateROI(firstStake, team.balance) + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> <form><input class="archiveBtn" type=button value="📜" style="max-width:100%; position: center;"></form> </td></tr>'
       );
     });
@@ -145,20 +190,20 @@ function insertTeam() {
     name = document.querySelector('#name-6797').value;
     teamUrl = document.querySelector('#url-6797').value;
     season = document.querySelector('#teamSeason').value;
-    stake = document.querySelector('#stake-6797').value;
-    analysisId = document.querySelector('#analid-6797').value;
+    // stake = document.querySelector('#stake-6797').value;
+    // analysisId = document.querySelector('#analid-6797').value;
     var url = null;
 
-    if (stake != '') {
-      url = new URL("http://" + API_URL + "/api/betstrat/" + strategyPath + "/team?name=name&url=url&season=season&analysisID=analysisID&initialStake=initialStake");
-      url.searchParams.set('initialStake', stake);
-      console.log(url);
-    } else {
-      url = new URL("http://" + API_URL + "/api/betstrat/" + strategyPath + "/team?name=name&url=url&season=season&analysisID=analysisID");
-    }
+    // if (stake != '') {
+    //   url = new URL("http://" + API_URL + "/api/betstrat/" + strategyPath + "/team?name=name&url=url&season=season&analysisID=analysisID&initialStake=initialStake");
+    //   url.searchParams.set('initialStake', stake);
+    //   console.log(url);
+    // } else {
+      url = new URL("http://" + API_URL + "/api/betstrat/" + strategyPath + "/team?name=name&url=url&season=season&analysisID=0&initialStake=0");
+    // }
     url.searchParams.set('name', name);
     url.searchParams.set('url', teamUrl);
-    url.searchParams.set('analysisID', analysisId);
+    // url.searchParams.set('analysisID', analysisId);
     url.searchParams.set('season', season);
     callInsertNewTeam(url);
 }
