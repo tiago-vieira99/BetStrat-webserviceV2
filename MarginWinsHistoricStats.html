@@ -6,19 +6,14 @@
   <meta charset="utf-8">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <title>OD - Insert Team</title>
+  <title>Historic Stats Data</title>
   <link rel="stylesheet" href="css/nicepage.css" media="screen">
   <link rel="stylesheet" href="css/Team-Info-Page.css" media="screen">
   <script class="u-script" type="text/javascript" src="javascript/jquery.js" "="" defer=""></script>
     <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
     <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
-  <script type="text/javascript">
-    var currentStrategy = 1;
-  </script>
-  <link rel="stylesheet" href="css/modalDialogBox.css" media="screen">
-  <script class="u-script" type="text/javascript" src="javascript/common/modalDialogBox.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="javascript/common/coreAPIcalls.js" defer=""></script>
-  <script class="u-script" type="text/javascript" src="javascript/AllTeams.js" defer=""></script>
+  <script class=" u-script" type="text/javascript" src="javascript/MarginWinsHistoricStats.js" "="" defer=""></script>
   <meta name=" generator" content="Nicepage 4.16.0, nicepage.com">
   <link id="u-theme-google-font" rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -34,7 +29,7 @@
 		"logo": "images/logo-no-background.png"
 }</script>
   <meta name="theme-color" content="#efa69d">
-  <meta property="og:title" content="OD - Insert New Team">
+  <meta property="og:title" content="Historic Stats Data">
   <meta property="og:description" content="">
   <meta property="og:type" content="website">
 </head>
@@ -86,9 +81,9 @@
                 href="Bankrolls.html" style="padding: 10px;">Bankrolls</a>
             </li>
             <li class="u-nav-item"><a
-              class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-              href="HistoricStatsData.html" style="padding: 10px;">Historic Stats</a>
-          </li>
+                class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
+                href="HistoricStatsData.html" style="padding: 10px;">Historic Stats</a>
+            </li>
           </ul>
         </div>
         <div class="u-nav-container-collapse">
@@ -112,8 +107,8 @@
                     style="padding: 10px 20px;">Bankrolls</a>
                 </li>
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="HistoricStatsData.html"
-                  style="padding: 10px 20px;">Historic Stats</a>
-              </li>
+                    style="padding: 10px 20px;">Historic Stats</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -134,53 +129,36 @@
     <div class="u-clearfix u-sheet u-sheet-1"><span
         class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-dark-2 u-icon-1" onclick="history.back()"><img
           src="images/17699-278f9150.png" alt="" style="cursor: pointer;"></span>
-      <h4 class="u-text u-text-default u-text-1" style="text-shadow: none;">ONLY DRAWS</h4>
-      <p class="u-text u-text-default u-text-1" style="text-shadow: none; margin-left: auto; margin-right: auto;">Insert
-        New Team</p>
-      <div
-        class="u-border-2 u-border-black u-border-no-left u-border-no-right u-expanded-width-sm u-expanded-width-xs u-form u-form-1"
-        style="max-width: 60%; margin-left: auto; margin-right: auto;">
-        <form class="u-clearfix u-form-spacing-8 u-form-vertical u-inner-form" source="custom" name="form"
-          style="padding: 9px;">
-          <div class="u-form-group u-form-name u-form-group-1">
-            <label for="name-6797" class="u-custom-font u-font-source-sans-pro u-label">Name</label>
-            <input type="text" placeholder="Name" id="name-6797" name="name"
-              class="u-border-1 u-border-grey-30 u-custom-font u-font-source-sans-pro u-input u-input-rectangle u-radius-29 u-white u-input-1"
-              required="">
-          </div>
-          <div class="u-form-url u-form-group u-form-group-2">
-            <label for="url-6797" class="u-custom-font u-font-source-sans-pro u-label">URL</label>
-            <input type="text" placeholder="URL" id="url-6797" name="statsUrl"
-              class="u-border-1 u-border-grey-30 u-custom-font u-font-source-sans-pro u-input u-input-rectangle u-radius-29 u-white u-input-1"
-              required="">
-          </div>
-          <!-- <div class="u-form-url u-form-group u-form-group-2">
-            <label for="analid-6797" class="u-custom-font u-font-source-sans-pro u-label">Analysis Code</label>
-            <input type="text" placeholder="Analysis Code" id="analid-6797" name="analysisCode"
-              class="u-border-1 u-border-grey-30 u-custom-font u-font-source-sans-pro u-input u-input-rectangle u-radius-29 u-white u-input-1"
-              required="">
-          </div>
-          <div class="u-form-url u-form-group u-form-group-3">
-            <label for="url-6797" class="u-custom-font u-font-source-sans-pro u-label">Target Profit</label>
-            <input type="text" placeholder="Target Profit" id="stake-6797" name="initialStake"
-              class="u-border-1 u-border-grey-30 u-custom-font u-font-source-sans-pro u-input u-input-rectangle u-radius-29 u-white u-input-1">
-          </div> -->
-          <div class="u-form-url u-form-group u-form-group-4">
-            <label for="cars">Season:</label>
-            <select id="teamSeason">
-              <option value="--">--</option>
-              <option value="2022">2022</option>
-              <option value="2022-23">2022-23</option>
-              <option value="2023">2023</option>
-            </select>
-          </div>
-          <div class="u-form-group u-form-submit u-form-group-3"
-            style="margin-left: auto; margin-right: auto; text-align: center;">
-            <a onclick="insertTeam()" class="u-btn u-btn-round u-btn-submit u-button-style u-radius-50"
-              style="background-color: #a88a73;">Submit</a>
-            <input type="submit" value="submit" class="u-form-control-hidden">
-          </div>
-        </form>
+      <h4 class="u-text u-text-default u-text-1 teamNameTitle" style="text-shadow: none;"></h4>
+      <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
+        <table class="u-table-entity" style="width: 125%; margin-left: -12%; margin-right: auto;">
+          <colgroup>
+            <col width="6%">
+            <col width="32%">
+            <col width="6%">
+            <col width="7%">
+            <col width="6%">
+            <col width="7%">
+            <col width="5%">
+            <col width="6%">
+            <col width="38%">
+          </colgroup>
+          <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
+            <tr style="height: 40px;">
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">SEASON</th>
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Competition</th>
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">% wins</th>
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">total wins</th>
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">% margin wins</th>
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">total margin wins</th>
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">std dev</th>
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">coeff dev</th>
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">no margin-wins sequence</th>
+            </tr>
+          </thead>
+          <tbody id="marginWinsDataByTeamTable" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
+          </tbody>
+        </table>
       </div>
     </div>
   </section>

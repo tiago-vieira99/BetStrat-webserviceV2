@@ -783,3 +783,68 @@ function callDeleteBet(betId, bankrollId) {
       console.error('Error:', error);
     });
 }
+
+
+//-------------------------------------------------------------------------------------------
+//-------------------------       HISTORIC DATA PAGE CALLS     ------------------------------
+//-------------------------------------------------------------------------------------------
+
+function callGetHistoricDataTeams() {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/teams")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+      teams = resp;
+
+      teams.sort(function(a, b) {
+        var nameA = a.name,
+          nameB = b.name;
+        if (nameA < nameB) return -1;
+        if (nameA > nameB) return 1;
+        return 0;
+      });
+
+      teams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
+function callGetDrawsHistoricDataByTeam(teamName) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-draw-stats/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+
+      resp.forEach(function(statsData) {    
+        addDataToTable(statsData);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
+function callGetMarginWinsHistoricDataByTeam(teamName) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-margin-wins-stats/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+
+      resp.forEach(function(statsData) {    
+        addDataToTable(statsData);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
