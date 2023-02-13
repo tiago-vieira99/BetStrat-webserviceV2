@@ -11,7 +11,7 @@ function syncData() {
   fetch(url, {
       method: 'POST'
     });
-    setTimeout(() => { window.location.reload(); }, 2000);
+    setTimeout(() => { window.location.reload(); }, 2500);
 }
 
 function chartSetup(days, profit) {

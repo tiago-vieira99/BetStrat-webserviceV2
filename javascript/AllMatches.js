@@ -93,9 +93,9 @@ function addMatchLine(idMatch, match) {
 function matchBackgroundColor(match) {
   if (match.ftresult != null) {
     if (match.ftresult == 'X' || match.ftresult == '+1' || match.ftresult == '+2') {
-      return '#afdfbd'
+      return GREEN_COLOR
     } else {
-      return '#e3c0c1'
+      return RED_COLOR
     }
   } else {
     return '#e5f6f0'

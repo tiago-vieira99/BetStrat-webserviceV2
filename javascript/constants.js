@@ -13,3 +13,7 @@ const ONLY_DRAWS_PATH = "onlydraws";
 const EURO_HANDICAP_PATH = "eurohandicap";
 const DRAWS_HUNTER_PATH = "drawshunter";
 
+const GREEN_COLOR = '#afdfbd';
+const RED_COLOR = '#e3c0c1';
+const YELLOW_COLOR = '#e0ffd4';
+

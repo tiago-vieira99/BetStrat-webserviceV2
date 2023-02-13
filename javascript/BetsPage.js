@@ -234,21 +234,21 @@ function addBetLinesToTable(month, week, bet) {
 function setBetStatusBackgroundColor(status) {
     switch (status) {
         case 'WON':
-            return '#68d59c';
+            return GREEN_COLOR;
         case 'LOST':
-            return '#df8080';
+            return RED_COLOR;
         case 'ONGOING':
             return '#c9c1c1';
         default:
-            return '#a3d2dd';
+            return YELLOW_COLOR;
     }
 }
 
 function setWeekBalanceColor(balance) {
     if(balance >= 0) {
-        return '#68d59c';
+        return GREEN_COLOR;
     } else {
-        return '#df8080';
+        return RED_COLOR;
     }
 }
 
