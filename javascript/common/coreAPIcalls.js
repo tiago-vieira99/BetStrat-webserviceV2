@@ -671,6 +671,8 @@ function callGetBankrollById(bankrollId) {
       $("#roi-stat").text(myJson.roi);
       $("#progress-stat").text(myJson.progression);
 
+      addBankrollStatsInfo(myJson);
+
     })
     .catch(function(error) {
       console.log("Error: " + error);
@@ -690,6 +692,25 @@ function callGetBankrollEvolution(bankrollId) {
     })
     .catch(function(error) {
       console.log("Error: " + error);
+    });
+}
+
+function callPutRefreshBankroll(bankrollId) {
+  var url = "http://" + API_URL + "/api/bankroll/refresh-stats/" + bankrollId ;
+
+  console.log("call refresh");
+
+  fetch(url, {
+      method: 'PUT', // or 'PUT'
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        modalBox("Error refreshing bankroll stats: ", "<p>" + data.error + "</p><p>" + data.message + "</p>");
+      } 
+    })
+    .catch((error) => {
+      console.error('Error:', error);
     });
 }
 

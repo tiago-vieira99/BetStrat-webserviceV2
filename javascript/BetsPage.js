@@ -26,6 +26,7 @@ function addBtnListeners() {
         var betId = getBtnId(this);
         var status = document.querySelector('#betStatus' + betId).value;
         callPutUpdateBet(betId, bankrollId, status.toUpperCase());
+        callPutRefreshBankroll(bankrollId);
       });
     }
   
@@ -291,6 +292,22 @@ function collapsibleContentScript() {
         }
     });
     }
+}
+
+function addBankrollStatsInfo(bankroll) {
+  $(document).ready(function() {
+    $('#bkroll-oddAvg').append('<p class="bkroll-u-align-center bkroll-u-text bkroll-u-text-default bkroll-u-text-1">' + bankroll.oddAvg + '<br><b>odd avg</b></p>');
+    $('#bkroll-stakeAvg').append('<p class="bkroll-u-align-center bkroll-u-text bkroll-u-text-default bkroll-u-text-1">' + bankroll.stakeAvg + '<br><b>stake avg</b></p>');
+    $('#bkroll-longGreen').append('<p class="bkroll-u-align-center bkroll-u-text bkroll-u-text-default bkroll-u-text-1">' + bankroll.longestGreenSeries + '<br><b>longest green seq</b></p>');
+    $('#bkroll-longRed').append('<p class="bkroll-u-align-center bkroll-u-text bkroll-u-text-default bkroll-u-text-1">' + bankroll.longestRedSeries + '<br><b>longest red seq</b></p>');
+    $('#bkroll-greensRate').append('<p class="bkroll-u-align-center bkroll-u-text bkroll-u-text-default bkroll-u-text-1">' + bankroll.greensRate + '<br><b>greens rate</b></p>');
+    $('#bkroll-redsRate').append('<p class="bkroll-u-align-center bkroll-u-text bkroll-u-text-default bkroll-u-text-1">' + bankroll.redsRate + '<br><b>reds rate</b></p>');
+    $('#bkroll-highProfit').append('<p class="bkroll-u-align-center bkroll-u-text bkroll-u-text-default bkroll-u-text-1">' + bankroll.biggestProfit + '<br><b>biggest profit</b></p>');
+    $('#bkroll-highExpens').append('<p class="bkroll-u-align-center bkroll-u-text bkroll-u-text-default bkroll-u-text-1">' + bankroll.biggestExpense + '<br><b>biggest expense</b></p>');
+    $('#bkroll-highOdd').append('<p class="bkroll-u-align-center bkroll-u-text bkroll-u-text-default bkroll-u-text-1">' + bankroll.biggestOdd + '<br><b>biggest odd</b></p>');
+    $('#bkroll-highStake').append('<p class="bkroll-u-align-center bkroll-u-text bkroll-u-text-default bkroll-u-text-1">' + bankroll.biggestStake + '<br><b>biggest stake</b></p>');
+    $('#bkroll-highGreenOdd').append('<p class="bkroll-u-align-center bkroll-u-text bkroll-u-text-default bkroll-u-text-1">' + bankroll.biggestGreenOdd + '<br><b>biggest green odd</b></p>');
+  })
 }
 
 
