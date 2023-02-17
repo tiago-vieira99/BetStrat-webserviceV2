@@ -735,6 +735,14 @@ function callGetAllBetsByBankroll(bankrollId) {
         if (dateA < dateB) { return 1; }
         return 0;
       });
+
+      bets.sort(function(a, b) {
+        var idA = a.id,
+          idB = b.id;
+        if (idA > idB) return -1;
+        if (idA < idB) return 1;
+        return 0;
+      });
       
       addBetsToTable(bets);
 
