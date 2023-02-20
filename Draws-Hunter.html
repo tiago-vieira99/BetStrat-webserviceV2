@@ -12,6 +12,7 @@
   <script class="u-script" type="text/javascript" src="javascript/jquery.js" "="" defer=""></script>
   <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
   <script class=" u-script" type="text/javascript" src="javascript/constants.js" defer=""></script>
+  <script class=" u-script" type="text/javascript" src="javascript/common/sortTables.js"></script>
   <script type="text/javascript">
     var currentStrategy = 3;
   </script>
@@ -280,7 +281,7 @@
         List of candidate teams
       </p>
       <div class="u-table u-table-responsive u-table-1">
-        <table class="u-table-entity">
+        <table class="u-table-entity" id="NoDrawsSeqTable">
           <colgroup>
             <col width="25%">
             <col width="28%">
@@ -289,10 +290,10 @@
           </colgroup>
           <thead class="u-custom-font u-grey-50 u-heading-font u-palette-4-dark-3 u-table-header u-table-header-1">
             <tr >
-              <th class="u-table-cell">Country</th>
-              <th class="u-table-cell">League</th>
-              <th class="u-table-cell">Team</th>
-              <th class="u-table-cell">NoDrawsSeq</th>
+              <th onclick="sortTable(0,'NoDrawsSeqTable')" class="u-table-cell">Country</th>
+              <th onclick="sortTable(1,'NoDrawsSeqTable')" class="u-table-cell">League</th>
+              <th onclick="sortTable(2,'NoDrawsSeqTable')" class="u-table-cell">Team</th>
+              <th onclick="sortTableNumbers(3,'NoDrawsSeqTable')" class="u-table-cell">NoDrawsSeq</th>
             </tr>
           </thead>
           <tbody id="all-candidate-teams-table" class="u-table-alt-grey-15 u-table-body">

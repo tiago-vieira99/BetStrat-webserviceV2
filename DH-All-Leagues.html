@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="css/nicepage.css" media="screen">
   <link rel="stylesheet" href="css/Team-Info-Page.css" media="screen">
   <script class="u-script" type="text/javascript" src="javascript/jquery.js" "="" defer=""></script>
-    <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
-    <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
+  <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
+  <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
+  <script class=" u-script" type="text/javascript" src="javascript/common/sortTables.js"></script>
   <script type="text/javascript">
     var currentStrategy = DRAWS_HUNTER_ID;
   </script>
@@ -176,7 +177,7 @@
       </div>
       <p class="u-text u-text-default u-text-1" style="text-shadow: none;">Active Leagues</p>
       <div class="u-expanded-width u-table u-table-responsive u-table-1" style="margin-top: 20px;">
-        <table class="u-table-entity" style="max-width: 80%; margin-left: auto; margin-right: auto;">
+        <table class="u-table-entity" id="activeLeaguesTable" style="max-width: 80%; margin-left: auto; margin-right: auto;">
           <colgroup>
             <col width="30%">
             <col width="25%">
@@ -187,12 +188,12 @@
           </colgroup>
           <thead class="u-custom-font u-grey-50 u-heading-font u-palette-4-dark-3 u-table-header u-table-header-1">
             <tr style="height: 40px;">
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Name</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Season</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Actual Round</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Last Update</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">enable / disable</th>
+              <th onclick="sortTable(0,'activeLeaguesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Name</th>
+              <th onclick="sortTable(1,'activeLeaguesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
+              <th onclick="sortTable(2,'activeLeaguesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Season</th>
+              <th onclick="sortTableNumbers(3,'activeLeaguesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Actual Round</th>
+              <th onclick="sortTable(4,'activeLeaguesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Last Update</th>
+              <th onclick="sortTable(5,'activeLeaguesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">enable / disable</th>
             </tr>
           </thead>
           <tbody id="leaguesTable" class="u-table-alt-grey-15 u-table-body">
@@ -200,9 +201,9 @@
           </tbody>
         </table>
       </div>
-      <p class="u-text u-text-default u-text-1" style="text-shadow: none;">Archived Leagues</p>
+      <!-- <p class="u-text u-text-default u-text-1" style="text-shadow: none;">Archived Leagues</p>
       <div class="u-expanded-width u-table u-table-responsive u-table-1" style="margin-top: 20px;">
-        <table class="u-table-entity" style="max-width: 80%; margin-left: auto; margin-right: auto;">
+        <table class="u-table-entity" id="archLeaguesTable" style="max-width: 80%; margin-left: auto; margin-right: auto;">
           <colgroup>
             <col width="35%">
             <col width="30%">
@@ -212,18 +213,18 @@
           </colgroup>
           <thead class="u-custom-font u-grey-50 u-heading-font u-palette-4-dark-3 u-table-header u-table-header-1">
             <tr style="height: 40px;">
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Name</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Season</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Actual Round</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">enable / disable</th>
+              <th onclick="sortTable(0,'archLeaguesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Name</th>
+              <th onclick="sortTable(1,'archLeaguesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
+              <th onclick="sortTable(2,'archLeaguesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Season</th>
+              <th onclick="sortTable(3,'archLeaguesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Actual Round</th>
+              <th onclick="sortTable(4,'archLeaguesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">enable / disable</th>
             </tr>
           </thead>
           <tbody id="archLeaguesTable" class="u-table-alt-grey-15 u-table-body">
             <!-- table rows added by jquery -->
-          </tbody>
+          <!-- </tbody>
         </table>
-      </div>
+      </div> -->
     </div>
   </section>
 

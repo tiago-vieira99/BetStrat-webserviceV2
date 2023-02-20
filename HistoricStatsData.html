@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="css/nicepage.css" media="screen">
   <link rel="stylesheet" href="css/Team-Info-Page.css" media="screen">
   <script class="u-script" type="text/javascript" src="javascript/jquery.js" "="" defer=""></script>
-    <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
-    <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
+  <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
+  <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
+  <script class=" u-script" type="text/javascript" src="javascript/common/sortTables.js"></script>
   <script class="u-script" type="text/javascript" src="javascript/common/coreAPIcalls.js" defer=""></script>
   <script class=" u-script" type="text/javascript" src="javascript/HistoricStats.js" "="" defer=""></script>
   <meta name=" generator" content="Nicepage 4.16.0, nicepage.com">
@@ -131,7 +132,7 @@
           src="images/17699-278f9150.png" alt="" style="cursor: pointer;"></span>
       <h4 class="u-text u-text-default u-text-1" style="text-shadow: none;">HISTORIC STATS DATA - List of all Teams</h4>
       <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
-        <table class="u-table-entity">
+        <table class="u-table-entity" id="historicStatsTable">
           <colgroup>
             <col width="30%">
             <col width="10%">
@@ -141,11 +142,11 @@
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">End Season</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Draws Hunter Score</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Wins Score</th>
+              <th onclick="sortTable(0,'historicStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
+              <th onclick="sortTable(1,'historicStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
+              <th onclick="sortTable(2,'historicStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">End Season</th>
+              <th onclick="sortTable(3,'historicStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Draws Hunter Score</th>
+              <th onclick="sortTable(4,'historicStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Wins Score</th>
             </tr>
           </thead>
           <tbody id="histStatsTeamsTable" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">

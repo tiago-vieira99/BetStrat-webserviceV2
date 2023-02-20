@@ -35,7 +35,7 @@ setTimeout(function() {
     console.log(`Page clicked on ${clickedPage}`)
     buildPage(clickedPage)
   });
-}, 1500);
+}, 2800);
 
 
 function addBtnListeners() {

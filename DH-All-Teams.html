@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="css/nicepage.css" media="screen">
   <link rel="stylesheet" href="css/Team-Info-Page.css" media="screen">
   <script class="u-script" type="text/javascript" src="javascript/jquery.js" "="" defer=""></script>
-    <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
-    <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
+  <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
+  <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
+  <script class=" u-script" type="text/javascript" src="javascript/common/sortTables.js"></script>
   <script type="text/javascript">
     var currentStrategy = DRAWS_HUNTER_ID;
   </script>
@@ -84,9 +85,9 @@
                 href="Bankrolls.html" style="padding: 10px;">Bankrolls</a>
             </li>
             <li class="u-nav-item"><a
-              class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-              href="HistoricStatsData.html" style="padding: 10px;">Historic Stats</a>
-          </li>
+                class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
+                href="HistoricStatsData.html" style="padding: 10px;">Historic Stats</a>
+            </li>
           </ul>
         </div>
         <div class="u-nav-container-collapse">
@@ -110,8 +111,8 @@
                     style="padding: 10px 20px;">Bankrolls</a>
                 </li>
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="HistoricStatsData.html"
-                  style="padding: 10px 20px;">Historic Stats</a>
-              </li>
+                    style="padding: 10px 20px;">Historic Stats</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -135,7 +136,7 @@
       <h4 class="u-text u-text-default u-text-1" style="text-shadow: none;">DRAWS HUNTER - List of all Teams</h4>
       <p class="u-text u-text-default u-text-1" style="text-shadow: none;">Active Teams</p>
       <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
-        <table class="u-table-entity">
+        <table class="u-table-entity" id="dhActiveTeamsTable">
           <colgroup>
             <col width="30%">
             <col width="10%">
@@ -150,13 +151,20 @@
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Active</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">matches played / left</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Season</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Odd Avg</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Balance</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">ROI</th>
+              <th onclick="sortTable(0,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">TEAM</th>
+              <th onclick="sortTable(1,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Active</th>
+              <th onclick="sortTable(2,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">matches played / left</th>
+              <th onclick="sortTable(3,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Season</th>
+              <th onclick="sortTableNumbers(4,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Odd Avg</th>
+              <th onclick="sortTableNumbers(5,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Balance</th>
+              <th onclick="sortTable(6,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">ROI</th>
               <!-- <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Profit Goal</th>
               <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Update PG</th> -->
               <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Archive</th>
@@ -169,7 +177,7 @@
       </div>
       <p class="u-text u-text-default u-text-1" style="text-shadow: none;">Disable Teams</p>
       <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
-        <table class="u-table-entity">
+        <table class="u-table-entity" id="dhTeamsTable">
           <colgroup>
             <col width="30%">
             <col width="10%">
@@ -184,13 +192,20 @@
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Active</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">matches played / left</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Season</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Odd Avg</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Balance</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">ROI</th>
+              <th onclick="sortTable(0,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                TEAM</th>
+              <th onclick="sortTable(1,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                Active</th>
+              <th onclick="sortTable(2,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                matches played / left</th>
+              <th onclick="sortTable(3,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                Season</th>
+              <th onclick="sortTableNumbers(4,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                Odd Avg</th>
+              <th onclick="sortTableNumbers(5,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                Balance</th>
+              <th onclick="sortTable(6,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                ROI</th>
               <!-- <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Profit Goal</th>
               <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Update PG</th> -->
               <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Archive</th>
@@ -203,7 +218,7 @@
       </div>
       <p class="u-text u-text-default u-text-1" style="text-shadow: none;">Archived Teams</p>
       <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
-        <table class="u-table-entity">
+        <table class="u-table-entity" id="dhArchTeamsTable">
           <colgroup>
             <col width="30%">
             <col width="15%">
@@ -215,13 +230,19 @@
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Matches Played</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Season</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Odd Avg</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Balance</th>
+              <th onclick="sortTable(0,'dhArchTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">TEAM</th>
+              <th onclick="sortTable(1,'dhArchTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Matches Played</th>
+              <th onclick="sortTable(2,'dhArchTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Season</th>
+              <th onclick="sortTableNumbers(3,'dhArchTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Odd Avg</th>
+              <th onclick="sortTableNumbers(4,'dhArchTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Balance</th>
               <!-- <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Profit Goal</th> -->
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">ROI</th>
+              <th onclick="sortTable(5,'dhArchTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">ROI</th>
             </tr>
           </thead>
           <tbody id="archTeamsTable"

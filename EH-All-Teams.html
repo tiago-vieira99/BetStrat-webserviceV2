@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="css/nicepage.css" media="screen">
   <link rel="stylesheet" href="css/Team-Info-Page.css" media="screen">
   <script class="u-script" type="text/javascript" src="javascript/jquery.js" "="" defer=""></script>
-    <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
-    <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
+  <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
+  <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
+  <script class=" u-script" type="text/javascript" src="javascript/common/sortTables.js"></script>
   <script type="text/javascript">
     var currentStrategy = EURO_HANDICAP_ID;
   </script>
@@ -135,7 +136,7 @@
       <h4 class="u-text u-text-default u-text-1" style="text-shadow: none;">EURO HANDICAP - List of all Teams</h4>
       <p class="u-text u-text-default u-text-1" style="text-shadow: none;">Active Teams</p>
       <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
-        <table class="u-table-entity">
+        <table class="u-table-entity" id="ehActiveTeamsTable">
           <colgroup>
             <col width="30%">
             <col width="10%">
@@ -150,13 +151,13 @@
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Active</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">matches played / left</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Season</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Odd Avg</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Balance</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">ROI</th>
+              <th onclick="sortTable(0,'ehActiveTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
+              <th onclick="sortTable(1,'ehActiveTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Active</th>
+              <th onclick="sortTable(2,'ehActiveTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">matches played / left</th>
+              <th onclick="sortTable(3,'ehActiveTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Season</th>
+              <th onclick="sortTableNumbers(4,'ehActiveTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Odd Avg</th>
+              <th onclick="sortTableNumbers(5,'ehActiveTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Balance</th>
+              <th onclick="sortTable(6,'ehActiveTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">ROI</th>
               <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Archive</th>
             </tr>
           </thead>
@@ -167,7 +168,7 @@
       </div>
       <p class="u-text u-text-default u-text-1" style="text-shadow: none;">Disable Teams</p>
       <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
-        <table class="u-table-entity">
+        <table class="u-table-entity" id="inactiveEHTeamsTable">
           <colgroup>
             <col width="30%">
             <col width="10%">
@@ -182,13 +183,13 @@
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Active</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">matches played / left</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Season</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Odd Avg</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Balance</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">ROI</th>
+              <th onclick="sortTable(0,'inactiveEHTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
+              <th onclick="sortTable(1,'inactiveEHTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Active</th>
+              <th onclick="sortTable(2,'inactiveEHTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">matches played / left</th>
+              <th onclick="sortTable(3,'inactiveEHTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Season</th>
+              <th onclick="sortTableNumbers(4,'inactiveEHTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Odd Avg</th>
+              <th onclick="sortTableNumbers(5,'inactiveEHTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Balance</th>
+              <th onclick="sortTable(6,'inactiveEHTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">ROI</th>
               <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Archive</th>
             </tr>
           </thead>
@@ -199,7 +200,7 @@
       </div>
       <p class="u-text u-text-default u-text-1" style="text-shadow: none;">Archived Teams</p>
       <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
-        <table class="u-table-entity">
+        <table class="u-table-entity" id="archEHTeamsTable">
           <colgroup>
             <col width="30%">
             <col width="15%">
@@ -211,12 +212,12 @@
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Matches Played</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Season</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Odd Avg</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Balance</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">ROI</th>
+              <th onclick="sortTable(0,'archEHTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
+              <th onclick="sortTable(1,'archEHTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Matches Played</th>
+              <th onclick="sortTable(2,'archEHTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Season</th>
+              <th onclick="sortTableNumbers(3,'archEHTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Odd Avg</th>
+              <th onclick="sortTableNumbers(4,'archEHTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Balance</th>
+              <th onclick="sortTable(5,'archEHTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">ROI</th>
             </tr>
           </thead>
           <tbody id="archTeamsTable"

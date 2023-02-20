@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="css/nicepage.css" media="screen">
   <link rel="stylesheet" href="css/Team-Info-Page.css" media="screen">
   <script class="u-script" type="text/javascript" src="javascript/jquery.js" "="" defer=""></script>
-    <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
-    <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
+  <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
+  <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
+  <script class=" u-script" type="text/javascript" src="javascript/common/sortTables.js"></script>
   <script class="u-script" type="text/javascript" src="javascript/common/coreAPIcalls.js" defer=""></script>
   <script class=" u-script" type="text/javascript" src="javascript/MarginWinsHistoricStats.js" "="" defer=""></script>
   <meta name=" generator" content="Nicepage 4.16.0, nicepage.com">
@@ -132,7 +133,7 @@
       <h4 class="u-text u-text-default u-text-1 teamNameTitle" style="text-shadow: none;"></h4>
       <img src="images/shooting-game.png" style="display: block; margin: 40px auto; width: 10%;">
       <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
-        <table class="u-table-entity" style="width: 120%; margin-left: -10%; margin-right: auto;">
+        <table class="u-table-entity" id="mwStatsTable" style="width: 120%; margin-left: -10%; margin-right: auto;">
           <colgroup>
             <col width="6%">
             <col width="28%">
@@ -146,14 +147,14 @@
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">SEASON</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Competition</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">% wins</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">total wins</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">% margin wins</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">total margin wins</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">std dev</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">coeff dev</th>
+              <th onclick="sortTable(0,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">SEASON</th>
+              <th onclick="sortTable(1,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Competition</th>
+              <th onclick="sortTable(2,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">% wins</th>
+              <th onclick="sortTable(3,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">total wins</th>
+              <th onclick="sortTable(4,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">% margin wins</th>
+              <th onclick="sortTable(5,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">total margin wins</th>
+              <th onclick="sortTableNumbers(6,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">std dev</th>
+              <th onclick="sortTableNumbers(7,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">coeff dev</th>
               <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">no margin-wins sequence</th>
             </tr>
           </thead>
