@@ -725,6 +725,8 @@ function callGetAllBetsByBankroll(bankrollId) {
     })
     .then(function(bets) {
 
+      allBets = bets;
+
       bets.sort(function(a, b) {
         var betDateA = a.date.split('/');
         var betDateB = b.date.split('/');
@@ -825,6 +827,8 @@ function callGetHistoricDataTeams() {
     })
     .then(function(resp) {
       teams = resp;
+
+      numTeams = teams.length;
 
       teams.sort(function(a, b) {
         var nameA = a.name,

@@ -1,7 +1,12 @@
+var numTeams;
+
 callGetHistoricDataTeams();
 
-var teams;
 
+setTimeout(function() {
+
+  console.log(numTeams);
+}, 700);
 
 function addTeamToTable(idTeam, team) {
     $(document).ready(function() {
