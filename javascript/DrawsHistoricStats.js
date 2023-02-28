@@ -3,6 +3,7 @@ var teamName = decodeURIComponent(urlArgs[1]);
 $('.teamNameTitle').append("<b>" + teamName + " :: Historic Draws Stats</b><br>");
 
 callGetDrawsHistoricDataByTeam(teamName);
+callGetHockeyDrawsHistoricDataByTeam(teamName);
 
 var teams;
 

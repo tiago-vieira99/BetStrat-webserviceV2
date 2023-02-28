@@ -865,6 +865,23 @@ function callGetDrawsHistoricDataByTeam(teamName) {
     });
 }
 
+function callGetHockeyDrawsHistoricDataByTeam(teamName) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-hockey-draw-stats/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+
+      resp.forEach(function(statsData) {    
+        addDataToTable(statsData);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
 function callGetMarginWinsHistoricDataByTeam(teamName) {
   fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-margin-wins-stats/" + teamName)
     .then(function(response) {
