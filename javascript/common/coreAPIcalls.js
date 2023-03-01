@@ -839,7 +839,12 @@ function callGetHistoricDataTeams() {
       });
 
       teams.forEach(function(team) {    
-        addTeamToTable("team" + team.id, team);
+        if (team.sport === "Football") {
+          addTeamToTable("team" + team.id, team);
+        } else {
+          addHockeyTeamToTable("team" + team.id, team);
+        }
+        
       });
 
     })
