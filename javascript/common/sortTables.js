@@ -21,14 +21,24 @@ function sortTable(n, tableId) {
         y = rows[i + 1].getElementsByTagName("TD")[n];
         /* Check if the two rows should switch place,
         based on the direction, asc or desc: */
+        if (x.innerHTML.toLowerCase().includes("href")) {
+          x = x.innerHTML.toLowerCase().substring(x.innerHTML.indexOf('<u>'));
+        } else {
+          x = x.innerHTML.toLowerCase();
+        }
+        if (y.innerHTML.toLowerCase().includes("href")) {
+          y = y.innerHTML.toLowerCase().substring(y.innerHTML.indexOf('<u>'));
+        } else {
+          y = y.innerHTML.toLowerCase();
+        }
         if (dir == "asc") {
-          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          if (x > y) {
             // If so, mark as a switch and break the loop:
             shouldSwitch = true;
             break;
           }
         } else if (dir == "desc") {
-          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          if (x < y) {
             // If so, mark as a switch and break the loop:
             shouldSwitch = true;
             break;

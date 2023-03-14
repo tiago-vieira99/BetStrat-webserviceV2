@@ -903,3 +903,20 @@ function callGetMarginWinsHistoricDataByTeam(teamName) {
       console.log("Error: " + error);
     });
 }
+
+function callGetEuroHandicapHistoricDataByTeam(teamName) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-euro-handicap-stats/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+
+      resp.forEach(function(statsData) {    
+        addDataToTable(statsData);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
