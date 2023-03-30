@@ -8,7 +8,6 @@ var teams;
 
 
 function addDataToTable(statsData) {
-    console.log(statsData);
     $(document).ready(function() {
       $('#marginWinsDataByTeamTable').append(
         '<tr>' +

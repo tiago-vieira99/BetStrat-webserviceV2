@@ -6,19 +6,18 @@
   <meta charset="utf-8">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <title>Only Draws</title>
+  <title>2,5 Goal Lines</title>
   <link rel="stylesheet" href="css/nicepage.css" media="screen">
   <link rel="stylesheet" href="css/StrategyPage.css" media="screen">
   <script class="u-script" type="text/javascript" src="javascript/jquery.js" "="" defer=""></script>
     <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
     <script class=" u-script" type="text/javascript" src="javascript/constants.js" defer=""></script>
-    <script type="text/javascript">
-      var currentStrategy = 1;
-    </script>
+  <script type="text/javascript">
+    var currentStrategy = 4;
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script class="u-script" type="text/javascript" src="javascript/common/coreAPIcalls.js" defer=""></script>
-  <script class="u-script" type="text/javascript" src="javascript/OnlyDraws.js" defer=""></script>
-  <script class="u-script" type="text/javascript" src="javascript/InsertMatches.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="javascript/25GoalLines.js" defer=""></script>
   <link rel="stylesheet" href="css/modalDialogBox.css" media="screen">
   <script class="u-script" type="text/javascript" src="javascript/common/modalDialogBox.js" defer=""></script>
   <meta name=" generator" content="Nicepage 4.16.0, nicepage.com">
@@ -38,7 +37,7 @@
 		"logo": "images/logo-no-background.png"
 }</script>
   <meta name="theme-color" content="#efa69d">
-  <meta property="og:title" content="Only Draws">
+  <meta property="og:title" content="2,5 Goal Lines">
   <meta property="og:description" content="">
   <meta property="og:type" content="website">
 </head>
@@ -74,37 +73,37 @@
                 href="index.html" style="padding: 10px;">Home</a>
             </li>
             <li class="u-nav-item"><a
-              class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-              style="padding: 10px;color: black !important;">Strategies 🠻</a>
-            <div class="u-nav-popup">
-              <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
-                <li class="u-nav-item"><a
-                  class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-                  href="Only-Draws.html" style="padding: 10px;">Only Draws</a>
-              </li>
-              <li class="u-nav-item"><a
-                  class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-                  href="Euro-Handicap.html" style="padding: 10px;">Euro Handicap</a>
-              </li>
-              <li class="u-nav-item"><a
-                  class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-                  href="Draws-Hunter.html" style="padding: 10px;">Draws Hunter</a>
-              </li>
-              <li class="u-nav-item"><a
                 class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-                href="25GoalLines.html" style="padding: 10px;">2,5 Goal Lines</a>
+                style="padding: 10px;color: black !important;">Strategies 🠻</a>
+              <div class="u-nav-popup">
+                <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                  <li class="u-nav-item"><a
+                      class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
+                      href="Only-Draws.html" style="padding: 10px;">Only Draws</a>
+                  </li>
+                  <li class="u-nav-item"><a
+                      class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
+                      href="Euro-Handicap.html" style="padding: 10px;">Euro Handicap</a>
+                  </li>
+                  <li class="u-nav-item"><a
+                      class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
+                      href="Draws-Hunter.html" style="padding: 10px;">Draws Hunter</a>
+                  </li>
+                  <li class="u-nav-item"><a
+                      class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
+                      href="25GoalLines.html" style="padding: 10px;">2,5 Goal Lines</a>
+                  </li>
+                </ul>
+              </div>
             </li>
-              </ul>
-            </div>
-          </li>
             <li class="u-nav-item"><a
                 class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
                 href="Bankrolls.html" style="padding: 10px;">Bankrolls</a>
             </li>
             <li class="u-nav-item"><a
-              class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-              href="HistoricStatsData.html" style="padding: 10px;">Historic Stats</a>
-          </li>
+                class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
+                href="HistoricStatsData.html" style="padding: 10px;">Historic Stats</a>
+            </li>
           </ul>
         </div>
         <div class="u-nav-container-collapse">
@@ -115,21 +114,21 @@
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.html"
                     style="padding: 10px 20px;">Home</a>
                 </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" >Strategies 🠻</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link">Strategies 🠻</a>
                   <div class="u-nav-popup">
                     <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
                       <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Only-Draws.html"
-                        style="padding: 10px 20px;">Only Draws</a>
-                    </li>
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Euro-Handicap.html"
-                        style="padding: 10px 20px;">Euro Handicap</a>
-                    </li>
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Draws-Hunter.html"
-                        style="padding: 10px 20px;">Draws Hunter</a>
-                    </li>
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="25GoalLines.html"
-                      style="padding: 10px 20px;">2,5 Goal Lines</a>
-                  </li>
+                          style="padding: 10px 20px;">Only Draws</a>
+                      </li>
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Euro-Handicap.html"
+                          style="padding: 10px 20px;">Euro Handicap</a>
+                      </li>
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Draws-Hunter.html"
+                          style="padding: 10px 20px;">Draws Hunter</a>
+                      </li>
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="25GoalLines.html"
+                          style="padding: 10px 20px;">2,5 Goal Lines</a>
+                      </li>
                     </ul>
                   </div>
                 </li>
@@ -137,8 +136,8 @@
                     style="padding: 10px 20px;">Bankrolls</a>
                 </li>
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="HistoricStatsData.html"
-                  style="padding: 10px 20px;">Historic Stats</a>
-              </li>
+                    style="padding: 10px 20px;">Historic Stats</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -166,8 +165,8 @@
         padding-bottom: 0px;
         background-color: rgb(203, 216, 221, 0.2);
     ">
-          <canvas id="graph" style="max-width:100%; max-height:100%;"></canvas>
-          <form action="#" style="text-align: center; margin-top: 4%; margin-bottom: 4%;">
+          <canvas id="graph" style="max-width:100%; max-height:100%; display: unset;"></canvas>
+          <!-- <form action="#" style="text-align: center; margin-top: 4%; margin-bottom: 4%;">
             <label for="lang">Select Season</label>
             <select id="seasonSelect">
               <option value="all">All</option>
@@ -177,7 +176,7 @@
               <option value="2022-23">2022/23</option>
               <option value="2023">2023</option>
             </select>
-          </form>
+          </form> -->
         </div>
       </div>
     </div>
@@ -209,11 +208,12 @@
           <div
             class="u-align-center-md u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-xl u-container-style u-list-item u-radius-50 u-repeater-item u-shape-round u-white u-list-item-3">
             <div class="u-container-layout u-similar-container u-valign-top-xl u-container-layout-3">
-              <img alt="" class="u-align-center u-image u-image-default u-image-3" src="images/files.png"
+              <img alt="" class="u-align-center u-image u-image-default u-image-3" src="images/up-and-down-arrow.png"
                 data-image-width="512" data-image-height="512">
-              <h5 id="numteams-stat"
+              <h5 id="numoversunders-stat"
                 class="u-align-center-lg u-align-center-xl u-text u-text-palette-3-dark-1 u-text-5"></h5>
-              <p class="u-align-center-lg u-align-center-xl u-custom-font u-font-raleway u-text u-text-6">Teams</p>
+              <p class="u-align-center-lg u-align-center-xl u-custom-font u-font-raleway u-text u-text-6"
+                style="font-size: 13pt;">Overs/Unders</p>
             </div>
           </div>
           <div
@@ -233,60 +233,64 @@
   </section>
   <section class="u-align-center u-clearfix u-grey-10 u-section-3" id="sec-9862">
 
-    <button type="button"
-    class="collapsible u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1"
-    style="margin-top: 50px; overflow: hidden; max-width: 50%; background-color: #4b6256;">Next Matches
-    To Bet</button>
+    <div class="u-clearfix u-sheet u-sheet-1" id="betsList" style="margin-bottom: 50px;">
+      <p class="u-text u-text-default u-text-1"></p>
+      <div
+        class="u-align-center-sm u-align-center-xs u-border-2 u-border-black u-border-no-left u-border-no-right u-form u-form-1"
+        style="margin-top: 50px; max-width: 50%;margin-left: auto;margin-right: auto;">
+        <form method="" href="" onsubmit="getNext25Matches()"
+          class="u-clearfix u-form-horizontal u-form-spacing-8 u-inner-form" style="padding: 9px;">
+          <div class="u-form-date u-form-group u-form-group-3">
+            <label for="date-d868" class="u-custom-font u-font-source-sans-pro u-label">Date</label>
+            <input type="date" placeholder="MM/DD/YYYY" id="goalLinesMatchesDate" name="date"
+              class="u-border-1 u-border-grey-30 u-custom-font u-font-source-sans-pro u-input u-input-rectangle u-radius-29 u-white u-input-3">
+          </div>
+          <div class="u-align-center u-form-group u-form-submit" style="max-width: 60%;">
+            <a
+              class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Get Matches</a>
+            <input type="submit" value="submit" class="u-form-control-hidden">
+          </div>
+        </form>
+      </div>
 
-  <div class="content nextMatchesDiv" style="max-width: 50%;margin-left: auto;margin-right: auto;">
-    <!-- <iframe class="u-expanded-width teamDataSheet" height="280" frameborder="0" scrolling="no" src="">
+      <button type="button"
+        class="collapsible u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1"
+        style="margin-top: 50px; overflow: hidden; max-width: 90%; background-color: #4b6256;">Next Matches
+        To Bet</button>
+
+      <div class="content 25nextMatchesDiv" style="max-width: 90%;margin-left: auto;margin-right: auto;">
+        <!-- <iframe class="u-expanded-width teamDataSheet" height="280" frameborder="0" scrolling="no" src="">
       </iframe> -->
 
-  </div>
-  <script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
+      </div>
+      <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
 
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function () {
-        this.classList.toggle("activeCollapsible");
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function () {
+            this.classList.toggle("activeCollapsible");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+              content.style.display = "none";
+            } else {
+              content.style.display = "block";
+            }
+          });
         }
-      });
-    }
-  </script>
+      </script>
 
-    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-      <div class="u-align-center u-list u-list-1">
-        <div class="u-repeater u-repeater-1">
-          <div class="u-container-style u-list-item u-repeater-item">
-            <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-3">
-              <a href="OD-Insert-Team.html"
-                class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-font u-font-source-sans-pro u-hover-palette-3-dark-2 u-palette-3-dark-1 u-radius-50 u-btn-3">insert
-                team</a>
-            </div>
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="u-align-center u-list u-list-1">
+
+          <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-2">
+            <a href="25GoalLines-All-Matches.html"
+              class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-font u-font-source-sans-pro u-hover-palette-3-dark-2 u-palette-3-dark-1 u-radius-50 u-btn-2">matches
+              history</a>
           </div>
-          <div class="u-container-style u-list-item u-repeater-item">
-            <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-2">
-              <a href="OD-All-Matches.html"
-                class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-font u-font-source-sans-pro u-hover-palette-3-dark-2 u-palette-3-dark-1 u-radius-50 u-btn-2">matches
-                history</a>
-            </div>
-          </div>
-          <div class="u-container-style u-list-item u-repeater-item">
-            <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-4">
-              <a href="OD-All-Teams.html"
-                class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-font u-font-source-sans-pro u-hover-palette-3-dark-2 u-palette-3-dark-1 u-radius-50 u-btn-4">list
-                teams</a>
-            </div>
-          </div>
+
         </div>
       </div>
-    </div>
   </section>
 
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-be3e">

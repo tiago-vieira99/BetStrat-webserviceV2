@@ -5,6 +5,8 @@ if (ONLY_DRAWS_ID == currentStrategy) {
     strategyPath = EURO_HANDICAP_PATH;
 } else if (DRAWS_HUNTER_ID == currentStrategy) {
   strategyPath = DRAWS_HUNTER_PATH;
+} else if (GOAL_LINES_ID == currentStrategy) {
+  strategyPath = GOAL_LINES_PATH;
 }
 
 const map1 = new Map();
@@ -89,10 +91,31 @@ function addMatchLine(idMatch, match) {
     '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> <table>  <tr><td style="padding: 0px;"><input id="ftresult' + idMatch + '" type="text" placeholder="result" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white u-input-1" required="required" style="padding-top: 0; padding-bottom: 0; max-width: 70%;"></td> <td> <form><input class="updateBtn" type=button value="✔️" style="width:100%"></form></td> </tr></table></td> </tr>');
 }
 
+function add25MatchLine(idMatch, match) {
+  matchesArray.push('<tr id="' + idMatch + '" style=" background-color: '+match25BackgroundColor(match)+';"><td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> <form><input class="deleteBtn" type=button value="❌" style="max-width:80%; position: center;"></form> </td> ' +
+    '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.date + '</td> ' +
+    '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style="text-align: center;"><b>' + match.homeTeam + "&nbsp &nbsp - &nbsp &nbsp" + match.awayTeam + '</b></td> ' +
+    '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.betType + '</td> ' +
+    '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.ftresult + '</td> ' +
+    '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.odd + '</td> ' +
+    '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> <table>  <tr><td style="padding: 0px;"><input id="ftresult' + idMatch + '" type="text" placeholder="result" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white u-input-1" required="required" style="padding-top: 0; padding-bottom: 0;"></td> <td> <form><input class="updateBtn" type=button value="✔️" style="width:100%"></form></td> </tr></table></td> </tr>');
+}
 
 function matchBackgroundColor(match) {
   if (match.ftresult != null) {
     if (match.ftresult == 'X' || match.ftresult == '+1' || match.ftresult == '+2') {
+      return GREEN_COLOR
+    } else {
+      return RED_COLOR
+    }
+  } else {
+    return '#e5f6f0'
+  }
+}
+
+function match25BackgroundColor(match) {
+  if (match.ftresult != null) {
+    if ((match.betType.includes('OVER') && match.ftresult > 2) || (match.betType.includes('UNDER') && match.ftresult <= 2)) {
       return GREEN_COLOR
     } else {
       return RED_COLOR

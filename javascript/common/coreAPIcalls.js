@@ -12,6 +12,7 @@ function callGetSeqInfo(stratPath) {
       $("#success-stat").text(myJson.successRate + "%");
       $("#numteams-stat").text(myJson.numTeams);
       $("#nummatches-stat").text(myJson.numMatchesPlayed);
+      $("#numoversunders-stat").text(myJson.numOvers + "/" + myJson.numUnders);
     })
     .catch(function(error) {
       console.log("Error: " + error);
@@ -130,7 +131,11 @@ function callGetAllMatchesInfo(stratPath) {
       matches.forEach(function(match) {
         var idMatch = "idmatch" + count++;
         map1.set(idMatch, match);
-        addMatchLine(idMatch, match);
+        if (match.betType != null) {
+          add25MatchLine(idMatch, match);  
+        } else {
+          addMatchLine(idMatch, match);
+        }
       });
 
       console.log(map1.size);
@@ -871,7 +876,7 @@ function callGetDrawsHistoricDataByTeam(teamName) {
 }
 
 function callGetHockeyDrawsHistoricDataByTeam(teamName) {
-  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-hockey-draw-stats/" + teamName)
+  fetch("http://"+DATA_STATS_API_URL+"/api/hockey/team-hockey-draw-stats/" + teamName)
     .then(function(response) {
       return response.json();
     })
@@ -913,6 +918,43 @@ function callGetEuroHandicapHistoricDataByTeam(teamName) {
 
       resp.forEach(function(statsData) {    
         addDataToTable(statsData);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
+
+//-------------------------------------------------------------------------------------------
+//----------------------------       2,5 GOAL LINES CALLS      ------------------------------
+//-------------------------------------------------------------------------------------------
+
+
+async function callGetNext25MatchesByDate(date) {
+  fetch("http://"+API_URL+"/api/betstrat/25goal-lines/nextMatches/" + date)
+    .then(function(response) {
+      console.log("finish callGetNext25MatchesByDate()");
+      modalBox("GetNext25Matches Completed!", "");
+      return response;
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
+function callGetCurrent25GoalsMatches() {
+  fetch("http://"+API_URL+"/api/betstrat/25goal-lines/currentMatches")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+      
+      resp.forEach(function(match) {   
+        var idMatch = "idmatch" + count++;
+        map1.set(idMatch, match); 
+        add25MatchDiv(idMatch, match);
       });
 
     })
