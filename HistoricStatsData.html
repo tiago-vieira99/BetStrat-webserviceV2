@@ -119,7 +119,7 @@
               </li>
               <li class="u-nav-item"><a
                   class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-                  href="Euro-Handicap.html" style="padding: 10px;">Euro Handicap</a>
+                  href="Margin-Wins.html" style="padding: 10px;">Margin Wins</a>
               </li>
               <li class="u-nav-item"><a
                   class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
@@ -156,8 +156,8 @@
                       <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Only-Draws.html"
                         style="padding: 10px 20px;">Only Draws</a>
                     </li>
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Euro-Handicap.html"
-                        style="padding: 10px 20px;">Euro Handicap</a>
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Margin-Wins.html"
+                        style="padding: 10px 20px;">Margin Wins</a>
                     </li>
                     <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Draws-Hunter.html"
                         style="padding: 10px 20px;">Draws Hunter</a>
@@ -202,15 +202,16 @@
             </select>
           </form>
       <h4 class="u-text u-text-default u-text-1" style="text-shadow: none;">HISTORIC STATS DATA - List of all Teams</h4>
-      <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
-        <table class="u-table-entity" id="footballTableStats">
+      <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;overflow-x:auto;">
+        <table class="u-table-entity" id="footballTableStats" style="width: 110%;">
           <colgroup>
-            <col width="25%">
-            <col width="10.5%">
-            <col width="10.5%">
-            <col width="18%">
-            <col width="18%">
-            <col width="18%">
+            <col width="20%">
+            <col width="6%">
+            <col width="6%">
+            <col width="12%">
+            <col width="12%">
+            <col width="12%">
+            <col width="12%">
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
@@ -220,6 +221,7 @@
               <th onclick="sortTable(3,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Draws Hunter Score</th>
               <th onclick="sortTable(4,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Wins Score</th>
               <th onclick="sortTable(5,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Euro Handicap Score</th>
+              <th onclick="sortTable(5,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Goals Fest Score</th>
             </tr>
           </thead>
           <tbody id="histStatsTeamsTable" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">

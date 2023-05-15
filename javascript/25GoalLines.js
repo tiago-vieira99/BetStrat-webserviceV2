@@ -1,7 +1,7 @@
 var strategyPath = "";
 if (ONLY_DRAWS_ID == currentStrategy) {
   strategyPath = ONLY_DRAWS_PATH;
-} else if (EURO_HANDICAP_ID == currentStrategy) {
+} else if (MARGIN_WINS_ID == currentStrategy) {
   strategyPath = EURO_HANDICAP_PATH;
 } else if (DRAWS_HUNTER_ID == currentStrategy) {
   strategyPath = DRAWS_HUNTER_PATH;

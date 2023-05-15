@@ -13,6 +13,7 @@ function callGetSeqInfo(stratPath) {
       $("#numteams-stat").text(myJson.numTeams);
       $("#nummatches-stat").text(myJson.numMatchesPlayed);
       $("#numoversunders-stat").text(myJson.numOvers + "/" + myJson.numUnders);
+      $("#stratdescription").text(myJson.description)
     })
     .catch(function(error) {
       console.log("Error: " + error);
@@ -402,7 +403,7 @@ function getTeamInfo() {
 
       if (team.strategyID == ONLY_DRAWS_ID) {
         b.setAttribute("src", OD_DATA_SHEET_URL + "?gid=" + team.analysisID + "&single=true&range=B5:N14&widget=true&headers=false");
-      } else if (team.strategyID == EURO_HANDICAP_ID) {
+      } else if (team.strategyID == MARGIN_WINS_ID) {
         b.setAttribute("src", EH_DATA_SHEET_URL + "?gid=" + team.analysisID + "&single=true&range=B5:N14&widget=true&headers=false");
       } else if (team.strategyID == DRAWS_HUNTER_ID) {
         b.setAttribute("src", DH_DATA_SHEET_URL + "?gid=" + team.analysisID + "&single=true&range=B5:N14&widget=true&headers=false");
@@ -894,6 +895,23 @@ function callGetHockeyDrawsHistoricDataByTeam(teamName) {
 
 function callGetMarginWinsHistoricDataByTeam(teamName) {
   fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-margin-wins-stats/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+
+      resp.forEach(function(statsData) {    
+        addDataToTable(statsData);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
+function callGetGoalsFestHistoricDataByTeam(teamName) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-goals-fest-stats/" + teamName)
     .then(function(response) {
       return response.json();
     })
