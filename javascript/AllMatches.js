@@ -2,7 +2,7 @@ var strategyPath = "";
 if (ONLY_DRAWS_ID == currentStrategy) {
     strategyPath = ONLY_DRAWS_PATH;
 } else if (MARGIN_WINS_ID == currentStrategy) {
-    strategyPath = EURO_HANDICAP_PATH;
+    strategyPath = MARGIN_WINS_PATH;
 } else if (DRAWS_HUNTER_ID == currentStrategy) {
   strategyPath = DRAWS_HUNTER_PATH;
 } else if (GOAL_LINES_ID == currentStrategy) {

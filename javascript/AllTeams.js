@@ -2,7 +2,7 @@ var strategyPath = "";
 if (ONLY_DRAWS_ID == currentStrategy) {
     strategyPath = ONLY_DRAWS_PATH;
 } else if (MARGIN_WINS_ID == currentStrategy) {
-    strategyPath = EURO_HANDICAP_PATH;
+    strategyPath = MARGIN_WINS_PATH;
 } else if (DRAWS_HUNTER_ID == currentStrategy) {
   strategyPath = DRAWS_HUNTER_PATH;
 }
@@ -186,7 +186,7 @@ function toggleConfirmation(tgBtn) {
   }
 }
 
-function insertTeam() {
+function insertTeam(strategyPath) {
     name = document.querySelector('#name-6797').value;
     teamUrl = document.querySelector('#url-6797').value;
     season = document.querySelector('#teamSeason').value;

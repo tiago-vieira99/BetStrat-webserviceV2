@@ -2,7 +2,7 @@ var strategyPath = "";
 if (ONLY_DRAWS_ID == currentStrategy) {
     strategyPath = ONLY_DRAWS_PATH;
 } else if (MARGIN_WINS_ID == currentStrategy) {
-    strategyPath = EURO_HANDICAP_PATH;
+    strategyPath = MARGIN_WINS_PATH;
 } else if (DRAWS_HUNTER_ID == currentStrategy) {
   strategyPath = DRAWS_HUNTER_PATH;
   console.log(strategyPath);
@@ -15,16 +15,16 @@ var matches;
 
 
 setTimeout(function() {
-  addBtnListeners();
+  addNewMatchBtnListeners();
 }, 1000);
 
 
-function addBtnListeners() {
+function addNewMatchBtnListeners() {
   var allButtons = document.querySelectorAll('.oddbtn');
   console.log("lengthfsd: " + allButtons.length);
   for (var i = 0; i < allButtons.length; i++) {
     allButtons[i].addEventListener('click', function() {
-      var matchId = getBtnId(this);
+      var matchId = getMatchBtnId(this);
       var odd = document.querySelector('#insOdd' + matchId).value;
       var match = map1.get(matchId);
       match.odd = odd;
@@ -34,7 +34,7 @@ function addBtnListeners() {
 }
 
 
-function getBtnId(elt) {
+function getMatchBtnId(elt) {
   // Traverse up until root hit or DIV with ID found
   while (elt && (elt.tagName != "DIV" || !elt.id))
     elt = elt.parentNode;

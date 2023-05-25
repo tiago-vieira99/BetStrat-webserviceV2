@@ -2,8 +2,8 @@ var x, y;
 var context = document.querySelector('#graph').getContext('2d');
 var chart;
 
-callGetSeqEvolution(EURO_HANDICAP_PATH);
-callGetSeqInfo(EURO_HANDICAP_PATH);
+callGetSeqEvolution(MARGIN_WINS_PATH);
+callGetSeqInfo(MARGIN_WINS_PATH);
 
 function syncData() {
   var url = "http://" + API_URL + "/api/betstrat/sync";
@@ -76,11 +76,11 @@ document.getElementById("seasonSelect").addEventListener("change",function() {
   const season = this.value;
   if (season == "all") {
     chart.destroy();
-    callGetSeqInfo(EURO_HANDICAP_PATH);
-    callGetSeqEvolution(EURO_HANDICAP_PATH);
+    callGetSeqInfo(MARGIN_WINS_PATH);
+    callGetSeqEvolution(MARGIN_WINS_PATH);
   } else {
     chart.destroy();
-    callGetSeqEvolutionBySeason(EURO_HANDICAP_PATH, season);
+    callGetSeqEvolutionBySeason(MARGIN_WINS_PATH, season);
   }
 })
 

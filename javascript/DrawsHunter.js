@@ -102,7 +102,7 @@ document.getElementById("seasonSelect").addEventListener("change",function() {
 function addCandidateTeamToTable(team) {
   $(document).ready(function() {
     $('#all-candidate-teams-table').append(
-      '<tr style="height: 32px; background-color: '+teamBackgroundColor(team.name)+';">' +
+      '<tr style="height: 32px; background-color: '+candidateTeamBackgroundColor(team.name)+';">' +
       '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><b>' + team.teamLeague.country + '</b></td>' +
       '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.teamLeague.name + '</td>' +
       '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><b><a href="' + team.url + '" style="color: #4f7ed3;"<u>' + team.name + '</u></a></b></td>' +
@@ -111,7 +111,7 @@ function addCandidateTeamToTable(team) {
   });
 }
 
-function teamBackgroundColor(name) {
+function candidateTeamBackgroundColor(name) {
   var color;
   teamsArray.forEach(function(team) {
     // console.log("ttt: " + team.get("name"));
