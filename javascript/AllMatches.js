@@ -7,6 +7,8 @@ if (ONLY_DRAWS_ID == currentStrategy) {
   strategyPath = DRAWS_HUNTER_PATH;
 } else if (GOAL_LINES_ID == currentStrategy) {
   strategyPath = GOAL_LINES_PATH;
+} else if (GOALS_FEST_ID == currentStrategy) {
+  strategyPath = GOALS_FEST_PATH;
 }
 
 const map1 = new Map();

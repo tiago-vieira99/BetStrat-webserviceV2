@@ -6,35 +6,29 @@
   <meta charset="utf-8">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <title class="teamNameTitle"></title>
+  <title>Goals Fest</title>
   <link rel="stylesheet" href="css/nicepage.css" media="screen">
-  <link rel="stylesheet" href="css/Team-Info-Page.css" media="screen">
   <link rel="stylesheet" href="css/StrategyPage.css" media="screen">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script class="u-script" type="text/javascript" src="javascript/jquery.js" "="" defer=""></script>
-  <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
-  <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
-  <script class=" u-script" type="text/javascript" src="javascript/common/sortTables.js"></script>
+    <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
+    <script class=" u-script" type="text/javascript" src="javascript/constants.js" defer=""></script>
+  <script type="text/javascript">
+    var currentStrategy = 5;
+    var strategyPath = "jjj";
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script class="u-script" type="text/javascript" src="javascript/common/coreAPIcalls.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="javascript/GoalsFest.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="javascript/InsertMatches.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="javascript/AllTeams.js" defer=""></script>
   <link rel="stylesheet" href="css/modalDialogBox.css" media="screen">
   <script class="u-script" type="text/javascript" src="javascript/common/modalDialogBox.js" defer=""></script>
-  <script class="u-script" type="text/javascript" src="javascript/common/coreAPIcalls.js" defer=""></script>
-  <script class="u-script" type="text/javascript" src="javascript/MatchesByTeam.js" defer=""></script>
   <meta name=" generator" content="Nicepage 4.16.0, nicepage.com">
   <link id="u-theme-google-font" rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-  <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Federo:400">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+  <link id="u-page-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i">
+
 
   <script type="application/ld+json">{
 		"@context": "http://schema.org",
@@ -43,7 +37,7 @@
 		"logo": "images/logo-no-background.png"
 }</script>
   <meta name="theme-color" content="#efa69d">
-  <meta property="og:title" content="Team Data">
+  <meta property="og:title" content="Goals Fest">
   <meta property="og:description" content="">
   <meta property="og:type" content="website">
 </head>
@@ -161,82 +155,144 @@
     <style class="u-sticky-style" data-style-id="ede6">
       .u-sticky-fixed.u-sticky-ede6:before,
       .u-body.u-sticky-fixed .u-sticky-ede6:before {
-        borders: top right bottom left !important;
+        /* borders: top right bottom left !important; */
         border-color: #404040 !important;
         border-width: 2px !important
       }
     </style>
   </header>
   <section class="u-align-center u-clearfix u-grey-10 u-section-1" id="sec-e6e8">
-    <div class="u-clearfix u-sheet u-sheet-1"><span
-        class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-dark-2 u-icon-1" onclick="history.back()"><img
-          src="images/17699-278f9150.png" alt="" style="cursor: pointer;"></span>
-      <h4 class="u-text u-text-default u-text-1 teamNameTitle" style="text-shadow: none;"></h4>
-      <!-- <h3 class="u-text u-text-default u-text-1">Team Name</h3> -->
-
-      <button type="button"
-      class="collapsible u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1"
-      style="margin-top: 50px; overflow: hidden; max-width: 50%; background-color: #4b6256;">Historical Stats Data</button>
-
-      <div class="content" style="max-width: 50%;margin-left: auto;margin-right: auto;">
-        <iframe class="u-expanded-width teamDataSheet" height="280" frameborder="0" scrolling="no" src="">
-        </iframe>
+    <div class="u-clearfix u-sheet u-sheet-1" style="max-width:55%; max-height:55%; margin-top: 7%; margin-bottom: 5%;">
+      <h4 class="u-text u-text-default u-text-1" style="text-shadow: none; text-align: center; margin-bottom: 4%;">Goals Fest</h4>
+      <div class="u-border-1 u-border-grey-75 u-container-style u-group u-radius-30 u-shape-round u-white u-group-1">
+        <div class="u-container-layout u-container-layout-1" style="
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 0px;
+        background-color: rgb(203, 216, 221, 0.2);">
+          <canvas id="graph" style="max-width:100%; max-height:100%;"></canvas>
+          <form action="#" style="text-align: center; margin-top: 4%; margin-bottom: 4%;">
+            <label for="lang">Select Season</label>
+            <select id="seasonSelect">
+              <option value="all">All</option>
+              <option value="2023">2023</option>
+            </select>
+          </form>
+        </div>
       </div>
-      <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-
-        for (i = 0; i < coll.length; i++) {
-          coll[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-              content.style.display = "none";
-            } else {
-              content.style.display = "block";
-            }
-          });
-        }
-      </script>
-
-      <canvas id="graphTeam"
-        style="max-width:60%; max-height:20%; background-color: white; width: 70%; margin: 50px auto;"></canvas>
-
-
-      <div class="u-table u-table-responsive u-table-1" style="margin-top: 30px;">
-        <table class="u-table-entity" id="teamMatchesTable">
-          <colgroup>
-            <col width="6.6%">
-            <col width="9.4%">
-            <col width="31.1%">
-            <col width="11.4%">
-            <col width="9.2%">
-            <col width="7.3%">
-            <col width="9.3%">
-            <col width="15.799999999999994%">
-          </colgroup>
-          <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
-            <tr style="height: 30px;">
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">DELETE</th>
-              <th onclick="sortTable(1,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Date</th>
-              <th onclick="sortTable(2,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Match</th>
-              <th onclick="sortTable(3,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Final Result</th>
-              <th onclick="sortTableNumbers(4,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Odd</th>
-              <th onclick="sortTableNumbers(5,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Stake</th>
-              <th onclick="sortTableNumbers(6,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Seq Level</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Update Match</th>
-            </tr>
-          </thead>
-          <tbody
-            class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body all-matches-table">
-
-          </tbody>
-        </table>
+      <div style="text-align: left; margin-bottom: -5%;">
+        <p>Description: </p>
+        <p id="stratdescription" style="font-weight: unset;"></p>
       </div>
-      <div class="paginator" style="margin: 40px; display: flex; justify-content: center;"> </div>
     </div>
   </section>
+  <section class="u-align-center u-clearfix u-palette-4-dark-2 u-section-2" id="sec-40f8">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-expanded-width-lg u-expanded-width-xl u-layout-grid u-list u-list-1">
+        <div class="u-repeater u-repeater-1">
+          <div
+            class="u-align-center-md u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-xl u-container-style u-list-item u-radius-50 u-repeater-item u-shape-round u-white u-list-item-1">
+            <div class="u-container-layout u-similar-container u-valign-top-xl u-container-layout-1">
+              <img alt="" class="u-align-center u-image u-image-default u-image-1" src="images/money-bag.png"
+                data-image-width="512" data-image-height="512">
+              <h5 id="balance-stat" class="u-align-center-lg u-align-center-xl u-text u-text-palette-3-dark-1 u-text-1">
+              </h5>
+              <p class="u-align-center-lg u-align-center-xl u-custom-font u-font-raleway u-text u-text-2">Balance</p>
+            </div>
+          </div>
+          <div
+            class="u-align-center-md u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-xl u-container-style u-list-item u-radius-50 u-repeater-item u-shape-round u-white u-list-item-2">
+            <div class="u-container-layout u-similar-container u-valign-top-xl u-container-layout-2">
+              <img alt="" class="u-align-center u-image u-image-default u-image-2" src="images/pie-chart.png"
+                data-image-width="512" data-image-height="512">
+              <h5 id="success-stat" class="u-align-center-lg u-align-center-xl u-text u-text-palette-3-dark-1 u-text-3">
+              </h5>
+              <p class="u-align-center-lg u-align-center-xl u-custom-font u-font-raleway u-text u-text-4">Success</p>
+            </div>
+          </div>
+          <div
+            class="u-align-center-md u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-xl u-container-style u-list-item u-radius-50 u-repeater-item u-shape-round u-white u-list-item-3">
+            <div class="u-container-layout u-similar-container u-valign-top-xl u-container-layout-3">
+              <img alt="" class="u-align-center u-image u-image-default u-image-3" src="images/files.png"
+                data-image-width="512" data-image-height="512">
+              <h5 id="numteams-stat"
+                class="u-align-center-lg u-align-center-xl u-text u-text-palette-3-dark-1 u-text-5"></h5>
+              <p class="u-align-center-lg u-align-center-xl u-custom-font u-font-raleway u-text u-text-6">Teams</p>
+            </div>
+          </div>
+          <div
+            class="u-align-center-md u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-xl u-container-style u-list-item u-radius-50 u-repeater-item u-shape-round u-white u-list-item-4">
+            <div class="u-container-layout u-similar-container u-valign-top-xl u-container-layout-4">
+              <img alt="" class="u-align-center u-image u-image-default u-image-4" src="images/vs.png"
+                data-image-width="512" data-image-height="512">
+              <h5 id="nummatches-stat"
+                class="u-align-center-lg u-align-center-xl u-text u-text-palette-3-dark-1 u-text-7"></h5>
+              <p class="u-align-center-lg u-align-center-xl u-custom-font u-font-raleway u-text u-text-8">Matches<br>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="u-align-center u-clearfix u-grey-10 u-section-3" id="sec-9862">
 
+    <button type="button"
+      class="collapsible u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1"
+      style="margin-top: 50px; overflow: hidden; max-width: 50%; background-color: #4b6256;">Next Matches
+      To Bet</button>
+
+    <div class="content nextMatchesDiv" style="max-width: 50%;margin-left: auto;margin-right: auto;">
+      <!-- <iframe class="u-expanded-width teamDataSheet" height="280" frameborder="0" scrolling="no" src="">
+      </iframe> -->
+
+    </div>
+    <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+          this.classList.toggle("activeCollapsible");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+    </script>
+
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-align-center u-list u-list-1">
+        <div class="u-repeater u-repeater-1">
+          <div class="u-container-style u-list-item u-repeater-item">
+            <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-3">
+              <a onclick="newTeamModalBox(GOALS_FEST_PATH)"
+                class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-font u-font-source-sans-pro u-hover-palette-3-dark-2 u-palette-3-dark-1 u-radius-50 u-btn-3">insert
+                team</a>
+            </div>
+          </div>
+          <div class="u-container-style u-list-item u-repeater-item">
+            <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-2">
+              <a href="GF-All-Matches.html"
+                class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-font u-font-source-sans-pro u-hover-palette-3-dark-2 u-palette-3-dark-1 u-radius-50 u-btn-2">matches
+                history</a>
+            </div>
+          </div>
+          <div class="u-container-style u-list-item u-repeater-item">
+            <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-4">
+              <a href="GF-All-Teams.html"
+                class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-font u-font-source-sans-pro u-hover-palette-3-dark-2 u-palette-3-dark-1 u-radius-50 u-btn-4">list
+                teams</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-be3e">
     <div class="u-clearfix u-sheet u-sheet-1">

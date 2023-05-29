@@ -10,10 +10,12 @@ const ONLY_DRAWS_ID = 1;
 const MARGIN_WINS_ID = 2;
 const DRAWS_HUNTER_ID = 3;
 const GOAL_LINES_ID = 4;
+const GOALS_FEST_ID = 5;
 const ONLY_DRAWS_PATH = "onlydraws";
-const EURO_HANDICAP_PATH = "eurohandicap";
+const MARGIN_WINS_PATH = "eurohandicap";
 const DRAWS_HUNTER_PATH = "drawshunter";
 const GOAL_LINES_PATH = "25goal-lines";
+const GOALS_FEST_PATH = "goalsfest";
 
 const GREEN_COLOR = '#afdfbd';
 const RED_COLOR = '#e3c0c1';

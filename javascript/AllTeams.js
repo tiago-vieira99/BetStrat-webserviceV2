@@ -5,6 +5,8 @@ if (ONLY_DRAWS_ID == currentStrategy) {
     strategyPath = MARGIN_WINS_PATH;
 } else if (DRAWS_HUNTER_ID == currentStrategy) {
   strategyPath = DRAWS_HUNTER_PATH;
+} else if (GOALS_FEST_ID == currentStrategy) {
+  strategyPath = GOALS_FEST_PATH;
 }
 
 callGetTeams(strategyPath);
@@ -187,6 +189,7 @@ function toggleConfirmation(tgBtn) {
 }
 
 function insertTeam(strategyPath) {
+    console.log("djkvnskjnv");
     name = document.querySelector('#name-6797').value;
     teamUrl = document.querySelector('#url-6797').value;
     season = document.querySelector('#teamSeason').value;

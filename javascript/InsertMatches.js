@@ -5,7 +5,8 @@ if (ONLY_DRAWS_ID == currentStrategy) {
     strategyPath = MARGIN_WINS_PATH;
 } else if (DRAWS_HUNTER_ID == currentStrategy) {
   strategyPath = DRAWS_HUNTER_PATH;
-  console.log(strategyPath);
+} else if (GOALS_FEST_ID == currentStrategy) {
+  strategyPath = GOALS_FEST_PATH;
 }
 
 const map1 = new Map();

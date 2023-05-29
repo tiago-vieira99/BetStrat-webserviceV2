@@ -314,6 +314,7 @@ function callArchiveTeam(stratPath, teamId) {
 }
 
 function callInsertNewTeam(url) {
+  console.log(url);
   fetch(url, {
     method: 'POST', // or 'PUT'
   })

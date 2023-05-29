@@ -6,23 +6,23 @@
   <meta charset="utf-8">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <title class="teamNameTitle"></title>
+  <title>GF - All Matches</title>
   <link rel="stylesheet" href="css/nicepage.css" media="screen">
   <link rel="stylesheet" href="css/Team-Info-Page.css" media="screen">
-  <link rel="stylesheet" href="css/StrategyPage.css" media="screen">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script class="u-script" type="text/javascript" src="javascript/jquery.js" "="" defer=""></script>
   <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
   <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
   <script class=" u-script" type="text/javascript" src="javascript/common/sortTables.js"></script>
-  <link rel="stylesheet" href="css/modalDialogBox.css" media="screen">
-  <script class="u-script" type="text/javascript" src="javascript/common/modalDialogBox.js" defer=""></script>
+  <script type="text/javascript">
+    var currentStrategy = GOALS_FEST_ID;
+  </script>
+        <link rel="stylesheet" href="css/modalDialogBox.css" media="screen">
+        <script class="u-script" type="text/javascript" src="javascript/common/modalDialogBox.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="javascript/common/coreAPIcalls.js" defer=""></script>
-  <script class="u-script" type="text/javascript" src="javascript/MatchesByTeam.js" defer=""></script>
-  <meta name=" generator" content="Nicepage 4.16.0, nicepage.com">
-  <link id="u-theme-google-font" rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-  <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Federo:400">
+  <script class=" u-script" type="text/javascript" src="javascript/AllMatches.js" "="" defer=""></script>
+    <meta name=" generator" content="Nicepage 4.16.0, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Federo:400">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -43,7 +43,7 @@
 		"logo": "images/logo-no-background.png"
 }</script>
   <meta name="theme-color" content="#efa69d">
-  <meta property="og:title" content="Team Data">
+  <meta property="og:title" content="GF - All Matches">
   <meta property="og:description" content="">
   <meta property="og:type" content="website">
 </head>
@@ -79,41 +79,41 @@
                 href="index.html" style="padding: 10px;">Home</a>
             </li>
             <li class="u-nav-item"><a
+              class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
+              style="padding: 10px;color: black !important;">Strategies 🠻</a>
+            <div class="u-nav-popup">
+              <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                <li class="u-nav-item"><a
+                  class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
+                  href="Only-Draws.html" style="padding: 10px;">Only Draws</a>
+              </li>
+              <li class="u-nav-item"><a
+                  class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
+                  href="Margin-Wins.html" style="padding: 10px;">Margin Wins</a>
+              </li>
+              <li class="u-nav-item"><a
+                  class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
+                  href="Draws-Hunter.html" style="padding: 10px;">Draws Hunter</a>
+              </li>
+              <li class="u-nav-item"><a
                 class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-                style="padding: 10px;color: black !important;">Strategies 🠻</a>
-              <div class="u-nav-popup">
-                <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
-                  <li class="u-nav-item"><a
-                      class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-                      href="Only-Draws.html" style="padding: 10px;">Only Draws</a>
-                  </li>
-                  <li class="u-nav-item"><a
-                      class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-                      href="Margin-Wins.html" style="padding: 10px;">Margin Wins</a>
-                  </li>
-                  <li class="u-nav-item"><a
-                      class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-                      href="Draws-Hunter.html" style="padding: 10px;">Draws Hunter</a>
-                  </li>
-                  <li class="u-nav-item"><a
-                      class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-                      href="25GoalLines.html" style="padding: 10px;">2,5 Goal Lines</a>
-                  </li>
-                  <li class="u-nav-item"><a
-                    class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-                    href="Goals-Fest.html" style="padding: 10px;">Goals Fest</a>
-                </li>
-                </ul>
-              </div>
-            </li>
+                href="25GoalLines.html" style="padding: 10px;">2,5 Goal Lines</a>
+              </li>
+              <li class="u-nav-item"><a
+                class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
+                href="Goals-Fest.html" style="padding: 10px;">Goals Fest</a>
+              </li>
+              </ul>
+            </div>
+          </li>
             <li class="u-nav-item"><a
                 class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
                 href="Bankrolls.html" style="padding: 10px;">Bankrolls</a>
             </li>
             <li class="u-nav-item"><a
-                class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
-                href="HistoricStatsData.html" style="padding: 10px;">Historic Stats</a>
-            </li>
+              class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-3-dark-1 u-text-grey-90 u-text-hover-palette-5-dark-1"
+              href="HistoricStatsData.html" style="padding: 10px;">Historic Stats</a>
+          </li>
           </ul>
         </div>
         <div class="u-nav-container-collapse">
@@ -124,23 +124,23 @@
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.html"
                     style="padding: 10px 20px;">Home</a>
                 </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link">Strategies 🠻</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" >Strategies 🠻</a>
                   <div class="u-nav-popup">
                     <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
                       <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Only-Draws.html"
-                          style="padding: 10px 20px;">Only Draws</a>
-                      </li>
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Margin-Wins.html"
-                          style="padding: 10px 20px;">Margin Wins</a>
-                      </li>
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Draws-Hunter.html"
-                          style="padding: 10px 20px;">Draws Hunter</a>
-                      </li>
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="25GoalLines.html"
-                          style="padding: 10px 20px;">2,5 Goal Lines</a>
-                      </li>
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Goals-Fest.html"
-                        style="padding: 10px 20px;">Goals Fest</a>
+                        style="padding: 10px 20px;">Only Draws</a>
+                    </li>
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Margin-Wins.html"
+                        style="padding: 10px 20px;">Margin Wins</a>
+                    </li>
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Draws-Hunter.html"
+                        style="padding: 10px 20px;">Draws Hunter</a>
+                    </li>
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="25GoalLines.html"
+                      style="padding: 10px 20px;">2,5 Goal Lines</a>
+                    </li>
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Goals-Fest.html"
+                      style="padding: 10px 20px;">Goals Fest</a>
                     </li>
                     </ul>
                   </div>
@@ -149,8 +149,8 @@
                     style="padding: 10px 20px;">Bankrolls</a>
                 </li>
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="HistoricStatsData.html"
-                    style="padding: 10px 20px;">Historic Stats</a>
-                </li>
+                  style="padding: 10px 20px;">Historic Stats</a>
+              </li>
               </ul>
             </div>
           </div>
@@ -171,40 +171,11 @@
     <div class="u-clearfix u-sheet u-sheet-1"><span
         class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-dark-2 u-icon-1" onclick="history.back()"><img
           src="images/17699-278f9150.png" alt="" style="cursor: pointer;"></span>
-      <h4 class="u-text u-text-default u-text-1 teamNameTitle" style="text-shadow: none;"></h4>
+      <h4 class="u-text u-text-default u-text-1" style="text-shadow: none;"><b>GOALS FEST - List of all matches
+          played</b></h4>
       <!-- <h3 class="u-text u-text-default u-text-1">Team Name</h3> -->
-
-      <button type="button"
-      class="collapsible u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1"
-      style="margin-top: 50px; overflow: hidden; max-width: 50%; background-color: #4b6256;">Historical Stats Data</button>
-
-      <div class="content" style="max-width: 50%;margin-left: auto;margin-right: auto;">
-        <iframe class="u-expanded-width teamDataSheet" height="280" frameborder="0" scrolling="no" src="">
-        </iframe>
-      </div>
-      <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-
-        for (i = 0; i < coll.length; i++) {
-          coll[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-              content.style.display = "none";
-            } else {
-              content.style.display = "block";
-            }
-          });
-        }
-      </script>
-
-      <canvas id="graphTeam"
-        style="max-width:60%; max-height:20%; background-color: white; width: 70%; margin: 50px auto;"></canvas>
-
-
       <div class="u-table u-table-responsive u-table-1" style="margin-top: 30px;">
-        <table class="u-table-entity" id="teamMatchesTable">
+        <table class="u-table-entity" id="gfMatchesTable">
           <colgroup>
             <col width="6.6%">
             <col width="9.4%">
@@ -218,12 +189,12 @@
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 30px;">
               <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">DELETE</th>
-              <th onclick="sortTable(1,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Date</th>
-              <th onclick="sortTable(2,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Match</th>
-              <th onclick="sortTable(3,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Final Result</th>
-              <th onclick="sortTableNumbers(4,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Odd</th>
-              <th onclick="sortTableNumbers(5,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Stake</th>
-              <th onclick="sortTableNumbers(6,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Seq Level</th>
+              <th onclick="sortTable(1,'gfMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Date</th>
+              <th onclick="sortTable(2,'gfMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Match</th>
+              <th onclick="sortTable(3,'gfMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Final Result</th>
+              <th onclick="sortTableNumbers(4,'gfMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Odd</th>
+              <th onclick="sortTableNumbers(5,'gfMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Stake</th>
+              <th onclick="sortTableNumbers(6,'gfMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Seq Level</th>
               <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Update Match</th>
             </tr>
           </thead>

@@ -6,35 +6,25 @@
   <meta charset="utf-8">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <title class="teamNameTitle"></title>
+  <title>GF - All Teams</title>
   <link rel="stylesheet" href="css/nicepage.css" media="screen">
   <link rel="stylesheet" href="css/Team-Info-Page.css" media="screen">
-  <link rel="stylesheet" href="css/StrategyPage.css" media="screen">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script class="u-script" type="text/javascript" src="javascript/jquery.js" "="" defer=""></script>
   <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
   <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
   <script class=" u-script" type="text/javascript" src="javascript/common/sortTables.js"></script>
-  <link rel="stylesheet" href="css/modalDialogBox.css" media="screen">
-  <script class="u-script" type="text/javascript" src="javascript/common/modalDialogBox.js" defer=""></script>
+  <script type="text/javascript">
+    var currentStrategy = GOALS_FEST_ID;
+  </script>
   <script class="u-script" type="text/javascript" src="javascript/common/coreAPIcalls.js" defer=""></script>
-  <script class="u-script" type="text/javascript" src="javascript/MatchesByTeam.js" defer=""></script>
-  <meta name=" generator" content="Nicepage 4.16.0, nicepage.com">
-  <link id="u-theme-google-font" rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-  <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Federo:400">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+  <script class=" u-script" type="text/javascript" src="javascript/AllTeams.js" "="" defer=""></script>
+    <meta name=" generator" content="Nicepage 4.16.0, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Federo:400">
+    <link rel="stylesheet" href="css/modalDialogBox.css" media="screen">
+    <script class="u-script" type="text/javascript" src="javascript/common/modalDialogBox.js" defer=""></script>
+
 
   <script type="application/ld+json">{
 		"@context": "http://schema.org",
@@ -43,7 +33,7 @@
 		"logo": "images/logo-no-background.png"
 }</script>
   <meta name="theme-color" content="#efa69d">
-  <meta property="og:title" content="Team Data">
+  <meta property="og:title" content="GF - All Teams">
   <meta property="og:description" content="">
   <meta property="og:type" content="website">
 </head>
@@ -171,69 +161,123 @@
     <div class="u-clearfix u-sheet u-sheet-1"><span
         class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-dark-2 u-icon-1" onclick="history.back()"><img
           src="images/17699-278f9150.png" alt="" style="cursor: pointer;"></span>
-      <h4 class="u-text u-text-default u-text-1 teamNameTitle" style="text-shadow: none;"></h4>
-      <!-- <h3 class="u-text u-text-default u-text-1">Team Name</h3> -->
-
-      <button type="button"
-      class="collapsible u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1"
-      style="margin-top: 50px; overflow: hidden; max-width: 50%; background-color: #4b6256;">Historical Stats Data</button>
-
-      <div class="content" style="max-width: 50%;margin-left: auto;margin-right: auto;">
-        <iframe class="u-expanded-width teamDataSheet" height="280" frameborder="0" scrolling="no" src="">
-        </iframe>
-      </div>
-      <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-
-        for (i = 0; i < coll.length; i++) {
-          coll[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-              content.style.display = "none";
-            } else {
-              content.style.display = "block";
-            }
-          });
-        }
-      </script>
-
-      <canvas id="graphTeam"
-        style="max-width:60%; max-height:20%; background-color: white; width: 70%; margin: 50px auto;"></canvas>
-
-
-      <div class="u-table u-table-responsive u-table-1" style="margin-top: 30px;">
-        <table class="u-table-entity" id="teamMatchesTable">
+      <h4 class="u-text u-text-default u-text-1" style="text-shadow: none;">GOALS FEST - List of all Teams</h4>
+      <p class="u-text u-text-default u-text-1" style="text-shadow: none;">Active Teams</p>
+      <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
+        <table class="u-table-entity" id="dhActiveTeamsTable">
           <colgroup>
-            <col width="6.6%">
-            <col width="9.4%">
-            <col width="31.1%">
-            <col width="11.4%">
-            <col width="9.2%">
-            <col width="7.3%">
-            <col width="9.3%">
-            <col width="15.799999999999994%">
+            <col width="30%">
+            <col width="10%">
+            <col width="12%">
+            <col width="12%">
+            <col width="10%">
+            <col width="10%">
+            <col width="8%">
+            <!-- <col width="6%">
+            <col width="15%"> -->
+            <col width="10%">
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
-            <tr style="height: 30px;">
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">DELETE</th>
-              <th onclick="sortTable(1,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Date</th>
-              <th onclick="sortTable(2,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Match</th>
-              <th onclick="sortTable(3,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Final Result</th>
-              <th onclick="sortTableNumbers(4,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Odd</th>
-              <th onclick="sortTableNumbers(5,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Stake</th>
-              <th onclick="sortTableNumbers(6,'teamMatchesTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Seq Level</th>
-              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Update Match</th>
+            <tr style="height: 40px;">
+              <th onclick="sortTable(0,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">TEAM</th>
+              <th onclick="sortTable(1,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Active</th>
+              <th onclick="sortTable(2,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">matches played / left</th>
+              <th onclick="sortTable(3,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Season</th>
+              <th onclick="sortTableNumbers(4,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Odd Avg</th>
+              <th onclick="sortTableNumbers(5,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Balance</th>
+              <th onclick="sortTable(6,'dhActiveTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">ROI</th>
+              <!-- <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Profit Goal</th>
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Update PG</th> -->
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Archive</th>
             </tr>
           </thead>
-          <tbody
-            class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body all-matches-table">
-
+          <tbody id="teamsTable"
+            class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
           </tbody>
         </table>
       </div>
-      <div class="paginator" style="margin: 40px; display: flex; justify-content: center;"> </div>
+      <p class="u-text u-text-default u-text-1" style="text-shadow: none;">Disable Teams</p>
+      <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
+        <table class="u-table-entity" id="dhTeamsTable">
+          <colgroup>
+            <col width="30%">
+            <col width="10%">
+            <col width="12%">
+            <col width="12%">
+            <col width="10%">
+            <col width="10%">
+            <col width="8%">
+            <!-- <col width="6%">
+            <col width="15%"> -->
+            <col width="10%">
+          </colgroup>
+          <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
+            <tr style="height: 40px;">
+              <th onclick="sortTable(0,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                TEAM</th>
+              <th onclick="sortTable(1,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                Active</th>
+              <th onclick="sortTable(2,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                matches played / left</th>
+              <th onclick="sortTable(3,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                Season</th>
+              <th onclick="sortTableNumbers(4,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                Odd Avg</th>
+              <th onclick="sortTableNumbers(5,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                Balance</th>
+              <th onclick="sortTable(6,'dhTeamsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">
+                ROI</th>
+              <!-- <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Profit Goal</th>
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Update PG</th> -->
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Archive</th>
+            </tr>
+          </thead>
+          <tbody id="disableTeamsTable"
+            class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
+          </tbody>
+        </table>
+      </div>
+      <p class="u-text u-text-default u-text-1" style="text-shadow: none;">Archived Teams</p>
+      <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
+        <table class="u-table-entity" id="dhArchTeamsTable">
+          <colgroup>
+            <col width="30%">
+            <col width="15%">
+            <col width="10%">
+            <col width="10%">
+            <col width="10%">
+            <!-- <col width="10%"> -->
+            <col width="8%">
+          </colgroup>
+          <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
+            <tr style="height: 40px;">
+              <th onclick="sortTable(0,'dhArchTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">TEAM</th>
+              <th onclick="sortTable(1,'dhArchTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Matches Played</th>
+              <th onclick="sortTable(2,'dhArchTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Season</th>
+              <th onclick="sortTableNumbers(3,'dhArchTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Odd Avg</th>
+              <th onclick="sortTableNumbers(4,'dhArchTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">Balance</th>
+              <!-- <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Profit Goal</th> -->
+              <th onclick="sortTable(5,'dhArchTeamsTable')" class="u-table-cell"
+                style="padding-top: 0; padding-bottom: 0;">ROI</th>
+            </tr>
+          </thead>
+          <tbody id="archTeamsTable"
+            class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
