@@ -39,7 +39,7 @@ setTimeout(function() {
     console.log(`Page clicked on ${clickedPage}`)
     buildPage(clickedPage)
   });
-}, 2800);
+}, 1000);
 
 
 function addBtnListeners() {
@@ -105,6 +105,14 @@ function add25MatchLine(idMatch, match) {
 
 function matchBackgroundColor(match) {
   if (match.ftresult != null) {
+    if (match.ftresult.length > 2) {
+      if ((match.ftresult.substring(0,1) > 0) && (match.ftresult.substring(2) > 0) && (parseInt(match.ftresult.substring(0,1)) + parseInt(match.ftresult.substring(2)) > 2)) {
+        console.log(match.ftresult);
+        return GREEN_COLOR
+      } else {
+        return RED_COLOR
+      }
+    }
     if (match.ftresult == 'X' || match.ftresult == '+1' || match.ftresult == '+2') {
       return GREEN_COLOR
     } else {

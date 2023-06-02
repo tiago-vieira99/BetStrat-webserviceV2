@@ -1,7 +1,20 @@
-
 var urlArgs = location.search.substring(1).split('&');
 var teamId = urlArgs[0].substring(4);
 var context = document.querySelector('#graphTeam').getContext('2d');
+var currentStrategy = urlArgs[2];
+
+var strategyPath = "";
+if (ONLY_DRAWS_ID == currentStrategy) {
+    strategyPath = ONLY_DRAWS_PATH;
+} else if (MARGIN_WINS_ID == currentStrategy) {
+    strategyPath = MARGIN_WINS_PATH;
+} else if (DRAWS_HUNTER_ID == currentStrategy) {
+  strategyPath = DRAWS_HUNTER_PATH;
+} else if (GOAL_LINES_ID == currentStrategy) {
+  strategyPath = GOAL_LINES_PATH;
+} else if (GOALS_FEST_ID == currentStrategy) {
+  strategyPath = GOALS_FEST_PATH;
+}
 
 $('.teamNameTitle').append("<b>" + decodeURIComponent(urlArgs[1]) + " :: Team Info</b><br>");
 
@@ -48,7 +61,7 @@ function addBtnListeners() {
       var matchId = getBtnId(this);
       var result = document.querySelector('#ftresult' + matchId).value;
       var match = map1.get(matchId); //only accept on null FTresult matches
-      callPutUpdateMatch(ONLY_DRAWS_PATH, match.id, result);
+      callPutUpdateMatch(strategyPath, match.id, result);
     });
   }
 
@@ -57,7 +70,7 @@ function addBtnListeners() {
       if (deleteConfirmation(this)) {
         var matchId = getBtnId(this);
         var match = map1.get(matchId);
-        callDeleteMatch(ONLY_DRAWS_PATH, match.id);
+        callDeleteMatch(strategyPath, match.id);
       }
     });
   }
