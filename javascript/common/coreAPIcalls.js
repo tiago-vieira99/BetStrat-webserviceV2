@@ -363,6 +363,8 @@ function callGetNextMatches(stratPath) {
 }
 
 function callPostNewMatch(stratPath, match) {
+  console.log(match);
+  console.log(JSON.stringify(match));
   var url = "http://" + API_URL + "/api/betstrat/" + stratPath + "/match"
 
   fetch(url, {
