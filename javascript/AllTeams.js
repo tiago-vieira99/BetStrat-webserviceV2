@@ -189,7 +189,6 @@ function toggleConfirmation(tgBtn) {
 }
 
 function insertTeam(strategyPath) {
-    console.log("djkvnskjnv");
     name = document.querySelector('#name-6797').value;
     teamUrl = document.querySelector('#url-6797').value;
     season = document.querySelector('#teamSeason').value;
