@@ -850,6 +850,8 @@ function callGetHistoricDataTeams() {
       teams.forEach(function(team) {    
         if (team.sport === "Football") {
           addTeamToTable("team" + team.id, team);
+        } else if (team.sport === "Basketball") {
+          addBasketTeamToTable("team" + team.id, team);
         } else {
           addHockeyTeamToTable("team" + team.id, team);
         }

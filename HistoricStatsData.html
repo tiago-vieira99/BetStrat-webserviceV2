@@ -206,6 +206,7 @@
             <label for="lang">Select Sport</label>
             <select id="sportSelect">
               <option value="football">Football</option>
+              <option value="basket">Basketball</option>
               <option value="hockey">Hockey</option>
             </select>
           </form>
@@ -218,7 +219,7 @@
             <col width="6%">
             <col width="12%">
             <col width="12%">
-            <col width="12%">
+            <!-- <col width="12%"> -->
             <col width="12%">
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
@@ -228,11 +229,34 @@
               <th onclick="sortTable(2,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
               <th onclick="sortTable(3,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Draws Hunter Score</th>
               <th onclick="sortTable(4,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Wins Score</th>
-              <th onclick="sortTable(5,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Euro Handicap Score</th>
-              <th onclick="sortTable(6,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Goals Fest Score</th>
+              <!-- <th onclick="sortTable(5,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Euro Handicap Score</th> -->
+              <th onclick="sortTable(5,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Goals Fest Score</th>
             </tr>
           </thead>
           <tbody id="histStatsTeamsTable" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
+          </tbody>
+        </table>
+
+        <table class="u-table-entity" id="basketTableStats" style="display: none;" >
+          <colgroup>
+            <col width="25%">
+            <col width="12.5%">
+            <col width="12.5%">
+            <col width="12.5%">
+            <col width="12.5%">
+            <col width="12.5%">
+          </colgroup>
+          <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
+            <tr style="height: 40px;">
+              <th onclick="sortTable(0,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
+              <th onclick="sortTable(1,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
+              <th onclick="sortTable(2,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">End Season</th>
+              <th onclick="sortTable(3,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
+              <th onclick="sortTable(4,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Short Wins Score</th>
+              <th onclick="sortTable(5,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Comebacks Score</th>
+            </tr>
+          </thead>
+          <tbody id="hockeyStatsTeamsTableBody" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
           </tbody>
         </table>
 
@@ -252,9 +276,9 @@
               <th onclick="sortTable(1,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
               <th onclick="sortTable(2,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">End Season</th>
               <th onclick="sortTable(3,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Draws Hunter Score</th>
-              <th onclick="sortTable(4,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 2-3 Wins Score</th>
-              <th onclick="sortTable(5,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Any2 Wins Score</th>
-              <th onclick="sortTable(6,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 3 Wins Score</th>
+              <th onclick="sortTable(4,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 2-3 Wins Score</th>
+              <th onclick="sortTable(5,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Any2 Wins Score</th>
+              <th onclick="sortTable(6,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 3 Wins Score</th>
             </tr>
           </thead>
           <tbody id="hockeyStatsTeamsTableBody" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
