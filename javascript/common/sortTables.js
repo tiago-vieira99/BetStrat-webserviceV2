@@ -63,6 +63,37 @@ function sortTable(n, tableId) {
     }
   }
 
+  function sortByDate(tableId) {
+    const table = document.getElementById(tableId);
+    const tbody = table.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+  
+    rows.sort((a, b) => {
+      const dateA = parseDateFromTableCell(a);
+      const dateB = parseDateFromTableCell(b);
+  
+      if (dateA < dateB) return -1;
+      if (dateA > dateB) return 1;
+      return 0;
+    });
+  
+    // Clear the existing rows and append the sorted rows
+    tbody.innerHTML = '';
+    rows.forEach((row) => tbody.appendChild(row));
+  }
+  
+  function parseDateFromTableCell(row) {
+    const dateCell = row.querySelector('td:first-child');
+    if (dateCell) {
+      const dateStr = dateCell.textContent.trim();
+      const parts = dateStr.split('/');
+      if (parts.length === 3) {
+        const [day, month, year] = parts;
+        return new Date(`${year}-${month}-${day}`);
+      }
+    }
+    return new Date('1970-01-01'); // Default date in case of parsing issues
+  }
 
   function sortTableNumbers(n, tableId) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;

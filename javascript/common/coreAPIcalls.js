@@ -864,6 +864,26 @@ function callGetHistoricDataTeams() {
     });
 }
 
+function callGetHistoricMatchesByTeam(teamId, season) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/getHistoricMatches?season=" + season + "&teamId=" + teamId)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+      matches = resp;
+
+      matches.forEach(function(match) {    
+        allMatches.push(match)
+        addCompetitionToMap(match.competition)
+        addDataToTable(match)        
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
 function callGetDrawsHistoricDataByTeam(teamName) {
   fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-draw-stats/" + teamName)
     .then(function(response) {
