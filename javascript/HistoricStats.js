@@ -47,8 +47,24 @@ function addBasketTeamToTable(idTeam, team) {
       '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.beginSeason + '</td>' +
       '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.endSeason + '</td>' +
       '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.country + '</td>' +
-      '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.basketShortWinsScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.basketShortWinsScore, idTeam, team.name, 'DrawsHistoricStats.html') + '</td>' +
-      '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.basketComebackScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.basketComebackScore, idTeam, team.name, 'MarginWinsHistoricStats.html') + '</td></tr>'
+      '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.basketShortWinsScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.basketShortWinsScore, idTeam, team.name, 'MarginWinsHistoricStats.html', 'shortWins') + '</td>' +
+      '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.basketLongWinsScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.basketLongWinsScore, idTeam, team.name, 'MarginWinsHistoricStats.html', 'longWins') + '</td>' +
+      '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.basketComebackScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.basketComebackScore, idTeam, team.name, 'MarginWinsHistoricStats.html', 'comebacks') + '</td></tr>'
+    );
+  });
+}
+
+function addHandballTeamToTable(idTeam, team) {
+  $(document).ready(function() {
+    $('#handballTableStats').append(
+      '<tr id="' + idTeam + '" >' +
+      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><b>' + team.name + '</b></td>' +
+      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.beginSeason + '</td>' +
+      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.endSeason + '</td>' +
+      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.country + '</td>' +
+      '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.handball16MarginWinsScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.handball16MarginWinsScore, idTeam, team.name, 'MarginWinsHistoricStats.html', 'margin16') + '</td>' +
+      '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.handball49MarginWinsScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.handball49MarginWinsScore, idTeam, team.name, 'MarginWinsHistoricStats.html', 'margin49') + '</td>' +
+      '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.handball712MarginWinsScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.handball712MarginWinsScore, idTeam, team.name, 'MarginWinsHistoricStats.html', 'margin712') + '</td></tr>'
     );
   });
 }
@@ -75,23 +91,40 @@ function addHyperLinkToData(score, idTeam, name, hyperLink) {
   }
 }
 
+function addHyperLinkToData(score, idTeam, name, hyperLink, statsType) {
+  if (score != null) {
+    return '<a style="color: #7377a8; font-weight: bold;" href="' + hyperLink + '?'+idTeam+'&'+name+'&'+statsType+'"><u>' + score + '</u></a>';
+  } else {
+    return null
+  }
+}
+
 // var visible = 1;
 document.getElementById("sportSelect").addEventListener("change",function() {
   const sport = this.value;
   t1 = document.getElementById("footballTableStats");
   t2 = document.getElementById("hockeyTableStats");
   t3 = document.getElementById("basketTableStats");
+  t4 = document.getElementById("handballTableStats");
   if(sport == "football") {
     t1.style.display = 'table';
     t2.style.display = 'none';
     t3.style.display = 'none';
+    t4.style.display = 'none';
   } else if (sport == "basket") {
     t1.style.display = 'none';
     t3.style.display = 'table';
     t2.style.display = 'none';
-  } else {
+    t4.style.display = 'none';
+  } else if (sport == "hockey") {
     t1.style.display = 'none';
     t2.style.display = 'table';
     t3.style.display = 'none';
+    t4.style.display = 'none';
+  } else if (sport == "handball") {
+    t1.style.display = 'none';
+    t2.style.display = 'none';
+    t3.style.display = 'none';
+    t4.style.display = 'table';
   }
 })

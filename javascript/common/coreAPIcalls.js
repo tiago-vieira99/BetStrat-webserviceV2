@@ -852,6 +852,8 @@ function callGetHistoricDataTeams() {
           addTeamToTable("team" + team.id, team);
         } else if (team.sport === "Basketball") {
           addBasketTeamToTable("team" + team.id, team);
+        } else if (team.sport === "Handball") {
+          addHandballTeamToTable("team" + team.id, team);
         } else {
           addHockeyTeamToTable("team" + team.id, team);
         }
@@ -935,6 +937,57 @@ function callGetMarginWinsHistoricDataByTeam(teamName) {
     });
 }
 
+function callGetMargin16WinsHistoricDataByTeam(teamName) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/handball/team-margin16wins-stats/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+
+      resp.forEach(function(statsData) {    
+        addDataToTable(statsData);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
+function callGetMargin49WinsHistoricDataByTeam(teamName) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/handball/team-margin49wins-stats/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+
+      resp.forEach(function(statsData) {    
+        addDataToTable(statsData);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
+function callGetMargin712WinsHistoricDataByTeam(teamName) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/handball/team-margin712wins-stats/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+
+      resp.forEach(function(statsData) {    
+        addDataToTable(statsData);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
 function callGetGoalsFestHistoricDataByTeam(teamName) {
   fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-goals-fest-stats/" + teamName)
     .then(function(response) {
@@ -961,6 +1014,57 @@ function callGetEuroHandicapHistoricDataByTeam(teamName) {
 
       resp.forEach(function(statsData) {    
         addDataToTable(statsData);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
+function callGetShortWinsHistoricDataByTeam(teamName) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/basket/team-shortwins-stats/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+
+      resp.forEach(function(statsData) {    
+        addShortWinsDataToTable(statsData);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
+function callGetLongWinsHistoricDataByTeam(teamName) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/basket/team-longwins-stats/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+
+      resp.forEach(function(statsData) {    
+        addLongWinsDataToTable(statsData);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
+function callGetComebackWinsHistoricDataByTeam(teamName) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/basket/team-comebackwins-stats/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+
+      resp.forEach(function(statsData) {    
+        addComebacksDataToTable(statsData);
       });
 
     })

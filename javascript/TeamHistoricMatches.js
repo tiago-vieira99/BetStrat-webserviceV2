@@ -15,9 +15,10 @@ function addDataToTable(match) {
     $('#historicMatchesByTeamTable').append(
       '<tr>' +
       '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.matchDate + '</td>' +
-      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.homeTeam + ' </td>' +
-      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.awayTeam + ' </td>' +
-      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.ftResult + ' </td>' +
+      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + boldTeam(match.homeTeam) + ' </td>' +
+      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + boldTeam(match.awayTeam) + ' </td>' +
+      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.htResult + ' </td>' +
+      '<td ' + boldWinResult(match) + ' </td>' +
       '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.competition + ' </td></tr>'
     );
   });
@@ -40,6 +41,26 @@ function getKeyByValue(map, searchValue) {
   return undefined; 
 }
 
+function boldWinResult (match) {
+  if (teamName.slice(5) == match.homeTeam && match.ftResult.split(':')[0] > match.ftResult.split(':')[1]) {
+    return 'style="padding-top: 0; padding-bottom: 0;background-color: #afdfbd;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> <b>' + match.ftResult.split(':')[0] + '</b>:' + match.ftResult.split(':')[1]
+  } else if (teamName.slice(5) == match.awayTeam && match.ftResult.split(':')[0] < match.ftResult.split(':')[1]) {
+    return 'style="padding-top: 0; padding-bottom: 0;background-color: #afdfbd;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.ftResult.split(':')[0] + ':<b>' + match.ftResult.split(':')[1] + '</b>'
+  } else if (match.ftResult.split(':')[0] == match.ftResult.split(':')[1]) {
+    return 'style="padding-top: 0; padding-bottom: 0;background-color: #e0ffd4;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.ftResult
+  } else {
+    return 'style="padding-top: 0; padding-bottom: 0;background-color: #e3c0c1;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.ftResult
+  }
+}
+
+function boldTeam (team) {
+  if (teamName.slice(5) == team) {
+    return '<u>' + team + '</u>'
+  } else {
+    return team
+  }
+}
+
 function toggleTableMatches(btn) {
 
   biggestCompOccur = Math.max(...competitionsMap.values());
@@ -54,9 +75,10 @@ function toggleTableMatches(btn) {
           $('#historicMatchesByTeamTable').append(
             '<tr>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.matchDate + '</td>' +
-          '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.homeTeam + ' </td>' +
-          '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.awayTeam + ' </td>' +
-          '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.ftResult + ' </td>' +
+          '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + boldTeam(match.homeTeam) + ' </td>' +
+          '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + boldTeam(match.awayTeam) + ' </td>' +
+          '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.htResult + ' </td>' +
+          '<td ' + boldWinResult(match) + ' </td>' +
           '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.competition + ' </td></tr>'
           );
         }); 
@@ -70,9 +92,10 @@ function toggleTableMatches(btn) {
       $('#historicMatchesByTeamTable').append(
         '<tr>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.matchDate + '</td>' +
-      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.homeTeam + ' </td>' +
-      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.awayTeam + ' </td>' +
-      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.ftResult + ' </td>' +
+      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + boldTeam(match.homeTeam) + ' </td>' +
+      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + boldTeam(match.awayTeam) + ' </td>' +
+      '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.htResult + ' </td>' +
+      '<td ' + boldWinResult(match) + ' </td>' +
       '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + match.competition + ' </td></tr>'
       );
     }); });

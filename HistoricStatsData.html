@@ -207,6 +207,7 @@
             <select id="sportSelect">
               <option value="football">Football</option>
               <option value="basket">Basketball</option>
+              <option value="handball">Handball</option>
               <option value="hockey">Hockey</option>
             </select>
           </form>
@@ -245,6 +246,7 @@
             <col width="12.5%">
             <col width="12.5%">
             <col width="12.5%">
+            <col width="12.5%">
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
@@ -253,10 +255,36 @@
               <th onclick="sortTable(2,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">End Season</th>
               <th onclick="sortTable(3,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
               <th onclick="sortTable(4,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Short Wins Score</th>
+              <th onclick="sortTable(4,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Long Wins Score</th>
               <th onclick="sortTable(5,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Comebacks Score</th>
             </tr>
           </thead>
-          <tbody id="hockeyStatsTeamsTableBody" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
+          <tbody id="basketStatsTeamsTableBody" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
+          </tbody>
+        </table>
+
+        <table class="u-table-entity" id="handballTableStats" style="display: none;" >
+          <colgroup>
+            <col width="25%">
+            <col width="12.5%">
+            <col width="12.5%">
+            <col width="12.5%">
+            <col width="12.5%">
+            <col width="12.5%">
+            <col width="12.5%">
+          </colgroup>
+          <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
+            <tr style="height: 40px;">
+              <th onclick="sortTable(0,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
+              <th onclick="sortTable(1,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
+              <th onclick="sortTable(2,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">End Season</th>
+              <th onclick="sortTable(3,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
+              <th onclick="sortTable(4,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 1-6 Wins Score</th>
+              <th onclick="sortTable(5,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 4-9 Wins Score</th>
+              <th onclick="sortTable(6,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 7-12 Wins Score</th>
+            </tr>
+          </thead>
+          <tbody id="handballStatsTeamsTableBody" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
           </tbody>
         </table>
 
@@ -269,16 +297,18 @@
             <col width="12.5%">
             <col width="12.5%">
             <col width="12.5%">
+            <col width="12.5%">
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
               <th onclick="sortTable(0,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
               <th onclick="sortTable(1,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
               <th onclick="sortTable(2,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">End Season</th>
-              <th onclick="sortTable(3,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Draws Hunter Score</th>
-              <th onclick="sortTable(4,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 2-3 Wins Score</th>
-              <th onclick="sortTable(5,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Any2 Wins Score</th>
-              <th onclick="sortTable(6,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 3 Wins Score</th>
+              <th onclick="sortTable(3,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
+              <th onclick="sortTable(4,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Draws Hunter Score</th>
+              <th onclick="sortTable(5,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 2-3 Wins Score</th>
+              <th onclick="sortTable(6,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Any2 Wins Score</th>
+              <th onclick="sortTable(7,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 3 Wins Score</th>
             </tr>
           </thead>
           <tbody id="hockeyStatsTeamsTableBody" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
