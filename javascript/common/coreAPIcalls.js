@@ -1022,6 +1022,23 @@ function callGetEuroHandicapHistoricDataByTeam(teamName) {
     });
 }
 
+function callGetFlipFlopHistoricDataByTeam(teamName) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-flip-flop-stats/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+
+      resp.forEach(function(statsData) {    
+        addFlipFlopDataToTable(statsData);
+      });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
 function callGetShortWinsHistoricDataByTeam(teamName) {
   fetch("http://"+DATA_STATS_API_URL+"/api/bhd/basket/team-shortwins-stats/" + teamName)
     .then(function(response) {

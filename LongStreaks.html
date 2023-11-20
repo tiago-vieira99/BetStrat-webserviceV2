@@ -49,7 +49,7 @@
   <meta charset="utf-8">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <title>Historic Stats Data</title>
+  <title>Current Streaks</title>
   <link rel="icon" type="image/x-icon" href="images/favicon-logo-no-background.png">
   <link rel="stylesheet" href="css/nicepage.css" media="screen">
   <link rel="stylesheet" href="css/Team-Info-Page.css" media="screen">
@@ -58,7 +58,7 @@
   <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
   <script class=" u-script" type="text/javascript" src="javascript/common/sortTables.js"></script>
   <script class="u-script" type="text/javascript" src="javascript/common/coreAPIcalls.js" defer=""></script>
-  <script class=" u-script" type="text/javascript" src="javascript/HistoricStats.js" "="" defer=""></script>
+  <script class=" u-script" type="text/javascript" src="javascript/LongStreaks.js" "="" defer=""></script>
   <meta name=" generator" content="Nicepage 4.16.0, nicepage.com">
   <link id="u-theme-google-font" rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -74,7 +74,7 @@
 		"logo": "images/logo-no-background.png"
 }</script>
   <meta name="theme-color" content="#efa69d">
-  <meta property="og:title" content="Historic Stats Data">
+  <meta property="og:title" content="Current Streaks">
   <meta property="og:description" content="">
   <meta property="og:type" content="website">
 </head>
@@ -202,118 +202,94 @@
     <div class="u-clearfix u-sheet u-sheet-1"><span
         class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-dark-2 u-icon-1" onclick="history.back()"><img
           src="images/17699-278f9150.png" alt="" style="cursor: pointer;"></span>
-          <form action="#" style="text-align: center; margin-top: 4%; margin-bottom: 4%;">
-            <label for="lang">Select Sport</label>
-            <select id="sportSelect">
-              <option value="football">Football</option>
-              <option value="basket">Basketball</option>
-              <option value="handball">Handball</option>
-              <option value="hockey">Hockey</option>
-            </select>
-          </form>
-      <h4 class="u-text u-text-default u-text-1" style="text-shadow: none;">HISTORIC STATS DATA - List of all Teams</h4>
+          <h4 class="u-text u-text-default u-text-1" style="text-shadow: none;">Current Streaks</h4>
+
+          <ul style="margin-top: 20px;overflow-x:auto;">
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('Wins')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Wins</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('No Wins')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">No Wins</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('Draws')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Draws</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('No Draws')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">No Draws</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('Margin Wins')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Margin Wins</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('Clean Sheet')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Clean Sheet</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('No Clean Sheet')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">No Clean Sheet</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('Goals Fest')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Goals Fest</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('BTTS')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">BTTS</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('No BTTS')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">No BTTS</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('Scored Both Halves')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Scored Both Halves</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('Conceded Both Halves')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Conceded Both Halves</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+          </ul>
+
+          <tr>
+            <td>All competitions</td>
+            <td><label class="switch" style="margin-bottom: 20px; margin-left: 10px; margin-right: 10px;"><input onclick="toggleTableMatches(this);"  type="checkbox" ' + admin + '><span class="slider round"></span></label></td>
+            <td>Main competition</td>
+        </tr>
       <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;overflow-x:auto;">
-        <table class="u-table-entity" id="footballTableStats" style="width: 110%;">
+        <table class="u-table-entity" id="footballTableStats" style="width: 65%; margin-left: auto; margin-right: auto;">
           <colgroup>
-            <col width="20%">
-            <col width="6%">
-            <col width="6%">
-            <col width="12%">
-            <col width="12%">
-            <col width="12%">
-            <col width="12%">
+            <col width="25%">
+            <col width="10%">
+            <col width="15%">
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
               <th onclick="sortTable(0,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0; position: sticky; left: 0;">TEAM</th>
-              <th onclick="sortTable(1,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
-              <th onclick="sortTable(2,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
-              <th onclick="sortTable(3,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Draws Hunter Score</th>
-              <th onclick="sortTable(4,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Wins Score</th>
-              <th onclick="sortTable(5,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Goals Fest Score</th>
-              <th onclick="sortTable(6,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Flip Flops Score</th>
+              <th onclick="sortTable(1,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Position</th>
+              <th id="longStreaksHeadCell" onclick="sortTable(2,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">-</th>
             </tr>
           </thead>
-          <tbody id="histStatsTeamsTable" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
+          <tbody id="longStreaksTeamsTable" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
           </tbody>
         </table>
-
-        <table class="u-table-entity" id="basketTableStats" style="display: none;" >
-          <colgroup>
-            <col width="25%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-          </colgroup>
-          <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
-            <tr style="height: 40px;">
-              <th onclick="sortTable(0,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
-              <th onclick="sortTable(1,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
-              <th onclick="sortTable(2,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">End Season</th>
-              <th onclick="sortTable(3,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
-              <th onclick="sortTable(4,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Short Wins Score</th>
-              <th onclick="sortTable(4,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Long Wins Score</th>
-              <th onclick="sortTable(5,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Comebacks Score</th>
-            </tr>
-          </thead>
-          <tbody id="basketStatsTeamsTableBody" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
-          </tbody>
-        </table>
-
-        <table class="u-table-entity" id="handballTableStats" style="display: none;" >
-          <colgroup>
-            <col width="25%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-          </colgroup>
-          <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
-            <tr style="height: 40px;">
-              <th onclick="sortTable(0,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
-              <th onclick="sortTable(1,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
-              <th onclick="sortTable(2,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">End Season</th>
-              <th onclick="sortTable(3,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
-              <th onclick="sortTable(4,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 1-6 Wins Score</th>
-              <th onclick="sortTable(5,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 4-9 Wins Score</th>
-              <th onclick="sortTable(6,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 7-12 Wins Score</th>
-            </tr>
-          </thead>
-          <tbody id="handballStatsTeamsTableBody" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
-          </tbody>
-        </table>
-
-        <table class="u-table-entity" id="hockeyTableStats" style="display: none;" >
-          <colgroup>
-            <col width="25%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-          </colgroup>
-          <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
-            <tr style="height: 40px;">
-              <th onclick="sortTable(0,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
-              <th onclick="sortTable(1,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
-              <th onclick="sortTable(2,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">End Season</th>
-              <th onclick="sortTable(3,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
-              <th onclick="sortTable(4,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Draws Hunter Score</th>
-              <th onclick="sortTable(5,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 2-3 Wins Score</th>
-              <th onclick="sortTable(6,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Any2 Wins Score</th>
-              <th onclick="sortTable(7,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 3 Wins Score</th>
-            </tr>
-          </thead>
-          <tbody id="hockeyStatsTeamsTableBody" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
-          </tbody>
-        </table>
+        <p>supported leagues</p>
       </div>
     </div>
   </section>

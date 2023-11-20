@@ -1,49 +1,6 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
 
-<style>
-  
-  .subnav {
-    float: left;
-    overflow: hidden;
-  }
-  
-  .subnav .subnavbtn {
-    font-size: 16px;  
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-  }
-  
-  .subnav-content {
-    display: none;
-    position: absolute;
-    left: 0;
-    background-color: red;
-    width: 100%;
-    z-index: 1;
-  }
-  
-  .subnav-content a {
-    float: left;
-    color: white;
-    text-decoration: none;
-  }
-  
-  .subnav-content a:hover {
-    background-color: #eee;
-    color: black;
-  }
-  
-  .subnav:hover .subnav-content {
-    display: block;
-  }
-  </style>
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
@@ -58,7 +15,7 @@
   <script class=" u-script" type="text/javascript" src="javascript/constants.js"></script>
   <script class=" u-script" type="text/javascript" src="javascript/common/sortTables.js"></script>
   <script class="u-script" type="text/javascript" src="javascript/common/coreAPIcalls.js" defer=""></script>
-  <script class=" u-script" type="text/javascript" src="javascript/HistoricStats.js" "="" defer=""></script>
+  <script class=" u-script" type="text/javascript" src="javascript/FlipFlopHistoricStats.js" "="" defer=""></script>
   <meta name=" generator" content="Nicepage 4.16.0, nicepage.com">
   <link id="u-theme-google-font" rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -200,118 +157,38 @@
   </header>
   <section class="u-align-center u-clearfix u-grey-10 u-section-1" id="sec-e6e8">
     <div class="u-clearfix u-sheet u-sheet-1"><span
-        class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-dark-2 u-icon-1" onclick="history.back()"><img
+        class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-dark-2 u-icon-1" onclick="Javascript:history.go ( -1); Location.reload ()"><img
           src="images/17699-278f9150.png" alt="" style="cursor: pointer;"></span>
-          <form action="#" style="text-align: center; margin-top: 4%; margin-bottom: 4%;">
-            <label for="lang">Select Sport</label>
-            <select id="sportSelect">
-              <option value="football">Football</option>
-              <option value="basket">Basketball</option>
-              <option value="handball">Handball</option>
-              <option value="hockey">Hockey</option>
-            </select>
-          </form>
-      <h4 class="u-text u-text-default u-text-1" style="text-shadow: none;">HISTORIC STATS DATA - List of all Teams</h4>
-      <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;overflow-x:auto;">
-        <table class="u-table-entity" id="footballTableStats" style="width: 110%;">
+      <h4 class="u-text u-text-default u-text-1 teamNameTitle" style="text-shadow: none;"></h4>
+      <img src="images/shooting-game.png" style="display: block; margin: 40px auto; width: 10%;">
+      <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;">
+        <table class="u-table-entity" id="ffStatsTable" style="width: 120%; margin-left: -10%; margin-right: auto;">
           <colgroup>
-            <col width="20%">
             <col width="6%">
+            <col width="28%">
             <col width="6%">
-            <col width="12%">
-            <col width="12%">
-            <col width="12%">
-            <col width="12%">
+            <col width="7%">
+            <col width="6%">
+            <col width="7%">
+            <col width="5%">
+            <col width="6%">
+            <col width="38%">
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
-              <th onclick="sortTable(0,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0; position: sticky; left: 0;">TEAM</th>
-              <th onclick="sortTable(1,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
-              <th onclick="sortTable(2,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
-              <th onclick="sortTable(3,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Draws Hunter Score</th>
-              <th onclick="sortTable(4,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Wins Score</th>
-              <th onclick="sortTable(5,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Goals Fest Score</th>
-              <th onclick="sortTable(6,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Flip Flops Score</th>
+              <th onclick="sortTable(0,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">SEASON</th>
+              <th onclick="sortTable(1,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Competition</th>
+              <th onclick="sortTableNumbers(2,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">% overs</th>
+              <th onclick="sortTable(3,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">total overs</th>
+              <th onclick="sortTableNumbers(4,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">% unders</th>
+              <th onclick="sortTable(5,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">total unders</th>
+              <th onclick="sortTableNumbers(6,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">std dev</th>
+              <th onclick="sortTableNumbers(7,'mwStatsTable')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">coeff dev</th>
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">flip flops sequence</th>
             </tr>
           </thead>
-          <tbody id="histStatsTeamsTable" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
-          </tbody>
-        </table>
-
-        <table class="u-table-entity" id="basketTableStats" style="display: none;" >
-          <colgroup>
-            <col width="25%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-          </colgroup>
-          <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
-            <tr style="height: 40px;">
-              <th onclick="sortTable(0,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
-              <th onclick="sortTable(1,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
-              <th onclick="sortTable(2,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">End Season</th>
-              <th onclick="sortTable(3,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
-              <th onclick="sortTable(4,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Short Wins Score</th>
-              <th onclick="sortTable(4,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Long Wins Score</th>
-              <th onclick="sortTable(5,'basketTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Comebacks Score</th>
-            </tr>
-          </thead>
-          <tbody id="basketStatsTeamsTableBody" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
-          </tbody>
-        </table>
-
-        <table class="u-table-entity" id="handballTableStats" style="display: none;" >
-          <colgroup>
-            <col width="25%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-          </colgroup>
-          <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
-            <tr style="height: 40px;">
-              <th onclick="sortTable(0,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
-              <th onclick="sortTable(1,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
-              <th onclick="sortTable(2,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">End Season</th>
-              <th onclick="sortTable(3,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
-              <th onclick="sortTable(4,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 1-6 Wins Score</th>
-              <th onclick="sortTable(5,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 4-9 Wins Score</th>
-              <th onclick="sortTable(6,'handballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 7-12 Wins Score</th>
-            </tr>
-          </thead>
-          <tbody id="handballStatsTeamsTableBody" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
-          </tbody>
-        </table>
-
-        <table class="u-table-entity" id="hockeyTableStats" style="display: none;" >
-          <colgroup>
-            <col width="25%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-            <col width="12.5%">
-          </colgroup>
-          <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
-            <tr style="height: 40px;">
-              <th onclick="sortTable(0,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">TEAM</th>
-              <th onclick="sortTable(1,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
-              <th onclick="sortTable(2,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">End Season</th>
-              <th onclick="sortTable(3,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
-              <th onclick="sortTable(4,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Draws Hunter Score</th>
-              <th onclick="sortTable(5,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 2-3 Wins Score</th>
-              <th onclick="sortTable(6,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Any2 Wins Score</th>
-              <th onclick="sortTable(7,'hockeyTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin 3 Wins Score</th>
-            </tr>
-          </thead>
-          <tbody id="hockeyStatsTeamsTableBody" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
+          <tbody id="flipFlopDataByTeamTable"
+            class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
           </tbody>
         </table>
       </div>
