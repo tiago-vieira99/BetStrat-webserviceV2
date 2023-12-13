@@ -1126,3 +1126,18 @@ function callGetCurrent25GoalsMatches() {
       console.log("Error: " + error);
     });
 }
+
+function callGetStreaks() {
+  fetch("http://"+API_URL+"/api/betstrat/sync/streaks")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+      
+      streaks = resp;
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}

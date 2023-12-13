@@ -126,8 +126,8 @@
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div> </li>
             <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
-              <a onclick="changeHeadCell('Margin Wins')"
-                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Margin Wins</a>
+              <a onclick="changeHeadCell('No Margin Wins')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">No Margin Wins</a>
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div> </li>
             <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
@@ -146,6 +146,11 @@
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div> </li>
             <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('No Goals Fest')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">No Goals Fest</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
               <a onclick="changeHeadCell('BTTS')"
                 class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">BTTS</a>
               <input type="submit" value="submit" class="u-form-control-hidden">
@@ -157,41 +162,57 @@
             </div> </li>
             <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
               <a onclick="changeHeadCell('Scored Both Halves')"
-                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Scored Both Halves</a>
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Score Both Halves</a>
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div> </li>
             <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
-              <a onclick="changeHeadCell('Conceded Both Halves')"
-                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Conceded Both Halves</a>
+              <a onclick="changeHeadCell('No Scored Both Halves')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">No Score Both Halves</a>
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div> </li>
             <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('Concede Both Halves')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Concede Both Halves</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
+              <a onclick="changeHeadCell('No Concede Both Halves')"
+                class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">No Concede Both Halves</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div> </li>
+            <!-- <li style="display: inline-block; margin-right: 10px;"> <div class="u-align-center u-form-group u-form-submit">
               <a onclick="changeHeadCell('-1.5 Goals 1st Half')"
                 class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">-1.5 Goals 1st Half</a>
               <input type="submit" value="submit" class="u-form-control-hidden">
-            </div> </li>
+            </div> </li> -->
           </ul>
 
-          <tr>
+          <!-- <tr>
             <td>All competitions</td>
             <td><label class="switch" style="margin-bottom: 20px; margin-left: 10px; margin-right: 10px;"><input onclick="toggleTableMatches(this);"  type="checkbox" ' + admin + '><span class="slider round"></span></label></td>
             <td>Main competition</td>
-        </tr>
+        </tr> -->
       <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;overflow-x:auto;">
-        <table class="u-table-entity" id="footballTableStats" style="width: 65%; margin-left: auto; margin-right: auto;">
+        <table class="u-table-entity" id="longStreaksTeamsTable" style="width: 65%; margin-left: auto; margin-right: auto;">
           <colgroup>
             <col width="25%">
             <col width="10%">
             <col width="15%">
+            <col width="15%">
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
+            <tr>
+              <th id="longStreaksHeadCell" style="text-align: center;" colspan="4">-</th>
+            </tr>
             <tr style="height: 40px;">
-              <th onclick="sortTable(0,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0; position: sticky; left: 0;">TEAM</th>
-              <th onclick="sortTable(1,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Position</th>
-              <th id="longStreaksHeadCell" onclick="sortTable(2,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">-</th>
+              <th onclick="sortTable(0,'footballTableStreaks')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0; position: sticky; left: 0;">TEAM</th>
+              <th onclick="sortTable(1,'footballTableStreaks')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Position</th>
+              <th onclick="sortTable(2,'footballTableStreaks')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Main League</th>
+              <th onclick="sortTable(3,'footballTableStreaks')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">All Competitions</th>
             </tr>
           </thead>
-          <tbody id="longStreaksTeamsTable" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
+          <tbody id="footballTableStreaks" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">
+            <tr></tr>
           </tbody>
         </table>
         <p>supported leagues</p>

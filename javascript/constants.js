@@ -1,5 +1,5 @@
  //var API_URL = window.location.host.substring(0, window.location.host.indexOf(':'))+":8880";
-const API_URL= "54.188.86.176:8880";
+const API_URL= "4.227.170.56:8880";
 // const API_URL= "localhost:8880";
 // const DATA_STATS_API_URL= "localhost:8090";
 const DATA_STATS_API_URL= "8.222.204.152:8090";
