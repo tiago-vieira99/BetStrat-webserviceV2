@@ -10,6 +10,13 @@ var allMatches = []
 var competitionsMap = new Map([])
 var mainCompetition = ""
 
+function navigateSeason(diretion) {
+  if (seasonsList[seasonsList.indexOf(season.slice(7))+diretion] == undefined) {
+    return;
+  }
+  console.log(window.location.replace(window.location.href.slice(0,-7)+seasonsList[seasonsList.indexOf(season.slice(7))+diretion]));
+}
+
 function addDataToTable(match) {
   $(document).ready(function() {
     $('#historicMatchesByTeamTable').append(

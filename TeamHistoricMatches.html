@@ -67,6 +67,16 @@
           <td><label class="switch" style="margin-bottom: 20px; margin-left: 10px; margin-right: 10px;"><input onclick="toggleTableMatches(this);"  type="checkbox" ' + admin + '><span class="slider round"></span></label></td>
           <td>Main competition</td>
         </tr>
+        <table class="u-table-entity" style="width: 100%; margin-left: auto; margin-right: auto;">
+          <thead class="u-custom-font u-font-source-sans-pro u-table-header u-table-header-1">
+            <tr style="height: 40px;">
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0; font-size: xxx-large;">
+                <a onclick="navigateSeason(-1)" style="color: black;"><</a> </th>
+              <th class="u-table-cell" style="padding-top: 0; padding-bottom: 0; font-size: xxx-large; text-align: right;">
+                <a onclick="navigateSeason(1)" style="color: black;">></a></th>
+            </tr>
+          </thead>
+        </table>
         <table class="u-table-entity" id="thmStatsTable" style="width: 100%; margin-left: auto; margin-right: auto;">
           <colgroup>
             <col width="12%">
