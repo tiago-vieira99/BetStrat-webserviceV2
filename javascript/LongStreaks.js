@@ -53,6 +53,12 @@ function changeHeadCell (value) {
         case 'No Concede Both Halves':
             streakType = 'noConcedeBothHalves';
             break;
+        case 'No Win Both Halves':
+            streakType = 'noWinBothHalves';
+            break;
+        case 'No Win && +2.5 Goals':
+            streakType = 'noWinAnd25Goals';
+            break;
         default:
             break;
     }
