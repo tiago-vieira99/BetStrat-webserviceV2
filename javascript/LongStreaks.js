@@ -92,6 +92,11 @@ function changeHeadCell (value) {
             minStreak = 5;
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
+        case 'No 2HT > 1HT':
+            streakType = 'no2HTFunny';
+            minStreak = 5;
+            document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
+            break;
         default:
             break;
     }
