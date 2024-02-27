@@ -893,9 +893,14 @@ function callGetDrawsHistoricDataByTeam(teamName) {
     })
     .then(function(resp) {
 
+      var availableSeasons = []
+
       resp.forEach(function(statsData) {    
+        availableSeasons.push(statsData.season)
         addDataToTable(statsData);
       });
+
+      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -995,9 +1000,13 @@ function callGetGoalsFestHistoricDataByTeam(teamName) {
     })
     .then(function(resp) {
 
+      var availableSeasons = []
+
       resp.forEach(function(statsData) {    
         addDataToTable(statsData);
       });
+
+      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1012,9 +1021,13 @@ function callGetEuroHandicapHistoricDataByTeam(teamName) {
     })
     .then(function(resp) {
 
+      var availableSeasons = []
+
       resp.forEach(function(statsData) {    
         addDataToTable(statsData);
       });
+
+      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1029,9 +1042,13 @@ function callGetFlipFlopHistoricDataByTeam(teamName) {
     })
     .then(function(resp) {
 
+      var availableSeasons = []
+
       resp.forEach(function(statsData) {    
         addFlipFlopDataToTable(statsData);
       });
+
+      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {

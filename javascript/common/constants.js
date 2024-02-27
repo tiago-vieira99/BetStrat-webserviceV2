@@ -1,5 +1,5 @@
  //var API_URL = window.location.host.substring(0, window.location.host.indexOf(':'))+":8880";
-const API_URL= "3.88.204.40:8880";
+const API_URL= "16.170.226.136:8880";
 // const API_URL= "localhost:8880";
 // const DATA_STATS_API_URL= "localhost:8090";
 const DATA_STATS_API_URL= "8.222.204.152:8090";
@@ -21,5 +21,5 @@ const GREEN_COLOR = '#afdfbd';
 const RED_COLOR = '#e3c0c1';
 const YELLOW_COLOR = '#e0ffd4';
 
-const seasonsList = ['2016-17', '2017-18', '2018-19', '2019-20', '2020-21', '2021-22', '2022-23', '2023-24'];
+// const seasonsList = ['2016-17', '2017-18', '2018-19', '2019-20', '2020-21', '2021-22', '2022-23', '2023-24'];
 

@@ -11,10 +11,12 @@ var competitionsMap = new Map([])
 var mainCompetition = ""
 
 function navigateSeason(diretion) {
+  var seasonsList = JSON.parse(sessionStorage.getItem("seasonsList"))
   if (seasonsList[seasonsList.indexOf(season.slice(7))+diretion] == undefined) {
     return;
   }
-  console.log(window.location.replace(window.location.href.slice(0,-7)+seasonsList[seasonsList.indexOf(season.slice(7))+diretion]));
+  var seasonStringSize = seasonsList[seasonsList.indexOf(season.slice(7))+diretion].length
+  console.log(window.location.replace(window.location.href.slice(0,-seasonStringSize)+seasonsList[seasonsList.indexOf(season.slice(7))+diretion]));
 }
 
 function addDataToTable(match) {

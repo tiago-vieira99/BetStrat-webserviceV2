@@ -29,12 +29,12 @@ function changeHeadCell (value) {
             break;
         case 'No Margin Wins':
             streakType = 'noMarginWins';
-            minStreak = 5;
+            minStreak = 3;
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'Clean Sheet':
             streakType = 'cleanSheet';
-            minStreak = 4;
+            minStreak = 3;
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Clean Sheet':
@@ -109,11 +109,12 @@ function changeHeadCell (value) {
 }
 
 function addTeamDiv(teamName, teamData, streakType, minStreak) {
+    sessionStorage.removeItem("seasonsList")
     if (teamData[streakType + 'MainComp'] >= minStreak || teamData[streakType + 'AllComps'] >= minStreak) {
         $(document).ready(function() {
         $('#footballTableStreaks').append(
             '<tr>' +
-            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a href="TeamHistoricMatches.html?teamId=team'+teamData['teamID']+'&team=' + teamName + '&season=2023-24" style="color: black; text-decoration: underline">' + teamName + '</a></td>' +
+            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a href="TeamHistoricMatches.html?teamId=team'+teamData['teamID']+'&team=' + teamName + '&season=2023-24" style="color: #4f72d3; text-decoration: underline; font-weight: bold">' + teamName + '</a></td>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData['position'] + ' </td>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData[streakType + 'MainComp'] + ' </td>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData[streakType + 'AllComps'] + ' </td></tr>'
