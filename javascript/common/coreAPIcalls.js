@@ -915,9 +915,14 @@ function callGetHockeyDrawsHistoricDataByTeam(teamName) {
     })
     .then(function(resp) {
 
-      resp.forEach(function(statsData) {    
+      var availableSeasons = []
+
+      resp.forEach(function(statsData) {   
+        availableSeasons.push(statsData.season) 
         addDataToTable(statsData);
       });
+
+      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -932,9 +937,14 @@ function callGetMarginWinsHistoricDataByTeam(teamName) {
     })
     .then(function(resp) {
 
-      resp.forEach(function(statsData) {    
+      var availableSeasons = []
+
+      resp.forEach(function(statsData) {   
+        availableSeasons.push(statsData.season) 
         addDataToTable(statsData);
       });
+
+      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -949,9 +959,14 @@ function callGetMargin16WinsHistoricDataByTeam(teamName) {
     })
     .then(function(resp) {
 
-      resp.forEach(function(statsData) {    
+      var availableSeasons = []
+
+      resp.forEach(function(statsData) {   
+        availableSeasons.push(statsData.season) 
         addDataToTable(statsData);
       });
+
+      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -966,9 +981,14 @@ function callGetMargin49WinsHistoricDataByTeam(teamName) {
     })
     .then(function(resp) {
 
-      resp.forEach(function(statsData) {    
+      var availableSeasons = []
+
+      resp.forEach(function(statsData) {   
+        availableSeasons.push(statsData.season) 
         addDataToTable(statsData);
       });
+
+      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -983,9 +1003,14 @@ function callGetMargin712WinsHistoricDataByTeam(teamName) {
     })
     .then(function(resp) {
 
-      resp.forEach(function(statsData) {    
+      var availableSeasons = []
+
+      resp.forEach(function(statsData) {   
+        availableSeasons.push(statsData.season) 
         addDataToTable(statsData);
       });
+
+      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1003,6 +1028,7 @@ function callGetGoalsFestHistoricDataByTeam(teamName) {
       var availableSeasons = []
 
       resp.forEach(function(statsData) {    
+        availableSeasons.push(statsData.season)
         addDataToTable(statsData);
       });
 
@@ -1023,7 +1049,8 @@ function callGetEuroHandicapHistoricDataByTeam(teamName) {
 
       var availableSeasons = []
 
-      resp.forEach(function(statsData) {    
+      resp.forEach(function(statsData) {  
+        availableSeasons.push(statsData.season)  
         addDataToTable(statsData);
       });
 
@@ -1044,7 +1071,8 @@ function callGetFlipFlopHistoricDataByTeam(teamName) {
 
       var availableSeasons = []
 
-      resp.forEach(function(statsData) {    
+      resp.forEach(function(statsData) {   
+        availableSeasons.push(statsData.season) 
         addFlipFlopDataToTable(statsData);
       });
 
@@ -1063,9 +1091,14 @@ function callGetShortWinsHistoricDataByTeam(teamName) {
     })
     .then(function(resp) {
 
-      resp.forEach(function(statsData) {    
-        addShortWinsDataToTable(statsData);
+      var availableSeasons = []
+
+      resp.forEach(function(statsData) {   
+        availableSeasons.push(statsData.season) 
+        addDataToTable(statsData);
       });
+
+      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1080,9 +1113,14 @@ function callGetLongWinsHistoricDataByTeam(teamName) {
     })
     .then(function(resp) {
 
-      resp.forEach(function(statsData) {    
-        addLongWinsDataToTable(statsData);
+      var availableSeasons = []
+
+      resp.forEach(function(statsData) {   
+        availableSeasons.push(statsData.season) 
+        addDataToTable(statsData);
       });
+
+      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1097,9 +1135,42 @@ function callGetComebackWinsHistoricDataByTeam(teamName) {
     })
     .then(function(resp) {
 
-      resp.forEach(function(statsData) {    
-        addComebacksDataToTable(statsData);
+      var availableSeasons = []
+
+      resp.forEach(function(statsData) {   
+        availableSeasons.push(statsData.season) 
+        addDataToTable(statsData);
       });
+
+      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
+function callSimulationReportBySeason(season, strategy) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/report/?strategy="+ strategy + "&season=" + season, {
+      method: 'GET', // or 'PUT'
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+
+      let myMap = new Map(Object.entries(resp));
+
+      myMap.forEach((values, keys) => {
+        buildDataToPage(values);
+      });
+
+      // resp.forEach(function(statsData) {   
+      //   availableSeasons.push(statsData.season) 
+      //   addDataToTable(statsData);
+      // });
+
+      // sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
