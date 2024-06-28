@@ -887,7 +887,7 @@ function callGetHistoricMatchesByTeam(teamId, season) {
 }
 
 function callGetDrawsHistoricDataByTeam(teamName) {
-  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-draw-stats/" + teamName)
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/stats/Draw/" + teamName)
     .then(function(response) {
       return response.json();
     })
@@ -926,7 +926,7 @@ function callGetHockeyDrawsHistoricDataByTeam(teamName) {
 }
 
 function callGetMarginWinsHistoricDataByTeam(teamName) {
-  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-margin-wins-stats/" + teamName)
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/stats/WinsMargin/" + teamName)
     .then(function(response) {
       return response.json();
     })
@@ -994,7 +994,7 @@ function callGetMargin712WinsHistoricDataByTeam(teamName) {
 }
 
 function callGetGoalsFestHistoricDataByTeam(teamName) {
-  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-goals-fest-stats/" + teamName)
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/stats/GoalsFest/" + teamName)
     .then(function(response) {
       return response.json();
     })
@@ -1015,7 +1015,7 @@ function callGetGoalsFestHistoricDataByTeam(teamName) {
 }
 
 function callGetEuroHandicapHistoricDataByTeam(teamName) {
-  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team-euro-handicap-stats/" + teamName)
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/stats/EuroHandicap/" + teamName)
     .then(function(response) {
       return response.json();
     })
