@@ -163,9 +163,9 @@ function checkLeftMatchesToPlayColor(matchesLeft, name, admin) {
 
 function teamBackgroundColor(balance) {
   if (balance >= 0) {
-    return '#afdfbd'
+    return GREEN_COLOR
   } else {
-    return '#e3c0c1'
+    return RED_COLOR
   }
 }
 
