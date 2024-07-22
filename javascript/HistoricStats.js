@@ -1,26 +1,155 @@
 var numTeams;
-var teams;
+var teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
 
-callGetHistoricDataTeams();
+setUpTableData();
+
+function setUpTableData() {
+  if (teamsSessionStorage == null) {
+    callGetHistoricDataTeams();
+    return;
+  } else {
+    teamsSessionStorage.forEach(function(team) {    
+      if (team.sport === "Football") {
+        addTeamToTable("team" + team.id, team, '');
+      // } else if (team.sport === "Basketball") {
+      //   addBasketTeamToTable("team" + team.id, team);
+      // } else if (team.sport === "Handball") {
+      //   addHandballTeamToTable("team" + team.id, team);
+      // } else {
+      //   addHockeyTeamToTable("team" + team.id, team);
+      }      
+    });
+  }
+}
+
+function filterTeams() {
+  var strategy = document.getElementById("strategySelect").value;
+  var score = document.getElementById("scoreFilter").value;
+  var filteredTeams;
+
+  // Clear the table before entering the loop
+  $('#histStatsTeamsTable').empty();
+  switch (strategy) {
+    case 'WinsMargin':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.marginWinsScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.marginWinsScore);
+      });
+      break;
+    case 'WinAndGoals':
+      let filteredTeams1 = teamsSessionStorage.filter(team => team.sport === 'Football' && team.winAndGoalsScore.includes(score));
+      console.log(filteredTeams1);
+      filteredTeams1.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.winAndGoalsScore);
+      });
+      break;
+    case 'NoGoalsFest':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.noGoalsFestScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.noGoalsFestScore);
+      });
+      break;
+    case 'Btts':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.bttsScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.bttsScore);
+      });
+      break;
+    case 'Draw':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.drawsHunterScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.drawsHunterScore);
+      });
+      break;
+    case 'GoalsFest':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.goalsFestScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.goalsFestScore);
+      });
+      break;
+    case 'CleanSheet':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.cleanSheetScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.cleanSheetScore);
+      });
+      break;
+    case 'ConcedeBothHalves':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.concedeBothHalvesScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.concedeBothHalvesScore);
+      });
+      break;
+    case 'EuroHandicap':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.euroHandicapScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.euroHandicapScore);
+      });
+      break;
+    case 'NoBtts':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.noBttsScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.noBttsScore);
+      });
+      break;
+    case 'Wins':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.winsScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.winsScore);
+      });
+      break;
+    case 'NoWins':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.noWinsScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.noWinsScore);
+      });
+      break;
+    case 'ScoreBothHalves':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.scoreBothHalvesScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.scoreBothHalvesScore);
+      });
+      break;
+    case 'SecondHalfBigger':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.secondHalfBiggerScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.secondHalfBiggerScore);
+      });
+      break;
+    case 'WinBothHalves':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.winBothHalvesScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.winBothHalvesScore);
+      });
+      break;
+    default:
+      teamsSessionStorage.forEach(function(team) {    
+        if (team.sport === "Football") {
+          addTeamToTable("team" + team.id, team, '');
+        }      
+      });
+      return;
+  }
+
+}
 
 
 setTimeout(function() {
 
-  console.log(numTeams);
+  //console.log(numTeams);
 }, 700);
 
-function addTeamToTable(idTeam, team) {
+function addTeamToTable(idTeam, team, score) {
     $(document).ready(function() {
-      $('#footballTableStats').append(
+      $('#histStatsTeamsTable').append(
         '<tr id="' + idTeam + '" >' +
-        '<td style="padding-top: 0; padding-bottom: 0; position: sticky; left: 0; overflow: auto;opacity: 100%;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><b>' + team.name + '</b></td>' +
+        '<td style="padding-top: 0; padding-bottom: 0; position: sticky; left: 0; overflow: auto;opacity: 100%;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a style="color: #7377a8; font-weight: bold;" href="TeamStrategiesHistoricStats.html?'+idTeam+'&'+team.name+'"><u>' + team.name + '</u></a></td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.beginSeason + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.country + '</td>' +
-        '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.drawsHunterScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.drawsHunterScore, idTeam, team.name, 'DrawsHistoricStats.html') + '</td>' +
-        '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.marginWinsScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.marginWinsScore, idTeam, team.name, 'MarginWinsHistoricStats.html') + '</td>' +
-        // '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.euroHandicapScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.euroHandicapScore, idTeam, team.name, 'EuroHandicapHistoricStats.html') + '</td>' +
-         '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.goalsFestScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.goalsFestScore, idTeam, team.name, 'GoalsFestHistoricStats.html') + '</td>' + 
-         '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.flipFlopScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.flipFlopScore, idTeam, team.name, 'FlipFlopHistoricStats.html') + '</td></tr>'
+        '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(score)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + score + '</td></tr>'
+        // '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.marginWinsScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.marginWinsScore, idTeam, team.name, 'MarginWinsHistoricStats.html') + '</td>' +
+        // // '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.euroHandicapScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.euroHandicapScore, idTeam, team.name, 'EuroHandicapHistoricStats.html') + '</td>' +
+        //  '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.goalsFestScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.goalsFestScore, idTeam, team.name, 'GoalsFestHistoricStats.html') + '</td>' + 
+        //  '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(team.flipFlopScore)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + addHyperLinkToData(team.flipFlopScore, idTeam, team.name, 'FlipFlopHistoricStats.html') + '</td></tr>'
       );
     });
 }

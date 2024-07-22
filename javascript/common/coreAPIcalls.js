@@ -830,6 +830,10 @@ function callDeleteBet(betId, bankrollId) {
 //-------------------------------------------------------------------------------------------
 
 function callGetHistoricDataTeams() {
+  teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
+  if (teamsSessionStorage != null) {
+    return;
+  }
   fetch("http://"+DATA_STATS_API_URL+"/api/bhd/teams")
     .then(function(response) {
       return response.json();
@@ -847,15 +851,17 @@ function callGetHistoricDataTeams() {
         return 0;
       });
 
+      sessionStorage.setItem("teams", JSON.stringify(teams));
+
       teams.forEach(function(team) {    
         if (team.sport === "Football") {
-          addTeamToTable("team" + team.id, team);
-        } else if (team.sport === "Basketball") {
-          addBasketTeamToTable("team" + team.id, team);
-        } else if (team.sport === "Handball") {
-          addHandballTeamToTable("team" + team.id, team);
-        } else {
-          addHockeyTeamToTable("team" + team.id, team);
+          addTeamToTable("team" + team.id, team, '');
+        // } else if (team.sport === "Basketball") {
+        //   addBasketTeamToTable("team" + team.id, team);
+        // } else if (team.sport === "Handball") {
+        //   addHandballTeamToTable("team" + team.id, team);
+        // } else {
+        //   addHockeyTeamToTable("team" + team.id, team);
         }
         
       });
@@ -867,7 +873,7 @@ function callGetHistoricDataTeams() {
 }
 
 function callGetHistoricMatchesByTeam(teamId, season) {
-  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/getHistoricMatches?season=" + season + "&teamId=" + teamId)
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/historic-matches?season=" + season + "&teamId=" + teamId)
     .then(function(response) {
       return response.json();
     })
@@ -879,6 +885,27 @@ function callGetHistoricMatchesByTeam(teamId, season) {
         addCompetitionToMap(match.competition)
         addDataToTable(match)        
       });
+
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+    });
+}
+
+function callGetTeamStatsByStrategy(teamName, strategy) {
+  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/stats/" + strategy + "/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+      var availableSeasons = []
+
+      resp.forEach(function(statsData) {   
+        availableSeasons.push(statsData.season) 
+        addDataToTable(statsData);
+      });
+
+      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {

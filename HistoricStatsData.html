@@ -66,7 +66,21 @@
   <link id="u-theme-google-font" rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
   <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Federo:400">
-
+    <meta name=" generator" content="Nicepage 4.16.0, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Federo:400">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
   <script type="application/ld+json">{
 		"@context": "http://schema.org",
@@ -102,6 +116,7 @@
     <div class="u-clearfix u-sheet u-sheet-1"><span
         class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-dark-2 u-icon-1" onclick="history.back()"><img
           src="images/17699-278f9150.png" alt="" style="cursor: pointer;"></span>
+          <h4 class="u-text u-text-default u-text-1" style="text-shadow: none; margin: auto;">HISTORIC STATS DATA - List of all Teams</h4>
           <form action="#" style="text-align: center; margin-top: 4%; margin-bottom: 4%;">
             <label for="lang">Select Sport</label>
             <select id="sportSelect">
@@ -111,27 +126,61 @@
               <option value="hockey">Hockey</option>
             </select>
           </form>
-      <h4 class="u-text u-text-default u-text-1" style="text-shadow: none;">HISTORIC STATS DATA - List of all Teams</h4>
+          <form onsubmit="filterTeams(event)"
+          class="u-clearfix u-form-horizontal u-form-spacing-8 u-inner-form" 
+          style="padding: 9px; max-width: 60%; margin: auto;">
+        <div class="u-form-group u-form-name" style="max-width: 170px;">
+            <label for="scoreFilter" class="u-custom-font u-font-source-sans-pro u-label">Score</label>
+            <select id="scoreFilter" name="score" class="u-border-1 u-border-grey-30 u-custom-font u-font-source-sans-pro u-input u-input-rectangle u-radius-29 u-white u-input-1" required="required">
+                <option value=" ">All</option>
+                <option value="INAPT">INAPT</option>
+                <option value="RISKY">RISKY</option>
+                <option value="ACCEPTABLE">ACCEPTABLE</option>
+                <option value="EXCELLENT">EXCELLENT</option>
+            </select>
+        </div>
+        <div class="u-form-group u-form-name">
+            <label for="strategySelect" class="u-custom-font u-font-source-sans-pro u-label">Strategy</label>
+            <select id="strategySelect" name="strategy" class="u-border-1 u-border-grey-30 u-custom-font u-font-source-sans-pro u-input u-input-rectangle u-radius-29 u-white u-input-1" required="required">
+                <option value=""></option>
+                <option value="Btts">Both teams to score</option>
+                <option value="Draw">Draw</option>
+                <option value="GoalsFest">btts && +2.5 goals</option>
+                <option value="WinsMargin">Margin wins by 1/2 two goals</option>
+                <option value="CleanSheet">Clean sheet</option>
+                <option value="ConcedeBothHalves">Concede goals in both halves</option>
+                <option value="EuroHandicap">Margin wins by exactly 1 goal</option>
+                <option value="NoBtts">No both teams to score</option>
+                <option value="NoGoalsFest">no btts || -2.5 goals</option>
+                <option value="Wins">Wins</option>
+                <option value="NoWins">No Wins</option>
+                <option value="ScoreBothHalves">Score goals in both halves</option>
+                <option value="SecondHalfBigger">More goals in second half</option>
+                <option value="WinAndGoals">Win && +2.5 goals</option>
+                <option value="WinBothHalves">Win both halves</option>
+            </select>
+        </div>
+        <div class="u-align-center u-form-group u-form-submit">
+            <button type="submit" class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Filter</button>
+        </div>
+    </form>
       <div class="u-table u-table-responsive u-table-1" style="margin-top: 20px;overflow-x:auto;">
-        <table class="u-table-entity" id="footballTableStats" style="width: 110%;">
+        <table class="u-table-entity" id="footballTableStats" style="width: 80%; margin-left: auto; margin-right: auto;"">
           <colgroup>
+            <col width="40%">
             <col width="20%">
-            <col width="6%">
-            <col width="6%">
-            <col width="12%">
-            <col width="12%">
-            <col width="12%">
-            <col width="12%">
+            <col width="20%">
+            <col width="20%">
           </colgroup>
           <thead class="u-custom-font u-font-source-sans-pro u-grey-50 u-table-header u-table-header-1">
             <tr style="height: 40px;">
               <th onclick="sortTable(0,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0; position: sticky; left: 0;">TEAM</th>
               <th onclick="sortTable(1,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Begin Season</th>
               <th onclick="sortTable(2,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Country</th>
-              <th onclick="sortTable(3,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Draws Hunter Score</th>
-              <th onclick="sortTable(4,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Wins Score</th>
+              <th onclick="sortTable(3,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">[Strategy] Score</th>
+              <!--<th onclick="sortTable(4,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Margin Wins Score</th>
               <th onclick="sortTable(5,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Goals Fest Score</th>
-              <th onclick="sortTable(6,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Flip Flops Score</th>
+              <th onclick="sortTable(6,'footballTableStats')" class="u-table-cell" style="padding-top: 0; padding-bottom: 0;">Flip Flops Score</th> -->
             </tr>
           </thead>
           <tbody id="histStatsTeamsTable" class="u-align-left u-custom-font u-font-source-sans-pro u-table-alt-grey-15 u-table-body">

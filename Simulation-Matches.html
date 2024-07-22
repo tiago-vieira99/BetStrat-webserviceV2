@@ -69,7 +69,7 @@
     </style>
   </header>
   <section class="u-align-center u-clearfix u-grey-10 u-section-1" id="sec-e6e8">
-    <div class="u-clearfix u-sheet u-sheet-1 sim-matches-strategies"><span
+    <div class="u-clearfix u-sheet u-sheet-1"><span
         class="u-file-icon u-icon u-icon-rectangle u-text-palette-4-dark-2 u-icon-1" onclick="Javascript:history.go ( -1); Location.reload ()"><img
           src="images/17699-278f9150.png" alt="" style="cursor: pointer;"></span>
       <h4 class="u-text u-text-default u-text-1" style="text-shadow: none;"><b>Simulation matches</b></h4>
@@ -103,6 +103,58 @@
           </tbody> 
         </table>
       </div> -->
+
+      <div
+        class="u-align-center-sm u-align-center-xs u-border-2 u-border-black u-border-no-left u-border-no-right u-form u-form-1" style="margin-top: 70px; margin-left: 200px; margin-right: 200px;">
+        <form method="" href="" onsubmit=""
+          class="u-clearfix u-form-horizontal u-form-spacing-8 u-inner-form" style="padding: 9px;">
+          <div class="u-form-group u-form-name" style="max-width: 170px;">
+            <label for="seasonSelect" class="u-custom-font u-font-source-sans-pro u-label">Season</label>
+            <select id="seasonSelect" name="season" class="u-border-1 u-border-grey-30 u-custom-font u-font-source-sans-pro u-input u-input-rectangle u-radius-29 u-white u-input-1" required="required">
+              <option value=""></option>
+              <option value="2018">2018</option>
+              <option value="2018-19">2018/19</option>
+              <option value="2019">2019</option>
+              <option value="2019-20">2019/20</option>
+              <option value="2020">2020</option>
+              <option value="2020-21">2020/21</option>
+              <option value="2021">2021</option>
+              <option value="2021-22">2021/22</option>
+              <option value="2022">2022</option>
+              <option value="2022-23">2022/23</option>
+              <option value="2023">2023</option>
+              <option value="2023-24">2023/24</option>
+            </select>
+          </div>
+          <div class="u-form-group u-form-name">
+            <label for="strategySelect" class="u-custom-font u-font-source-sans-pro u-label">Strategy</label>
+            <select id="strategySelect" name="season" class="u-border-1 u-border-grey-30 u-custom-font u-font-source-sans-pro u-input u-input-rectangle u-radius-29 u-white u-input-1" required="required">
+              <option value=""></option>
+              <option value="Btts">Both teams to score</option>
+              <option value="Draw">Draw</option>
+              <option value="GoalsFest">btts && +2.5 goals</option>
+              <option value="WinsMargin">Margin wins by 1/2 two goals</option>
+              <option value="CleanSheet">Clean sheet</option>
+              <option value="ConcedeBothHalves">Concede goals in both halves</option>
+              <option value="EuroHandicap">Margin wins by exactly 1 goal</option>
+              <option value="NoBtts">No both teams to score</option>
+              <option value="NoGoalsFest">no btts || -2.5 goals</option>
+              <option value="Wins">Wins</option>
+              <option value="NoWins">No Wins</option>
+              <option value="ScoreBothHalves">Score goals in both halves</option>
+              <option value="SecondHalfBigger">More goals in second half</option>
+              <option value="WinAndGoals">Win && +2.5 goals</option>
+              <option value="WinBothHalves">Win both halves</option>
+            </select>
+          </div>
+          <div class="u-align-center u-form-group u-form-submit">
+            <a
+              class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-source-sans-pro u-palette-3-dark-2 u-radius-18 u-btn-1">Get Simulation</a>
+            <input type="submit" value="submit" onclick="displayInfo()" class="u-form-control-hidden">
+          </div>
+        </form>
+      </div>
+    <div class="sim-matches-strategies" style="margin-top: 3%;"></div>
     </div>
   </section>
 
