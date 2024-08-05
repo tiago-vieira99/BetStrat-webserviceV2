@@ -872,6 +872,22 @@ function callGetHistoricDataTeams() {
     });
 }
 
+function callGetHistoricDataTeamInfo(teamName) {
+  return fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team/" + teamName)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(resp) {
+      console.log("check2 " + JSON.stringify(resp));
+      return resp;  // Return the response data to be used in `await`
+    })
+    .catch(function(error) {
+      console.log("Error: " + error);
+      throw error;  // Re-throw the error to be caught in `init`
+    });
+}
+
+
 function callGetHistoricMatchesByTeam(teamId, season) {
   fetch("http://"+DATA_STATS_API_URL+"/api/bhd/historic-matches?season=" + season + "&teamId=" + teamId)
     .then(function(response) {

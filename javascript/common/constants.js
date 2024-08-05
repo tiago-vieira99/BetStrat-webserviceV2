@@ -1,6 +1,6 @@
  //var API_URL = window.location.host.substring(0, window.location.host.indexOf(':'))+":8880";
 const API_URL= "47.236.111.43:8880";
- //const API_URL= "localhost:8880";
+// const API_URL= "localhost:8880";
  const DATA_STATS_API_URL= "47.237.107.158:8090";
 //const DATA_STATS_API_URL= "localhost:8090";
 const EH_DATA_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRSMl0iAf9AFkdJIYrz2rAwqzumP9U3cMwNLT6LdqkiEn2A94SL2jtdLmyN59h59DcG57FHftYqFDgS/pubhtml";

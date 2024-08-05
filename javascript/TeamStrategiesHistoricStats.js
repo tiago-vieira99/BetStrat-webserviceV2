@@ -3,10 +3,25 @@ var teamName = decodeURIComponent(urlArgs[1]);
 var teamId = decodeURIComponent(urlArgs[0]);
 $('.teamNameTitle').append("<b>" + teamName + " :: Historic Stats</b><br>");
 var teams = JSON.parse(sessionStorage.getItem("teams"));
-let teamElem = teams.find(team => team.name === teamName);
+let teamElem = null;
 
-setScoreValuesInfo();
-//TODO: nao é garantido que teamElem existe sempre
+
+async function init() {
+  if (teams === null) {
+    try {
+      teamElem = await callGetHistoricDataTeamInfo(teamName);
+    } catch (error) {
+      console.error("Failed to fetch team data: ", error);
+      return;  // Exit the function if there's an error
+    }
+  } else {
+    teamElem = teams.find(team => team.name === teamName);
+  }
+  console.log("check1 " + JSON.stringify(teamElem));
+  setScoreValuesInfo();
+}
+
+init();
 
 function setScoreValuesInfo() {
   document.getElementById("scoreValuesInfo").innerHTML = '<span style="background-color: '+ setStatsBackgroundColor(teamElem.drawsHunterScore)+';"> Draws: '+ teamElem.drawsHunterScore +'   | </span> ' +

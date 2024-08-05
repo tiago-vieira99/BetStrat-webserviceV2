@@ -27,6 +27,9 @@ function filterTeams() {
   var score = document.getElementById("scoreFilter").value;
   var filteredTeams;
 
+  console.log(strategy);
+  console.log(score);
+
   // Clear the table before entering the loop
   $('#histStatsTeamsTable').empty();
   switch (strategy) {

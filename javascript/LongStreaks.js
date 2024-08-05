@@ -49,7 +49,7 @@ function changeHeadCell (value) {
             break;
         case 'No Goals Fest':
             streakType = 'noGoalsFest';
-            minStreak = 3;
+            minStreak = 4;
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'BTTS':
@@ -59,7 +59,7 @@ function changeHeadCell (value) {
             break;
         case 'No BTTS':
             streakType = 'noBtts';
-            minStreak = 3;
+            minStreak = 4;
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'Scored Both Halves':
@@ -114,7 +114,7 @@ function addTeamDiv(teamName, teamData, streakType, minStreak) {
         $(document).ready(function() {
         $('#footballTableStreaks').append(
             '<tr>' +
-            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a href="TeamHistoricMatches.html?teamId=team'+teamData['teamID']+'&team=' + teamName + '&season=2023-24" style="color: #4f72d3; text-decoration: underline; font-weight: bold">' + teamName + '</a></td>' +
+            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a href="TeamHistoricMatches.html?teamId=team'+teamData['teamID']+'&team=' + teamName + '&season=2024-25" style="color: #4f72d3; text-decoration: underline; font-weight: bold">' + teamName + '</a></td>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData['position'] + ' </td>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData[streakType + 'MainComp'] + ' </td>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData[streakType + 'AllComps'] + ' </td></tr>'
