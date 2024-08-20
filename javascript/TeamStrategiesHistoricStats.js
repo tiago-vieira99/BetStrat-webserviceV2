@@ -17,7 +17,13 @@ async function init() {
   } else {
     teamElem = teams.find(team => team.name === teamName);
   }
-  console.log("check1 " + JSON.stringify(teamElem));
+  
+  if (sessionStorage.getItem("strategySelected") != null) {
+    console.log("check11");
+    console.log(sessionStorage.getItem("strategySelected"));
+    document.getElementById("strategySelect").value = sessionStorage.getItem("strategySelected");
+    displayInfo();
+  }
   setScoreValuesInfo();
 }
 
@@ -58,6 +64,8 @@ function setStatsBackgroundColor(score) {
 
 function displayInfo() {
   var strategy = document.getElementById("strategySelect").value;
+
+  console.log(strategy);
 
   switch (strategy) {
     case 'WinsMargin':

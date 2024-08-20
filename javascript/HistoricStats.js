@@ -30,6 +30,7 @@ function filterTeams() {
   console.log(strategy);
   console.log(score);
 
+  sessionStorage.setItem("strategySelected", strategy);
   // Clear the table before entering the loop
   $('#histStatsTeamsTable').empty();
   switch (strategy) {
