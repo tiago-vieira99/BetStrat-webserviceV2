@@ -19,8 +19,6 @@ async function init() {
   }
   
   if (sessionStorage.getItem("strategySelected") != null) {
-    console.log("check11");
-    console.log(sessionStorage.getItem("strategySelected"));
     document.getElementById("strategySelect").value = sessionStorage.getItem("strategySelected");
     displayInfo();
   }
