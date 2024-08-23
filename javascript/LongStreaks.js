@@ -1,6 +1,16 @@
 
 streaks = [];
 
+var teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
+
+getHistoricData();
+
+function getHistoricData() {
+  if (teamsSessionStorage == null) {
+    callGetHistoricDataTeams();
+  }
+}
+
 callGetStreaks();
 
 function changeHeadCell (value) {
@@ -118,16 +128,155 @@ function changeHeadCell (value) {
     $("#footballTableStreaks tr>td").remove();
 
     Object.entries(streaks).forEach(function(teamData) {
-        addTeamDiv(teamData[0], teamData[1], streakType, minStreak);
+        let histTeamdata = teamsSessionStorage.find(o => o.name === teamData[0] && o.sport === 'Football');
+        historicMaxRedRun = 99;
+        historicAvgRedRun = 99;
+        historicScore = '';
+
+        switch(value) {
+            case 'Wins':
+                if (histTeamdata.noWinsMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.noWinsMaxRedRun;
+                }
+                if (histTeamdata.noWinsAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.noWinsAvgRedRun;
+                }
+                historicScore = histTeamdata.noWinsScore;
+                break;
+            case 'No Wins':
+                if (histTeamdata.winsMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.winsMaxRedRun;
+                }
+                if (histTeamdata.winsAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.winsAvgRedRun;
+                }
+                historicScore = histTeamdata.winsScore;
+                break;
+            case 'No Draws':
+                if (histTeamdata.drawsHunterMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.drawsHunterMaxRedRun;
+                }
+                if (histTeamdata.drawsHunterAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.drawsHunterAvgRedRun;
+                }
+                historicScore = histTeamdata.drawsHunterScore;
+                break;
+            case 'No Margin Wins':
+                if (histTeamdata.marginWinsMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.marginWinsMaxRedRun;
+                }
+                if (histTeamdata.marginWinsAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.marginWinsAvgRedRun;
+                }
+                historicScore = histTeamdata.marginWinsScore;
+                break;
+            case 'No Clean Sheet':
+                if (histTeamdata.cleanSheetMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.cleanSheetMaxRedRun;
+                }
+                if (histTeamdata.cleanSheetAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.cleanSheetAvgRedRun;
+                }
+                historicScore = histTeamdata.cleanSheetScore;
+                break;
+            case 'Goals Fest':
+                if (histTeamdata.noGoalsFestMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.noGoalsFestMaxRedRun;
+                }
+                if (histTeamdata.noGoalsFestAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.noGoalsFestAvgRedRun;
+                }
+                historicScore = histTeamdata.noGoalsFestScore;
+                break;
+            case 'No Goals Fest':
+                if (histTeamdata.goalsFestMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.goalsFestMaxRedRun;
+                }
+                if (histTeamdata.goalsFestAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.goalsFestAvgRedRun;
+                }
+                historicScore = histTeamdata.goalsFestScore;
+                break;
+            case 'BTTS':
+                if (histTeamdata.noBttsMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.noBttsMaxRedRun;
+                }
+                if (histTeamdata.noBttsAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.noBttsAvgRedRun;
+                }
+                historicScore = histTeamdata.noBttsScore;
+                break;
+            case 'No BTTS':
+                if (histTeamdata.bttsMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.bttsMaxRedRun;
+                }
+                if (histTeamdata.bttsAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.bttsAvgRedRun;
+                }
+                historicScore = histTeamdata.bttsScore;
+                break;
+            case 'No Scored Both Halves':
+                if (histTeamdata.scoreBothHalvesMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.scoreBothHalvesMaxRedRun;
+                }
+                if (histTeamdata.scoreBothHalvesAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.scoreBothHalvesAvgRedRun;
+                }
+                historicScore = histTeamdata.scoreBothHalvesScore;
+                break;
+            case 'No Concede Both Halves':
+                if (histTeamdata.concedeBothHalvesMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.concedeBothHalvesMaxRedRun;
+                }
+                if (histTeamdata.concedeBothHalvesAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.concedeBothHalvesAvgRedRun;
+                }
+                historicScore = histTeamdata.concedeBothHalvesScore;
+                break;
+            case 'No Win Both Halves':
+                if (histTeamdata.winBothHalvesMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.winBothHalvesMaxRedRun;
+                }
+                if (histTeamdata.winBothHalvesAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.winBothHalvesAvgRedRun;
+                }
+                historicScore = histTeamdata.winBothHalvesScore;
+                break;
+            case 'No Win && +2.5 Goals':
+                if (histTeamdata.winAndGoalsMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.winAndGoalsMaxRedRun;
+                }
+                if (histTeamdata.winAndGoalsAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.winAndGoalsAvgRedRun;
+                }
+                historicScore = histTeamdata.winAndGoalsScore;
+                break;
+            case 'No 2HT > 1HT':
+                if (histTeamdata.secondHalfBiggerMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.secondHalfBiggerMaxRedRun;
+                }
+                if (histTeamdata.secondHalfBiggerAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.secondHalfBiggerAvgRedRun;
+                }
+                historicScore = histTeamdata.secondHalfBiggerScore;
+                break;
+            default:
+                break;
+        }
+        addTeamDiv(teamData[0], teamData[1], streakType, minStreak, historicMaxRedRun, historicScore);
     });
 }
 
-function addTeamDiv(teamName, teamData, streakType, minStreak) {
+function addTeamDiv(teamName, teamData, streakType, minStreak, historicMaxRedRun, historicScore) {
     sessionStorage.removeItem("seasonsList")
     if (teamData[streakType + 'MainComp'] >= minStreak || teamData[streakType + 'AllComps'] >= minStreak) {
+        var backgroundStyle = '';
+        if ((teamData[streakType + 'MainComp'] >= historicMaxRedRun-2 || teamData[streakType + 'AllComps'] >= historicMaxRedRun-2) && (historicScore.includes('EXCE') || historicScore.includes('ACCEP'))) {
+            backgroundStyle = 'style="background-color: #f0fdca;"';
+        }
         $(document).ready(function() {
         $('#footballTableStreaks').append(
-            '<tr>' +
+            '<tr '+ backgroundStyle +'>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a href="TeamStrategiesHistoricStats.html?team'+teamData['teamID']+'&' + teamName + '" style="color: #4f72d3; text-decoration: underline; font-weight: bold">📖</a></td>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a href="TeamHistoricMatches.html?teamId=team'+teamData['teamID']+'&team=' + teamName + '&season=2024-25" style="color: #4f72d3; text-decoration: underline; font-weight: bold">' + teamName + '</a></td>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData['position'] + ' </td>' +
