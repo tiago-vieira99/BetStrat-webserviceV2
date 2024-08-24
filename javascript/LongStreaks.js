@@ -5,11 +5,37 @@ var teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
 
 getHistoricData();
 
-function getHistoricData() {
-  if (teamsSessionStorage == null) {
-    callGetHistoricDataTeams();
-  }
+async function getHistoricData() {
+    try {
+        showLoadingIndicator();
+        teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
+        if (teamsSessionStorage != null) {
+            console.log("check1");
+            hideLoadingIndicator();
+            return;
+        }
+        const response = await fetch("http://" + DATA_STATS_API_URL + "/api/bhd/teams");
+        const teams = await response.json();
+        teams.sort((a, b) => (a.name < b.name ? -1 : 1));
+        sessionStorage.setItem("teams", JSON.stringify(teams));
+        hideLoadingIndicator();
+
+        sessionStorage.setItem("teams", JSON.stringify(teams));
+    } catch (error) {
+        console.log("Error: " + error);
+        hideLoadingIndicator();
+    }
 }
+
+
+function showLoadingIndicator() {
+    document.getElementById("loading").classList.remove("hidden");
+}
+
+function hideLoadingIndicator() {
+    document.getElementById("loading").classList.add("hidden");
+}
+
 
 callGetStreaks();
 

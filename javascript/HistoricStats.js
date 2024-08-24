@@ -1,25 +1,51 @@
 var numTeams;
 var teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
 
-setUpTableData();
+getHistoricData();
+
+async function getHistoricData() {
+  try {
+      showLoadingIndicator();
+      teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
+      if (teamsSessionStorage != null) {
+          console.log("check1");
+          hideLoadingIndicator();
+          return;
+      }
+      const response = await fetch("http://" + DATA_STATS_API_URL + "/api/bhd/teams");
+      const teams = await response.json();
+      teams.sort((a, b) => (a.name < b.name ? -1 : 1));
+      sessionStorage.setItem("teams", JSON.stringify(teams));
+      hideLoadingIndicator();
+
+      sessionStorage.setItem("teams", JSON.stringify(teams));
+      setUpTableData();
+  } catch (error) {
+      console.log("Error: " + error);
+      hideLoadingIndicator();
+  }
+}
+
+function showLoadingIndicator() {
+  document.getElementById("loading").classList.remove("hidden");
+}
+
+function hideLoadingIndicator() {
+  document.getElementById("loading").classList.add("hidden");
+}
 
 function setUpTableData() {
-  if (teamsSessionStorage == null) {
-    callGetHistoricDataTeams();
-    return;
-  } else {
-    teamsSessionStorage.forEach(function(team) {    
-      if (team.sport === "Football") {
-        addTeamToTable("team" + team.id, team, '');
-      // } else if (team.sport === "Basketball") {
-      //   addBasketTeamToTable("team" + team.id, team);
-      // } else if (team.sport === "Handball") {
-      //   addHandballTeamToTable("team" + team.id, team);
-      // } else {
-      //   addHockeyTeamToTable("team" + team.id, team);
-      }      
-    });
-  }
+  teamsSessionStorage.forEach(function(team) {    
+    if (team.sport === "Football") {
+      addTeamToTable("team" + team.id, team, '');
+    // } else if (team.sport === "Basketball") {
+    //   addBasketTeamToTable("team" + team.id, team);
+    // } else if (team.sport === "Handball") {
+    //   addHandballTeamToTable("team" + team.id, team);
+    // } else {
+    //   addHockeyTeamToTable("team" + team.id, team);
+    }      
+  });
 }
 
 function filterTeams() {

@@ -829,48 +829,48 @@ function callDeleteBet(betId, bankrollId) {
 //-------------------------       HISTORIC DATA PAGE CALLS     ------------------------------
 //-------------------------------------------------------------------------------------------
 
-function callGetHistoricDataTeams() {
-  teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
-  if (teamsSessionStorage != null) {
-    return;
-  }
-  fetch("http://"+DATA_STATS_API_URL+"/api/bhd/teams")
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(resp) {
-      teams = resp;
+// function callGetHistoricDataTeams() {
+//   teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
+//   if (teamsSessionStorage != null) {
+//     return;
+//   }
+//   fetch("http://"+DATA_STATS_API_URL+"/api/bhd/teams")
+//     .then(function(response) {
+//       return response.json();
+//     })
+//     .then(function(resp) {
+//       teams = resp;
 
-      numTeams = teams.length;
+//       numTeams = teams.length;
 
-      teams.sort(function(a, b) {
-        var nameA = a.name,
-          nameB = b.name;
-        if (nameA < nameB) return -1;
-        if (nameA > nameB) return 1;
-        return 0;
-      });
+//       teams.sort(function(a, b) {
+//         var nameA = a.name,
+//           nameB = b.name;
+//         if (nameA < nameB) return -1;
+//         if (nameA > nameB) return 1;
+//         return 0;
+//       });
 
-      sessionStorage.setItem("teams", JSON.stringify(teams));
+//       sessionStorage.setItem("teams", JSON.stringify(teams));
 
-      teams.forEach(function(team) {    
-        if (team.sport === "Football") {
-          addTeamToTable("team" + team.id, team, '');
-        // } else if (team.sport === "Basketball") {
-        //   addBasketTeamToTable("team" + team.id, team);
-        // } else if (team.sport === "Handball") {
-        //   addHandballTeamToTable("team" + team.id, team);
-        // } else {
-        //   addHockeyTeamToTable("team" + team.id, team);
-        }
+//       // teams.forEach(function(team) {    
+//       //   if (team.sport === "Football") {
+//       //     addTeamToTable("team" + team.id, team, '');
+//       //   // } else if (team.sport === "Basketball") {
+//       //   //   addBasketTeamToTable("team" + team.id, team);
+//       //   // } else if (team.sport === "Handball") {
+//       //   //   addHandballTeamToTable("team" + team.id, team);
+//       //   // } else {
+//       //   //   addHockeyTeamToTable("team" + team.id, team);
+//       //   }
         
-      });
+//       // });
 
-    })
-    .catch(function(error) {
-      console.log("Error: " + error);
-    });
-}
+//     })
+//     .catch(function(error) {
+//       console.log("Error: " + error);
+//     });
+// }
 
 function callGetHistoricDataTeamInfo(teamName) {
   return fetch("http://"+DATA_STATS_API_URL+"/api/bhd/team/" + teamName)
