@@ -830,7 +830,7 @@ function callDeleteBet(betId, bankrollId) {
 //-------------------------------------------------------------------------------------------
 
 // function callGetHistoricDataTeams() {
-//   teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
+//   teamsSessionStorage = JSON.parse(localStorage.getItem("teams"));
 //   if (teamsSessionStorage != null) {
 //     return;
 //   }
@@ -851,7 +851,7 @@ function callDeleteBet(betId, bankrollId) {
 //         return 0;
 //       });
 
-//       sessionStorage.setItem("teams", JSON.stringify(teams));
+//       localStorage.setItem("teams", JSON.stringify(teams));
 
 //       // teams.forEach(function(team) {    
 //       //   if (team.sport === "Football") {
@@ -921,7 +921,7 @@ function callGetTeamStatsByStrategy(teamName, strategy) {
         addDataToTable(statsData);
       });
 
-      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -943,7 +943,7 @@ function callGetDrawsHistoricDataByTeam(teamName) {
         addDataToTable(statsData);
       });
 
-      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -965,7 +965,7 @@ function callGetHockeyDrawsHistoricDataByTeam(teamName) {
         addDataToTable(statsData);
       });
 
-      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -987,7 +987,7 @@ function callGetMarginWinsHistoricDataByTeam(teamName) {
         addDataToTable(statsData);
       });
 
-      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1009,7 +1009,7 @@ function callGetMargin16WinsHistoricDataByTeam(teamName) {
         addDataToTable(statsData);
       });
 
-      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1031,7 +1031,7 @@ function callGetMargin49WinsHistoricDataByTeam(teamName) {
         addDataToTable(statsData);
       });
 
-      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1053,7 +1053,7 @@ function callGetMargin712WinsHistoricDataByTeam(teamName) {
         addDataToTable(statsData);
       });
 
-      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1075,7 +1075,7 @@ function callGetGoalsFestHistoricDataByTeam(teamName) {
         addDataToTable(statsData);
       });
 
-      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1097,7 +1097,7 @@ function callGetEuroHandicapHistoricDataByTeam(teamName) {
         addDataToTable(statsData);
       });
 
-      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1119,7 +1119,7 @@ function callGetFlipFlopHistoricDataByTeam(teamName) {
         addFlipFlopDataToTable(statsData);
       });
 
-      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1141,7 +1141,7 @@ function callGetShortWinsHistoricDataByTeam(teamName) {
         addDataToTable(statsData);
       });
 
-      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1163,7 +1163,7 @@ function callGetLongWinsHistoricDataByTeam(teamName) {
         addDataToTable(statsData);
       });
 
-      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1185,7 +1185,7 @@ function callGetComebackWinsHistoricDataByTeam(teamName) {
         addDataToTable(statsData);
       });
 
-      sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {
@@ -1213,7 +1213,7 @@ function callSimulationReportBySeason(season, strategy) {
       //   addDataToTable(statsData);
       // });
 
-      // sessionStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
+      // localStorage.setItem("seasonsList", JSON.stringify(availableSeasons));
 
     })
     .catch(function(error) {

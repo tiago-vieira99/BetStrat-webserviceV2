@@ -1,14 +1,14 @@
 
 streaks = [];
 
-var teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
+var teamsSessionStorage = JSON.parse(localStorage.getItem("teams"));
 
 getHistoricData();
 
 async function getHistoricData() {
     try {
         showLoadingIndicator();
-        teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
+        teamsSessionStorage = JSON.parse(localStorage.getItem("teams"));
         if (teamsSessionStorage != null) {
             console.log("check1");
             hideLoadingIndicator();
@@ -17,10 +17,10 @@ async function getHistoricData() {
         const response = await fetch("http://" + DATA_STATS_API_URL + "/api/bhd/teams");
         const teams = await response.json();
         teams.sort((a, b) => (a.name < b.name ? -1 : 1));
-        sessionStorage.setItem("teams", JSON.stringify(teams));
+        localStorage.setItem("teams", JSON.stringify(teams));
         hideLoadingIndicator();
 
-        sessionStorage.setItem("teams", JSON.stringify(teams));
+        localStorage.setItem("teams", JSON.stringify(teams));
     } catch (error) {
         console.log("Error: " + error);
         hideLoadingIndicator();
@@ -47,109 +47,109 @@ function changeHeadCell (value) {
         case 'Wins':
             streakType = 'wins';
             minStreak = 5;
-            sessionStorage.setItem("strategySelected", 'NoWins');
+            localStorage.setItem("strategySelected", 'NoWins');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Wins':
             streakType = 'noWins';
             minStreak = 3;
-            sessionStorage.setItem("strategySelected", 'Wins');
+            localStorage.setItem("strategySelected", 'Wins');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'Draws':
             streakType = 'draws';
             minStreak = 3;
-            sessionStorage.setItem("strategySelected", null);
+            localStorage.setItem("strategySelected", null);
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Draws':
             streakType = 'noDraws';
             minStreak = 7;
-            sessionStorage.setItem("strategySelected", 'Draw');
+            localStorage.setItem("strategySelected", 'Draw');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Margin Wins':
             streakType = 'noMarginWins';
             minStreak = 3;
-            sessionStorage.setItem("strategySelected", 'WinsMargin');
+            localStorage.setItem("strategySelected", 'WinsMargin');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'Clean Sheet':
             streakType = 'cleanSheet';
             minStreak = 3;
-            sessionStorage.setItem("strategySelected", null);
+            localStorage.setItem("strategySelected", null);
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Clean Sheet':
             streakType = 'noCleanSheet';
             minStreak = 5;
-            sessionStorage.setItem("strategySelected", 'CleanSheet');
+            localStorage.setItem("strategySelected", 'CleanSheet');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'Goals Fest':
             streakType = 'goalsFest';
             minStreak = 5;
-            sessionStorage.setItem("strategySelected", 'NoGoalsFest');
+            localStorage.setItem("strategySelected", 'NoGoalsFest');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Goals Fest':
             streakType = 'noGoalsFest';
             minStreak = 4;
-            sessionStorage.setItem("strategySelected", 'GoalsFest');
+            localStorage.setItem("strategySelected", 'GoalsFest');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'BTTS':
             streakType = 'btts';
             minStreak = 5;
-            sessionStorage.setItem("strategySelected", 'NoBtts');
+            localStorage.setItem("strategySelected", 'NoBtts');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No BTTS':
             streakType = 'noBtts';
             minStreak = 4;
-            sessionStorage.setItem("strategySelected", 'Btts');
+            localStorage.setItem("strategySelected", 'Btts');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'Scored Both Halves':
             streakType = 'scoreBothHalves';
             minStreak = 5;
-            sessionStorage.setItem("strategySelected", null);
+            localStorage.setItem("strategySelected", null);
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Scored Both Halves':
             streakType = 'noScoreBothHalves';
             minStreak = 3;
-            sessionStorage.setItem("strategySelected", 'ScoreBothHalves');
+            localStorage.setItem("strategySelected", 'ScoreBothHalves');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'Concede Both Halves':
             streakType = 'concedeBothHalves';
             minStreak = 5;
-            sessionStorage.setItem("strategySelected", null);
+            localStorage.setItem("strategySelected", null);
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Concede Both Halves':
             streakType = 'noConcedeBothHalves';
             minStreak = 5;
-            sessionStorage.setItem("strategySelected", 'concedeBothHalves');
+            localStorage.setItem("strategySelected", 'concedeBothHalves');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Win Both Halves':
             streakType = 'noWinBothHalves';
             minStreak = 5;
-            sessionStorage.setItem("strategySelected", 'WinBothHalves');
+            localStorage.setItem("strategySelected", 'WinBothHalves');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Win && +2.5 Goals':
             streakType = 'noWinAnd25Goals';
             minStreak = 5;
-            sessionStorage.setItem("strategySelected", 'WinAndGoals');
+            localStorage.setItem("strategySelected", 'WinAndGoals');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No 2HT > 1HT':
             streakType = 'no2HTFunny';
             minStreak = 4;
-            sessionStorage.setItem("strategySelected", 'SecondHalfBigger');
+            localStorage.setItem("strategySelected", 'SecondHalfBigger');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         default:
@@ -299,7 +299,7 @@ function changeHeadCell (value) {
 }
 
 function addTeamDiv(teamName, teamData, streakType, minStreak, historicMaxRedRun, historicScore) {
-    sessionStorage.removeItem("seasonsList")
+    localStorage.removeItem("seasonsList")
     if (teamData[streakType + 'MainComp'] >= minStreak || teamData[streakType + 'AllComps'] >= minStreak) {
         var backgroundStyle = '';
         if ((teamData[streakType + 'MainComp'] >= historicMaxRedRun-2 || teamData[streakType + 'AllComps'] >= historicMaxRedRun-2) && (historicScore.includes('EXCE') || historicScore.includes('ACCEP'))) {

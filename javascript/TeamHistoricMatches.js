@@ -11,7 +11,7 @@ var competitionsMap = new Map([])
 var mainCompetition = ""
 
 function navigateSeason(diretion) {
-  var seasonsList = JSON.parse(sessionStorage.getItem("seasonsList"))
+  var seasonsList = JSON.parse(localStorage.getItem("seasonsList"))
   if (seasonsList[seasonsList.indexOf(season.slice(7))+diretion] == undefined) {
     return;
   }

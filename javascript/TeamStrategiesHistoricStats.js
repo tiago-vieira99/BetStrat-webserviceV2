@@ -2,7 +2,7 @@ var urlArgs = location.search.substring(1).split('&');
 var teamName = decodeURIComponent(urlArgs[1]);
 var teamId = decodeURIComponent(urlArgs[0]);
 $('.teamNameTitle').append("<b>" + teamName + " :: Historic Stats</b><br>");
-var teams = JSON.parse(sessionStorage.getItem("teams"));
+var teams = JSON.parse(localStorage.getItem("teams"));
 let teamElem = null;
 
 
@@ -18,8 +18,8 @@ async function init() {
     teamElem = teams.find(team => team.name === teamName);
   }
   
-  if (sessionStorage.getItem("strategySelected") != null) {
-    document.getElementById("strategySelect").value = sessionStorage.getItem("strategySelected");
+  if (localStorage.getItem("strategySelected") != null) {
+    document.getElementById("strategySelect").value = localStorage.getItem("strategySelected");
     displayInfo();
   }
   setScoreValuesInfo();
