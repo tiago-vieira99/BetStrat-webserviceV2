@@ -59,6 +59,7 @@ function changeHeadCell (value) {
         case 'Draws':
             streakType = 'draws';
             minStreak = 3;
+            sessionStorage.setItem("strategySelected", null);
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Draws':
@@ -70,11 +71,13 @@ function changeHeadCell (value) {
         case 'No Margin Wins':
             streakType = 'noMarginWins';
             minStreak = 3;
+            sessionStorage.setItem("strategySelected", 'WinsMargin');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'Clean Sheet':
             streakType = 'cleanSheet';
             minStreak = 3;
+            sessionStorage.setItem("strategySelected", null);
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Clean Sheet':
@@ -110,6 +113,7 @@ function changeHeadCell (value) {
         case 'Scored Both Halves':
             streakType = 'scoreBothHalves';
             minStreak = 5;
+            sessionStorage.setItem("strategySelected", null);
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Scored Both Halves':
@@ -121,6 +125,7 @@ function changeHeadCell (value) {
         case 'Concede Both Halves':
             streakType = 'concedeBothHalves';
             minStreak = 5;
+            sessionStorage.setItem("strategySelected", null);
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Concede Both Halves':

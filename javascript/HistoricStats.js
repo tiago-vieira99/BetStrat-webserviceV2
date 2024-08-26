@@ -1,24 +1,23 @@
 var numTeams;
-var teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
+var teamsSessionStorage = JSON.parse(localStorage.getItem("teams"));
 
 getHistoricData();
 
 async function getHistoricData() {
   try {
       showLoadingIndicator();
-      teamsSessionStorage = JSON.parse(sessionStorage.getItem("teams"));
+      teamsSessionStorage = JSON.parse(localStorage.getItem("teams"));
       if (teamsSessionStorage != null) {
-          console.log("check1");
           hideLoadingIndicator();
+          setUpTableData();
           return;
       }
       const response = await fetch("http://" + DATA_STATS_API_URL + "/api/bhd/teams");
       const teams = await response.json();
       teams.sort((a, b) => (a.name < b.name ? -1 : 1));
-      sessionStorage.setItem("teams", JSON.stringify(teams));
+      localStorage.setItem("teams", JSON.stringify(teams));
       hideLoadingIndicator();
 
-      sessionStorage.setItem("teams", JSON.stringify(teams));
       setUpTableData();
   } catch (error) {
       console.log("Error: " + error);
@@ -53,7 +52,7 @@ function filterTeams() {
   var score = document.getElementById("scoreFilter").value;
   var filteredTeams;
 
-  sessionStorage.setItem("strategySelected", strategy);
+  localStorage.setItem("strategySelected", strategy);
   // Clear the table before entering the loop
   $('#histStatsTeamsTable').empty();
   switch (strategy) {
