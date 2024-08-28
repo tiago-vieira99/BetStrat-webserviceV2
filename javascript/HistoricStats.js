@@ -20,6 +20,7 @@ async function getHistoricData() {
 
       setUpTableData();
   } catch (error) {
+      alert(error);
       console.log("Error: " + error);
       hideLoadingIndicator();
   }

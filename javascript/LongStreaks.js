@@ -3,7 +3,7 @@ streaks = [];
 
 var teamsSessionStorage = JSON.parse(localStorage.getItem("teams"));
 
-getHistoricData();
+//getHistoricData();
 
 async function getHistoricData() {
     try {
@@ -22,6 +22,7 @@ async function getHistoricData() {
 
         localStorage.setItem("teams", JSON.stringify(teams));
     } catch (error) {
+        alert(error);
         console.log("Error: " + error);
         hideLoadingIndicator();
     }
@@ -38,6 +39,21 @@ function hideLoadingIndicator() {
 
 
 callGetStreaks();
+
+function testls() {
+    localStorage.setItem("streaks", JSON.stringify(streaks));
+    try {
+        xx = JSON.parse(localStorage.getItem("streaks"));
+        if (xx != null) {
+            console.log(xx);
+            alert("yesss");
+        }
+    } catch (error) {
+        console.log(error);
+        alert(error);
+    }
+    
+}
 
 function changeHeadCell (value) {
     streakType = '';

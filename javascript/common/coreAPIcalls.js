@@ -1258,14 +1258,16 @@ function callGetCurrent25GoalsMatches() {
     });
 }
 
-function callGetStreaks() {
-  fetch("http://"+API_URL+"/api/betstrat/sync/streaks")
-    .then(function(response) {
-      return response.json();
+async function callGetStreaks() {
+  await fetch("http://"+API_URL+"/api/betstrat/sync/streaks")
+    .then(async function(response) {
+      return await response.json();
     })
-    .then(function(resp) {
+    .then(async function(resp) {
       
       streaks = resp;
+      console.log(streaks);
+      testls();
 
     })
     .catch(function(error) {
