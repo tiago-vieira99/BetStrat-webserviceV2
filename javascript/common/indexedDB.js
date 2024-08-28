@@ -46,9 +46,9 @@ function storeData(key, newData) {
                 data.value = newData; // Your new data to store
                 data.lastUpdated = now; // Update lastUpdated to current timestamp
                 objectStore.put(data);
-                console.log("Data updated as it was older than 2 days.");
+                alert("Data updated as it was older than 2 days.");
             } else {
-                console.log("Data is less than 2 days old and was not updated.");
+                alert("Data is less than 2 days old and was not updated.");
             }
         } else {
             // If no existing data, add new data
