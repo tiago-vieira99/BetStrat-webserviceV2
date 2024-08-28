@@ -1,32 +1,51 @@
 
 streaks = [];
 
-var teamsSessionStorage = JSON.parse(localStorage.getItem("teams"));
+let teamsSessionStorage;
 
-//getHistoricData();
+getHistoricData();
 
 async function getHistoricData() {
     try {
         showLoadingIndicator();
-        teamsSessionStorage = JSON.parse(localStorage.getItem("teams"));
-        if (teamsSessionStorage != null) {
-            console.log("check1");
-            hideLoadingIndicator();
-            return;
-        }
-        const response = await fetch("http://" + DATA_STATS_API_URL + "/api/bhd/teams");
-        const teams = await response.json();
-        teams.sort((a, b) => (a.name < b.name ? -1 : 1));
-        localStorage.setItem("teams", JSON.stringify(teams));
-        hideLoadingIndicator();
-
-        localStorage.setItem("teams", JSON.stringify(teams));
+  
+        readData("teams", function(result, error) {
+            if (error) {
+                console.log("Error: " + error);
+                hideLoadingIndicator();
+                return;
+            }
+  
+            teamsSessionStorage = JSON.parse(result);
+            if (teamsSessionStorage != null) {
+                hideLoadingIndicator();
+                return;
+            }
+  
+            // If no data is found in the database, fetch it from the API
+            fetchTeamsFromAPI();
+        });
+  
     } catch (error) {
-        alert(error);
         console.log("Error: " + error);
         hideLoadingIndicator();
     }
-}
+  }
+  
+  async function fetchTeamsFromAPI() {
+    try {
+        const response = await fetch("http://" + DATA_STATS_API_URL + "/api/bhd/teams");
+        const teams = await response.json();
+        teams.sort((a, b) => (a.name < b.name ? -1 : 1));
+        storeData("teams", JSON.stringify(teams));
+  
+        teamsSessionStorage = teams;
+        hideLoadingIndicator();
+    } catch (error) {
+        console.log("Error fetching data from API: " + error);
+        hideLoadingIndicator();
+    }
+  }
 
 
 function showLoadingIndicator() {
@@ -39,27 +58,6 @@ function hideLoadingIndicator() {
 
 
 callGetStreaks();
-
-let streaksValue;
-function testls() {
-    storeData("streaks", JSON.stringify(streaks));
-    readData("streaks", function(result, error) {
-        if (error) {
-            console.error(error);
-            alert("Error reading data");
-        } else if (result != null) {
-            try {
-                streaksValue = JSON.parse(result); // Parse and store it
-                console.log(streaksValue); // Now you can use the value object as needed
-                alert("yesss");
-            } catch (e) {
-                console.error("Error parsing result: ", e);
-            }
-        } else {
-            console.log("No result found for: streaks");
-        }
-    });
-}
 
 function changeHeadCell (value) {
     streakType = '';

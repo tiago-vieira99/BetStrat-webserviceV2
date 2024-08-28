@@ -2,30 +2,78 @@ var urlArgs = location.search.substring(1).split('&');
 var teamName = decodeURIComponent(urlArgs[1]);
 var teamId = decodeURIComponent(urlArgs[0]);
 $('.teamNameTitle').append("<b>" + teamName + " :: Historic Stats</b><br>");
-var teams = JSON.parse(localStorage.getItem("teams"));
 let teamElem = null;
+let teams = null;
 
+getHistoricData().then(init);
 
 async function init() {
-  if (teams === null) {
-    try {
-      teamElem = await callGetHistoricDataTeamInfo(teamName);
-    } catch (error) {
-      console.error("Failed to fetch team data: ", error);
-      return;  // Exit the function if there's an error
+    if (teams === null) {
+        try {
+            teamElem = await callGetHistoricDataTeamInfo(teamName);
+        } catch (error) {
+            console.error("Failed to fetch team data: ", error);
+            return;  // Exit the function if there's an error
+        }
+    } else {
+        teamElem = teams.find(team => team.name === teamName);
     }
-  } else {
-    teamElem = teams.find(team => team.name === teamName);
-  }
-  
-  if (localStorage.getItem("strategySelected") != null) {
-    document.getElementById("strategySelect").value = localStorage.getItem("strategySelected");
-    displayInfo();
-  }
-  setScoreValuesInfo();
+    
+    if (localStorage.getItem("strategySelected") != null) {
+        document.getElementById("strategySelect").value = localStorage.getItem("strategySelected");
+        displayInfo();
+    }
+    setScoreValuesInfo();
 }
 
-init();
+async function getHistoricData() {
+  try {
+      showLoadingIndicator();
+
+      const result = await new Promise((resolve, reject) => {
+          readData("teams", function(result, error) {
+              if (error) {
+                  reject(error);
+              } else {
+                  resolve(result);
+              }
+          });
+      });
+
+      if (result) {
+          teams = JSON.parse(result);
+      } else {
+          await fetchTeamsFromAPI();
+      }
+      
+      hideLoadingIndicator();
+  } catch (error) {
+      console.log("Error: " + error);
+      hideLoadingIndicator();
+  }
+}
+
+async function fetchTeamsFromAPI() {
+  try {
+      const response = await fetch("http://" + DATA_STATS_API_URL + "/api/bhd/teams");
+      const fetchedTeams = await response.json();
+      fetchedTeams.sort((a, b) => (a.name < b.name ? -1 : 1));
+      storeData("teams", JSON.stringify(fetchedTeams));
+
+      teams = fetchedTeams;
+  } catch (error) {
+      console.log("Error fetching data from API: " + error);
+  }
+}
+
+function showLoadingIndicator() {
+  document.getElementById("loading").classList.remove("hidden");
+}
+
+function hideLoadingIndicator() {
+  document.getElementById("loading").classList.add("hidden");
+}
+
 
 function setScoreValuesInfo() {
   document.getElementById("scoreValuesInfo").innerHTML = '<span style="background-color: '+ setStatsBackgroundColor(teamElem.drawsHunterScore)+';"> Draws: '+ teamElem.drawsHunterScore +'   | </span> ' +
@@ -62,8 +110,6 @@ function setStatsBackgroundColor(score) {
 
 function displayInfo() {
   var strategy = document.getElementById("strategySelect").value;
-
-  console.log(strategy);
 
   switch (strategy) {
     case 'WinsMargin':
@@ -112,7 +158,7 @@ function displayInfo() {
       document.getElementById("scoreTextInfo").innerHTML = teamElem.winBothHalvesScore;
       break;
     default:
-      console.log(`Sorry, we are out of ${expr}.`);
+      console.log("no strategy available");
       return;
   }
 

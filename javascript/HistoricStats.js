@@ -1,27 +1,49 @@
 var numTeams;
-var teamsSessionStorage = JSON.parse(localStorage.getItem("teams"));
+let teamsSessionStorage;
 
 getHistoricData();
 
 async function getHistoricData() {
   try {
       showLoadingIndicator();
-      teamsSessionStorage = JSON.parse(localStorage.getItem("teams"));
-      if (teamsSessionStorage != null) {
-          hideLoadingIndicator();
-          setUpTableData();
-          return;
-      }
+
+      readData("teams", function(result, error) {
+          if (error) {
+              console.log("Error: " + error);
+              hideLoadingIndicator();
+              return;
+          }
+
+          teamsSessionStorage = JSON.parse(result);
+          if (teamsSessionStorage != null) {
+              hideLoadingIndicator();
+              setUpTableData();
+              return;
+          }
+
+          // If no data is found in the database, fetch it from the API
+          fetchTeamsFromAPI();
+      });
+
+  } catch (error) {
+      console.log("Error: " + error);
+      hideLoadingIndicator();
+  }
+}
+
+async function fetchTeamsFromAPI() {
+  try {
       const response = await fetch("http://" + DATA_STATS_API_URL + "/api/bhd/teams");
       const teams = await response.json();
       teams.sort((a, b) => (a.name < b.name ? -1 : 1));
-      localStorage.setItem("teams", JSON.stringify(teams));
+      storeData("teams", JSON.stringify(teams));
+
+      teamsSessionStorage = teams;
       hideLoadingIndicator();
 
       setUpTableData();
   } catch (error) {
-      alert(error);
-      console.log("Error: " + error);
+      console.log("Error fetching data from API: " + error);
       hideLoadingIndicator();
   }
 }
@@ -35,17 +57,21 @@ function hideLoadingIndicator() {
 }
 
 function setUpTableData() {
-  teamsSessionStorage.forEach(function(team) {    
-    if (team.sport === "Football") {
-      addTeamToTable("team" + team.id, team, '');
-    // } else if (team.sport === "Basketball") {
-    //   addBasketTeamToTable("team" + team.id, team);
-    // } else if (team.sport === "Handball") {
-    //   addHandballTeamToTable("team" + team.id, team);
-    // } else {
-    //   addHockeyTeamToTable("team" + team.id, team);
-    }      
-  });
+  if (teamsSessionStorage && teamsSessionStorage.length > 0) {
+    teamsSessionStorage.forEach(function (team) {
+        if (team.sport === "Football") {
+            addTeamToTable("team" + team.id, team, '');
+            // } else if (team.sport === "Basketball") {
+            //   addBasketTeamToTable("team" + team.id, team);
+            // } else if (team.sport === "Handball") {
+            //   addHandballTeamToTable("team" + team.id, team);
+            // } else {
+            //   addHockeyTeamToTable("team" + team.id, team);
+        }
+    });
+  } else {
+      console.log("No teams found in session storage.");
+  }
 }
 
 function filterTeams() {
