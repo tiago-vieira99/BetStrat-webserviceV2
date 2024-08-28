@@ -76,10 +76,10 @@ function readData(id, callback) {
             if (result) {
                 const lastUpdated = result.lastUpdated || 0;
                 if (now - lastUpdated > twoDaysInMs){
-                    alert("Data is older than 2 days!!");
+                    console.log();("Data is older than 2 days!!");
                     callback(null, null); // return result as null
                 } else {
-                    alert("Data is less than 2 days old :)");
+                    console.log();("Data is less than 2 days old :)");
                     callback(result.value, null); // return result value
                 }
             } else {
