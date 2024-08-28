@@ -40,19 +40,25 @@ function hideLoadingIndicator() {
 
 callGetStreaks();
 
+let streaksValue;
 function testls() {
-    localStorage.setItem("streaks", JSON.stringify(streaks));
-    try {
-        xx = JSON.parse(localStorage.getItem("streaks"));
-        if (xx != null) {
-            console.log(xx);
-            alert("yesss");
+    storeData("streaks", JSON.stringify(streaks));
+    readData("streaks", function(result, error) {
+        if (error) {
+            console.error(error);
+            alert("Error reading data");
+        } else if (result != null) {
+            try {
+                streaksValue = JSON.parse(result); // Parse and store it
+                console.log(streaksValue); // Now you can use the value object as needed
+                alert("yesss");
+            } catch (e) {
+                console.error("Error parsing result: ", e);
+            }
+        } else {
+            console.log("No result found for: streaks");
         }
-    } catch (error) {
-        console.log(error);
-        alert(error);
-    }
-    
+    });
 }
 
 function changeHeadCell (value) {

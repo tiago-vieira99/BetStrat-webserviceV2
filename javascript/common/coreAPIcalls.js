@@ -1266,7 +1266,6 @@ async function callGetStreaks() {
     .then(async function(resp) {
       
       streaks = resp;
-      console.log(streaks);
       testls();
 
     })
