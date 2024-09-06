@@ -195,7 +195,7 @@ function addTeamToTable(idTeam, team, score) {
     $(document).ready(function() {
       $('#histStatsTeamsTable').append(
         '<tr id="' + idTeam + '" >' +
-        '<td style="padding-top: 0; padding-bottom: 0; position: sticky; left: 0; overflow: auto;opacity: 100%;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a style="color: #7377a8; font-weight: bold;" href="TeamStrategiesHistoricStats.html?'+idTeam+'&'+team.name+'"><u>' + team.name + '</u></a></td>' +
+        '<td style="padding-top: 0; padding-bottom: 0; position: sticky; left: 0; overflow: auto;opacity: 100%;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a target="_blank" rel="noopener noreferrer" style="color: #7377a8; font-weight: bold;" href="TeamStrategiesHistoricStats.html?'+idTeam+'&'+team.name+'"><u>' + team.name + '</u></a></td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.beginSeason + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.country + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0; background-color: '+setStatsBackgroundColor(score)+';" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + score + '</td></tr>'

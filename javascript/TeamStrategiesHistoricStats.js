@@ -172,7 +172,7 @@ function addDataToTable(statsData) {
   var strategy = document.getElementById("strategySelect").value;
   var greensRate;
   var totalGreens;
-
+  console.log(statsData);
   switch (strategy) {
     case 'WinsMargin':
       greensRate = statsData.marginWinsRate;
@@ -228,7 +228,7 @@ function addDataToTable(statsData) {
       break;
     case 'SecondHalfBigger':
       greensRate = statsData.secondHalfBiggerRate;
-      totalGreens = statsData.numSecondHalfBigger;
+      totalGreens = statsData.numScondHalfBigger;
       break;
     case 'WinBothHalves':
       greensRate = statsData.winBothHalvesRate;
@@ -246,12 +246,26 @@ function addDataToTable(statsData) {
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + statsData.competition + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + greensRate + ' %</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + totalGreens + ' / ' + statsData.numMatches + '</td>' +
-        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + statsData.winsRate + ' %</td>' +
-        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + statsData.numWins + ' / ' + statsData.numMatches + '</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + encapsulateWinsRate(statsData.winsRate) + ' %</td>' +
+        '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + encapsulateNumWins(statsData.numWins) + ' / ' + statsData.numMatches + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + statsData.stdDeviation + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + statsData.coefDeviation + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + statsData.negativeSequence + '</td></tr>'
       );
     });
+}
+
+function encapsulateWinsRate(winsRate) {
+  if (winsRate === undefined) {
+    return '-';
+  }
+  return winsRate;
+}
+
+function encapsulateNumWins(numWins) {
+  if (numWins === undefined) {
+    return '-';
+  }
+  return numWins;
 }
 
