@@ -151,7 +151,7 @@ function changeHeadCell (value) {
         case 'No Concede Both Halves':
             streakType = 'noConcedeBothHalves';
             minStreak = 5;
-            localStorage.setItem("strategySelected", 'concedeBothHalves');
+            localStorage.setItem("strategySelected", 'ConcedeBothHalves');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Win Both Halves':
@@ -175,13 +175,13 @@ function changeHeadCell (value) {
         case 'Win 1HT':
             streakType = 'winFirstHalf';
             minStreak = 4;
-            localStorage.setItem("strategySelected", 'noWinFirstHalf');
+            localStorage.setItem("strategySelected", 'NoWinFirstHalf');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         case 'No Win 1HT':
             streakType = 'noWinFirstHalf';
             minStreak = 4;
-            localStorage.setItem("strategySelected", 'winFirstHalf');
+            localStorage.setItem("strategySelected", 'WinFirstHalf');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         default:
@@ -196,155 +196,157 @@ function changeHeadCell (value) {
         historicAvgRedRun = 99;
         historicScore = '';
 
-        switch(value) {
-            case 'Wins':
-                if (histTeamdata.noWinsMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.noWinsMaxRedRun;
-                }
-                if (histTeamdata.noWinsAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.noWinsAvgRedRun;
-                }
-                historicScore = histTeamdata.noWinsScore;
-                break;
-            case 'No Wins':
-                if (histTeamdata.winsMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.winsMaxRedRun;
-                }
-                if (histTeamdata.winsAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.winsAvgRedRun;
-                }
-                historicScore = histTeamdata.winsScore;
-                break;
-            case 'No Draws':
-                if (histTeamdata.drawsHunterMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.drawsHunterMaxRedRun;
-                }
-                if (histTeamdata.drawsHunterAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.drawsHunterAvgRedRun;
-                }
-                historicScore = histTeamdata.drawsHunterScore;
-                break;
-            case 'No Margin Wins':
-                if (histTeamdata.marginWinsMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.marginWinsMaxRedRun;
-                }
-                if (histTeamdata.marginWinsAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.marginWinsAvgRedRun;
-                }
-                historicScore = histTeamdata.marginWinsScore;
-                break;
-            case 'No Clean Sheet':
-                if (histTeamdata.cleanSheetMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.cleanSheetMaxRedRun;
-                }
-                if (histTeamdata.cleanSheetAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.cleanSheetAvgRedRun;
-                }
-                historicScore = histTeamdata.cleanSheetScore;
-                break;
-            case 'Goals Fest':
-                if (histTeamdata.noGoalsFestMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.noGoalsFestMaxRedRun;
-                }
-                if (histTeamdata.noGoalsFestAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.noGoalsFestAvgRedRun;
-                }
-                historicScore = histTeamdata.noGoalsFestScore;
-                break;
-            case 'No Goals Fest':
-                if (histTeamdata.goalsFestMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.goalsFestMaxRedRun;
-                }
-                if (histTeamdata.goalsFestAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.goalsFestAvgRedRun;
-                }
-                historicScore = histTeamdata.goalsFestScore;
-                break;
-            case 'BTTS':
-                if (histTeamdata.noBttsMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.noBttsMaxRedRun;
-                }
-                if (histTeamdata.noBttsAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.noBttsAvgRedRun;
-                }
-                historicScore = histTeamdata.noBttsScore;
-                break;
-            case 'No BTTS':
-                if (histTeamdata.bttsMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.bttsMaxRedRun;
-                }
-                if (histTeamdata.bttsAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.bttsAvgRedRun;
-                }
-                historicScore = histTeamdata.bttsScore;
-                break;
-            case 'No Scored Both Halves':
-                if (histTeamdata.scoreBothHalvesMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.scoreBothHalvesMaxRedRun;
-                }
-                if (histTeamdata.scoreBothHalvesAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.scoreBothHalvesAvgRedRun;
-                }
-                historicScore = histTeamdata.scoreBothHalvesScore;
-                break;
-            case 'No Concede Both Halves':
-                if (histTeamdata.concedeBothHalvesMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.concedeBothHalvesMaxRedRun;
-                }
-                if (histTeamdata.concedeBothHalvesAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.concedeBothHalvesAvgRedRun;
-                }
-                historicScore = histTeamdata.concedeBothHalvesScore;
-                break;
-            case 'No Win Both Halves':
-                if (histTeamdata.winBothHalvesMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.winBothHalvesMaxRedRun;
-                }
-                if (histTeamdata.winBothHalvesAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.winBothHalvesAvgRedRun;
-                }
-                historicScore = histTeamdata.winBothHalvesScore;
-                break;
-            case 'No Win && +2.5 Goals':
-                if (histTeamdata.winAndGoalsMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.winAndGoalsMaxRedRun;
-                }
-                if (histTeamdata.winAndGoalsAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.winAndGoalsAvgRedRun;
-                }
-                historicScore = histTeamdata.winAndGoalsScore;
-                break;
-            case 'No 2HT > 1HT':
-                if (histTeamdata.secondHalfBiggerMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.secondHalfBiggerMaxRedRun;
-                }
-                if (histTeamdata.secondHalfBiggerAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.secondHalfBiggerAvgRedRun;
-                }
-                historicScore = histTeamdata.secondHalfBiggerScore;
-                break;
-            case 'Win 1HT':
-                if (histTeamdata.noWinFirstHalfMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.noWinFirstHalfMaxRedRun;
-                }
-                if (histTeamdata.noWinFirstHalfAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.noWinFirstHalfAvgRedRun;
-                }
-                historicScore = histTeamdata.noWinFirstHalfScore;
-                break;
-            case 'No Win 1HT':
-                if (histTeamdata.winFirstHalfMaxRedRun != null) {
-                    historicMaxRedRun = histTeamdata.winFirstHalfMaxRedRun;
-                }
-                if (histTeamdata.winFirstHalfAvgRedRun != null) {
-                    historicAvgRedRun = histTeamdata.winFirstHalfAvgRedRun;
-                }
-                historicScore = histTeamdata.winFirstHalfScore;
-                break;
-            default:
-                break;
+        if (histTeamdata != undefined) {
+            switch(value) {
+                case 'Wins':
+                    if (histTeamdata.noWinsMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.noWinsMaxRedRun;
+                    }
+                    if (histTeamdata.noWinsAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.noWinsAvgRedRun;
+                    }
+                    historicScore = histTeamdata.noWinsScore;
+                    break;
+                case 'No Wins':
+                    if (histTeamdata.winsMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.winsMaxRedRun;
+                    }
+                    if (histTeamdata.winsAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.winsAvgRedRun;
+                    }
+                    historicScore = histTeamdata.winsScore;
+                    break;
+                case 'No Draws':
+                    if (histTeamdata.drawsHunterMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.drawsHunterMaxRedRun;
+                    }
+                    if (histTeamdata.drawsHunterAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.drawsHunterAvgRedRun;
+                    }
+                    historicScore = histTeamdata.drawsHunterScore;
+                    break;
+                case 'No Margin Wins':
+                    if (histTeamdata.marginWinsMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.marginWinsMaxRedRun;
+                    }
+                    if (histTeamdata.marginWinsAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.marginWinsAvgRedRun;
+                    }
+                    historicScore = histTeamdata.marginWinsScore;
+                    break;
+                case 'No Clean Sheet':
+                    if (histTeamdata.cleanSheetMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.cleanSheetMaxRedRun;
+                    }
+                    if (histTeamdata.cleanSheetAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.cleanSheetAvgRedRun;
+                    }
+                    historicScore = histTeamdata.cleanSheetScore;
+                    break;
+                case 'Goals Fest':
+                    if (histTeamdata.noGoalsFestMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.noGoalsFestMaxRedRun;
+                    }
+                    if (histTeamdata.noGoalsFestAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.noGoalsFestAvgRedRun;
+                    }
+                    historicScore = histTeamdata.noGoalsFestScore;
+                    break;
+                case 'No Goals Fest':
+                    if (histTeamdata.goalsFestMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.goalsFestMaxRedRun;
+                    }
+                    if (histTeamdata.goalsFestAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.goalsFestAvgRedRun;
+                    }
+                    historicScore = histTeamdata.goalsFestScore;
+                    break;
+                case 'BTTS':
+                    if (histTeamdata.noBttsMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.noBttsMaxRedRun;
+                    }
+                    if (histTeamdata.noBttsAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.noBttsAvgRedRun;
+                    }
+                    historicScore = histTeamdata.noBttsScore;
+                    break;
+                case 'No BTTS':
+                    if (histTeamdata.bttsMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.bttsMaxRedRun;
+                    }
+                    if (histTeamdata.bttsAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.bttsAvgRedRun;
+                    }
+                    historicScore = histTeamdata.bttsScore;
+                    break;
+                case 'No Scored Both Halves':
+                    if (histTeamdata.scoreBothHalvesMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.scoreBothHalvesMaxRedRun;
+                    }
+                    if (histTeamdata.scoreBothHalvesAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.scoreBothHalvesAvgRedRun;
+                    }
+                    historicScore = histTeamdata.scoreBothHalvesScore;
+                    break;
+                case 'No Concede Both Halves':
+                    if (histTeamdata.concedeBothHalvesMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.concedeBothHalvesMaxRedRun;
+                    }
+                    if (histTeamdata.concedeBothHalvesAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.concedeBothHalvesAvgRedRun;
+                    }
+                    historicScore = histTeamdata.concedeBothHalvesScore;
+                    break;
+                case 'No Win Both Halves':
+                    if (histTeamdata.winBothHalvesMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.winBothHalvesMaxRedRun;
+                    }
+                    if (histTeamdata.winBothHalvesAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.winBothHalvesAvgRedRun;
+                    }
+                    historicScore = histTeamdata.winBothHalvesScore;
+                    break;
+                case 'No Win && +2.5 Goals':
+                    if (histTeamdata.winAndGoalsMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.winAndGoalsMaxRedRun;
+                    }
+                    if (histTeamdata.winAndGoalsAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.winAndGoalsAvgRedRun;
+                    }
+                    historicScore = histTeamdata.winAndGoalsScore;
+                    break;
+                case 'No 2HT > 1HT':
+                    if (histTeamdata.secondHalfBiggerMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.secondHalfBiggerMaxRedRun;
+                    }
+                    if (histTeamdata.secondHalfBiggerAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.secondHalfBiggerAvgRedRun;
+                    }
+                    historicScore = histTeamdata.secondHalfBiggerScore;
+                    break;
+                case 'Win 1HT':
+                    if (histTeamdata.noWinFirstHalfMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.noWinFirstHalfMaxRedRun;
+                    }
+                    if (histTeamdata.noWinFirstHalfAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.noWinFirstHalfAvgRedRun;
+                    }
+                    historicScore = histTeamdata.noWinFirstHalfScore;
+                    break;
+                case 'No Win 1HT':
+                    if (histTeamdata.winFirstHalfMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.winFirstHalfMaxRedRun;
+                    }
+                    if (histTeamdata.winFirstHalfAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.winFirstHalfAvgRedRun;
+                    }
+                    historicScore = histTeamdata.winFirstHalfScore;
+                    break;
+                default:
+                    break;
+            }
+            addTeamDiv(teamData[0], teamData[1], streakType, minStreak, historicMaxRedRun, historicScore);
         }
-        addTeamDiv(teamData[0], teamData[1], streakType, minStreak, historicMaxRedRun, historicScore);
     });
 }
 
@@ -355,7 +357,6 @@ function addTeamDiv(teamName, teamData, streakType, minStreak, historicMaxRedRun
         if ((teamData[streakType + 'MainComp'] >= historicMaxRedRun-2 || teamData[streakType + 'AllComps'] >= historicMaxRedRun-2) && (historicScore.includes('EXCE') || historicScore.includes('ACCEP'))) {
             backgroundStyle = 'style="background-color: #f0fdca;"';
         }
-        console.log(teamData);
         $(document).ready(function() {
         $('#footballTableStreaks').append(
             '<tr '+ backgroundStyle +'>' +
