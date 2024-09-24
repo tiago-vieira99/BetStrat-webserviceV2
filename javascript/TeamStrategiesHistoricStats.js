@@ -91,7 +91,9 @@ function setScoreValuesInfo() {
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.winsScore)+';"> Wins: '+ teamElem.winsScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.secondHalfBiggerScore)+';"> SecondHalfBigger: '+ teamElem.secondHalfBiggerScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.winAndGoalsScore)+';"> WinsAndGoals: '+ teamElem.winAndGoalsScore +'   | </span> ' +
-          '<span style="background-color: '+ setStatsBackgroundColor(teamElem.winBothHalvesScore)+';"> WinBothHalves: '+ teamElem.winBothHalvesScore +'   | </span> ';
+          '<span style="background-color: '+ setStatsBackgroundColor(teamElem.winBothHalvesScore)+';"> WinBothHalves: '+ teamElem.winBothHalvesScore +'   | </span> ' + 
+          '<span style="background-color: '+ setStatsBackgroundColor(teamElem.winFirstHalfScore)+';"> WinFirstHalf: '+ teamElem.winFirstHalfScore +'   | </span> ' +
+          '<span style="background-color: '+ setStatsBackgroundColor(teamElem.noWinFirstHalfScore)+';"> NoWinFirstHalf: '+ teamElem.noWinFirstHalfScore +'   | </span> ';
 }
 
 function setStatsBackgroundColor(score) {
@@ -156,6 +158,12 @@ function displayInfo() {
       break;
     case 'WinBothHalves':
       document.getElementById("scoreTextInfo").innerHTML = teamElem.winBothHalvesScore;
+      break;
+    case 'WinFirstHalf':
+      document.getElementById("scoreTextInfo").innerHTML = teamElem.winFirstHalfScore;
+      break;
+    case 'NoWinFirstHalf':
+      document.getElementById("scoreTextInfo").innerHTML = teamElem.noWinFirstHalfScore;
       break;
     default:
       console.log("no strategy available");
@@ -233,6 +241,14 @@ function addDataToTable(statsData) {
     case 'WinBothHalves':
       greensRate = statsData.winBothHalvesRate;
       totalGreens = statsData.numWinsBothHalves;
+      break;
+    case 'WinFirstHalf':
+      greensRate = statsData.winFirstHalfRate;
+      totalGreens = statsData.numWinsFirstHalf;
+      break;
+    case 'NoWinFirstHalf':
+      greensRate = statsData.noWinFirstHalfRate;
+      totalGreens = statsData.numNoWinsFirstHalf;
       break;
     default:
       console.log(`Sorry, we are out of ${expr}.`);

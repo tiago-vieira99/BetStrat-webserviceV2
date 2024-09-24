@@ -102,7 +102,7 @@ function changeHeadCell (value) {
             break;
         case 'No Clean Sheet':
             streakType = 'noCleanSheet';
-            minStreak = 5;
+            minStreak = 3;
             localStorage.setItem("strategySelected", 'CleanSheet');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
@@ -144,7 +144,7 @@ function changeHeadCell (value) {
             break;
         case 'Concede Both Halves':
             streakType = 'concedeBothHalves';
-            minStreak = 5;
+            minStreak = 3;
             localStorage.setItem("strategySelected", null);
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
@@ -170,6 +170,18 @@ function changeHeadCell (value) {
             streakType = 'no2HTFunny';
             minStreak = 4;
             localStorage.setItem("strategySelected", 'SecondHalfBigger');
+            document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
+            break;
+        case 'Win 1HT':
+            streakType = 'winFirstHalf';
+            minStreak = 4;
+            localStorage.setItem("strategySelected", 'noWinFirstHalf');
+            document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
+            break;
+        case 'No Win 1HT':
+            streakType = 'noWinFirstHalf';
+            minStreak = 4;
+            localStorage.setItem("strategySelected", 'winFirstHalf');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
         default:
@@ -311,6 +323,24 @@ function changeHeadCell (value) {
                 }
                 historicScore = histTeamdata.secondHalfBiggerScore;
                 break;
+            case 'Win 1HT':
+                if (histTeamdata.noWinFirstHalfMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.noWinFirstHalfMaxRedRun;
+                }
+                if (histTeamdata.noWinFirstHalfAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.noWinFirstHalfAvgRedRun;
+                }
+                historicScore = histTeamdata.noWinFirstHalfScore;
+                break;
+            case 'No Win 1HT':
+                if (histTeamdata.winFirstHalfMaxRedRun != null) {
+                    historicMaxRedRun = histTeamdata.winFirstHalfMaxRedRun;
+                }
+                if (histTeamdata.winFirstHalfAvgRedRun != null) {
+                    historicAvgRedRun = histTeamdata.winFirstHalfAvgRedRun;
+                }
+                historicScore = histTeamdata.winFirstHalfScore;
+                break;
             default:
                 break;
         }
@@ -325,6 +355,7 @@ function addTeamDiv(teamName, teamData, streakType, minStreak, historicMaxRedRun
         if ((teamData[streakType + 'MainComp'] >= historicMaxRedRun-2 || teamData[streakType + 'AllComps'] >= historicMaxRedRun-2) && (historicScore.includes('EXCE') || historicScore.includes('ACCEP'))) {
             backgroundStyle = 'style="background-color: #f0fdca;"';
         }
+        console.log(teamData);
         $(document).ready(function() {
         $('#footballTableStreaks').append(
             '<tr '+ backgroundStyle +'>' +

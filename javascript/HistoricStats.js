@@ -174,6 +174,18 @@ function filterTeams() {
         addTeamToTable("team" + team.id, team, team.winBothHalvesScore);
       });
       break;
+    case 'WinFirstHalf':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.winFirstHalfScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.winFirstHalfScore);
+      });
+      break;
+    case 'NoWinFirstHalf':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.noWinFirstHalfScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.noWinFirstHalfScore);
+      });
+      break;
     default:
       teamsSessionStorage.forEach(function(team) {    
         if (team.sport === "Football") {
