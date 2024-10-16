@@ -31,7 +31,7 @@ async function getHistoricData() {
       showLoadingIndicator();
 
       const result = await new Promise((resolve, reject) => {
-          readData("teams", function(result, error) {
+          readData("teams", null, function(result, error) {
               if (error) {
                   reject(error);
               } else {

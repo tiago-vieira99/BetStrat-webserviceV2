@@ -11,9 +11,18 @@ if (ONLY_DRAWS_ID == currentStrategy) {
   strategyPath = GOALS_FEST_PATH;
 }
 
+let matchesSessionStorage;
 const map1 = new Map();
 var count = 0;
-callGetAllMatchesInfo(strategyPath);
+var selectedSeason = document.querySelectorAll('#seasonSelect')[0].value;
+document.querySelectorAll('#seasonSelect')[0].addEventListener('change', function() {
+  selectedSeason = document.querySelectorAll('#seasonSelect')[0].value;
+  $('.all-matches-table').empty();
+  matchesArray = [];
+  init();
+});
+
+getAllMatches();
 var matches;
 var matchesArray = []
 // State
@@ -24,30 +33,75 @@ const currentPage = 1
 // Number of pages
 var numberOfPages = 1;
 
+function init() {
+  for (let [key, value] of matchesSessionStorage) {
+    if (value.season === selectedSeason || selectedSeason === 'all') {
+      if (value.betType != null) {
+        add25MatchLine(key, value);  
+      } else {
+        addMatchLine(key, value);
+      }
+    }
+  }
+  setTimeout(function() {
 
-setTimeout(function() {
+    numberOfPages = Math.ceil(matchesArray.length / numberPerPage);
+  
+    buildPage(1);
+    addBtnListeners();
+    buildPagination(currentPage);
+  
+    $('.paginator').on('click', 'button', function() {
+      var clickedPage = parseInt($(this).val())
+      buildPagination(clickedPage)
+      console.log(`Page clicked on ${clickedPage}`)
+      buildPage(clickedPage)
+    });
+  }, 500);
+}
 
-  numberOfPages = Math.ceil(matchesArray.length / numberPerPage);
+async function getAllMatches() {
+  try {
+      showLoadingIndicator();
 
-  buildPage(1);
-  addBtnListeners();
-  buildPagination(currentPage);
+      dateLimit = 24 * 60 * 60 * 1000; // 1 days in milliseconds
+      readData("allMatches"+strategyPath, dateLimit, function(result, error) {
+          if (error) {
+              alert("Error: " + error);
+              hideLoadingIndicator();
+              return;
+          }
 
-  $('.paginator').on('click', 'button', function() {
-    var clickedPage = parseInt($(this).val())
-    buildPagination(clickedPage)
-    console.log(`Page clicked on ${clickedPage}`)
-    buildPage(clickedPage)
-  });
-}, 4000);
+          matchesSessionStorage = result;
+          if (matchesSessionStorage != null && matchesSessionStorage.entries().toArray().length != 0) {
+              hideLoadingIndicator();
+              init();
+              return;
+          }
 
+          // If no data is found in the database, fetch it from the API
+          callGetAllMatchesInfo(strategyPath);
+          matchesSessionStorage = map1;
+      });
+
+  } catch (error) {
+      console.log("Error: " + error);
+      hideLoadingIndicator();
+  }
+}
+
+function showLoadingIndicator() {
+  document.getElementById("loading").classList.remove("hidden");
+}
+
+function hideLoadingIndicator() {
+  document.getElementById("loading").classList.add("hidden");
+}
 
 function addBtnListeners() {
   var allUpdateButtons = document.querySelectorAll('.updateBtn');
   var allDeleteButtons = document.querySelectorAll('.deleteBtn');
 
-  console.log("length: " + allUpdateButtons.length);
-  console.log("length: " + allDeleteButtons.length);
   for (var i = 0; i < allUpdateButtons.length; i++) {
     allUpdateButtons[i].addEventListener('click', function() {
       var matchId = getBtnId(this);
@@ -138,7 +192,6 @@ function match25BackgroundColor(match) {
 function buildPage(currPage) {
   const trimStart = (currPage - 1) * numberPerPage
   const trimEnd = trimStart + numberPerPage
-  console.log(trimStart, trimEnd)
   // console.log(matchesArray.slice(trimStart, trimEnd))
   $('.all-matches-table').empty().append(matchesArray.slice(trimStart, trimEnd))
   // $('.grid-uniform').empty().append(listArray.slice(trimStart, trimEnd));

@@ -9,7 +9,7 @@ async function getHistoricData() {
     try {
         showLoadingIndicator();
   
-        readData("teams", function(result, error) {
+        readData("teams", null, function(result, error) {
             if (error) {
                 console.log("Error: " + error);
                 hideLoadingIndicator();
@@ -84,7 +84,7 @@ function changeHeadCell (value) {
             break;
         case 'No Draws':
             streakType = 'noDraws';
-            minStreak = 7;
+            minStreak = 5;
             localStorage.setItem("strategySelected", 'Draw');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
@@ -354,7 +354,9 @@ function addTeamDiv(teamName, teamData, streakType, minStreak, historicMaxRedRun
     localStorage.removeItem("seasonsList")
     if (teamData[streakType + 'MainComp'] >= minStreak || teamData[streakType + 'AllComps'] >= minStreak) {
         var backgroundStyle = '';
-        if ((teamData[streakType + 'MainComp'] >= historicMaxRedRun-2 || teamData[streakType + 'AllComps'] >= historicMaxRedRun-2) && (historicScore.includes('EXCE') || historicScore.includes('ACCEP'))) {
+        if ((teamData[streakType + 'MainComp'] >= historicMaxRedRun || teamData[streakType + 'AllComps'] >= historicMaxRedRun) && (historicScore.includes('EXCE') || historicScore.includes('ACCEP'))) {
+            backgroundStyle = 'style="background-color: #59eb6c;"';
+        } else if ((teamData[streakType + 'MainComp'] >= historicMaxRedRun-2 || teamData[streakType + 'AllComps'] >= historicMaxRedRun-2) && (historicScore.includes('EXCE') || historicScore.includes('ACCEP'))) {
             backgroundStyle = 'style="background-color: #f0fdca;"';
         }
         $(document).ready(function() {

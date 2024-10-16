@@ -57,7 +57,7 @@ function storeData(key, data) {
 }
 
 // Helper function to retrieve data
-function readData(id, callback) {
+function readData(id, dateLimit, callback) {
     openDatabase().then(db => {
         const transaction = db.transaction(["data"]);
         const objectStore = transaction.objectStore("data");
@@ -71,15 +71,17 @@ function readData(id, callback) {
         request.onsuccess = function(event) {
             const result = event.target.result;
             const now = Date.now();
-            const twoDaysInMs = 2 * 24 * 60 * 60 * 1000; // 2 days in milliseconds
+            if (dateLimit === null) {
+                dateLimit = 2 * 24 * 60 * 60 * 1000; // 2 days in milliseconds
+            }
 
             if (result) {
                 const lastUpdated = result.lastUpdated || 0;
-                if (now - lastUpdated > twoDaysInMs){
-                    console.log();("Data is older than 2 days!!");
+                if (now - lastUpdated > dateLimit){
+                    console.log();("Data is older than dateLimit!!");
                     callback(null, null); // return result as null
                 } else {
-                    console.log();("Data is less than 2 days old :)");
+                    console.log();("Data is less than dateLimit :)");
                     callback(result.value, null); // return result value
                 }
             } else {

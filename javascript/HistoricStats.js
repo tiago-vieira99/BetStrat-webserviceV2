@@ -7,7 +7,7 @@ async function getHistoricData() {
   try {
       showLoadingIndicator();
 
-      readData("teams", function(result, error) {
+      readData("teams", null, function(result, error) {
           if (error) {
               console.log("Error: " + error);
               hideLoadingIndicator();

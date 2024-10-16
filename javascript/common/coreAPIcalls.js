@@ -111,40 +111,65 @@ function callGetNumMatchesBySeason(stratPath, season) {
 //---------------------------       ALL MATCHES PAGE CALLS     ------------------------------
 //-------------------------------------------------------------------------------------------
 
-function callGetAllMatchesInfo(stratPath) {
-  fetch("http://" + API_URL + "/api/betstrat/" + stratPath + "/matches")
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(resp) {
-      matches = resp;
+async function callGetAllMatchesInfo(stratPath) {
+  try {
+    const response = await fetch("http://" + API_URL + "/api/betstrat/" + stratPath + "/matches");
+    const resp = await response.json();
 
-      matches.sort(function(a, b) {
-        var matchDateA = a.date.split('/');
-        var matchDateB = b.date.split('/');
+    matches = resp;
 
-        var dateA = Date.parse(matchDateA[1].concat('/',matchDateA[0],'/',matchDateA[2])),
-          dateB = Date.parse(matchDateB[1].concat('/',matchDateB[0],'/',matchDateB[2]))
-        if (dateA > dateB) return -1;
-        if (dateA < dateB) return 1;
-        return 0;
-      });
-      matches.forEach(function(match) {
-        var idMatch = "idmatch" + count++;
-        map1.set(idMatch, match);
-        if (match.betType != null) {
-          add25MatchLine(idMatch, match);  
-        } else {
-          addMatchLine(idMatch, match);
-        }
-      });
+    matches.sort(function(a, b) {
+      var matchDateA = a.date.split('/');
+      var matchDateB = b.date.split('/');
 
-      console.log(map1.size);
-
-    })
-    .catch(function(error) {
-      console.log("Error: " + error);
+      var dateA = Date.parse(matchDateA[1].concat('/',matchDateA[0],'/',matchDateA[2])),
+        dateB = Date.parse(matchDateB[1].concat('/',matchDateB[0],'/',matchDateB[2]))
+      if (dateA > dateB) return -1;
+      if (dateA < dateB) return 1;
+      return 0;
     });
+    matches.forEach(function(match) {
+      var idMatch = "idmatch" + count++;
+      map1.set(idMatch, match);
+    });
+    storeData("allMatches"+stratPath, map1);
+    init();
+    hideLoadingIndicator();
+  } catch (error) {
+      console.log("Error fetching data from API: " + error);
+      hideLoadingIndicator();
+  }
+  // await fetch("http://" + API_URL + "/api/betstrat/" + stratPath + "/matches")
+  //   .then(async function(response) {
+  //     return await response.json();
+  //   })
+  //   .then(async function(resp) {
+  //     matches = resp;
+
+  //     matches.sort(function(a, b) {
+  //       var matchDateA = a.date.split('/');
+  //       var matchDateB = b.date.split('/');
+
+  //       var dateA = Date.parse(matchDateA[1].concat('/',matchDateA[0],'/',matchDateA[2])),
+  //         dateB = Date.parse(matchDateB[1].concat('/',matchDateB[0],'/',matchDateB[2]))
+  //       if (dateA > dateB) return -1;
+  //       if (dateA < dateB) return 1;
+  //       return 0;
+  //     });
+  //     await matches.forEach(function(match) {
+  //       var idMatch = "idmatch" + count++;
+  //       map1.set(idMatch, match);
+  //       if (match.betType != null) {
+  //         add25MatchLine(idMatch, match);  
+  //       } else {
+  //         addMatchLine(idMatch, match);
+  //       }
+  //     });
+
+  //   })
+  //   .catch(function(error) {
+  //     console.log("Error: " + error);
+  //   });
 }
 
 function callPutUpdateMatch(stratPath, matchId, ftResult) {
