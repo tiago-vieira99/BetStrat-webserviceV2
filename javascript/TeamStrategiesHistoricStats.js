@@ -83,6 +83,7 @@ function setScoreValuesInfo() {
           //'<span style="background-color: '+ setStatsBackgroundColor(teamElem.flipFlopScore)+';"> FlipFlop: '+ teamElem.flipFlopScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.goalsFestScore)+';"> GoalsFest: '+ teamElem.goalsFestScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.marginWinsScore)+';"> WinsMargin: '+ teamElem.marginWinsScore +'   | </span> ' +
+          '<span style="background-color: '+ setStatsBackgroundColor(teamElem.marginWinsHomeScore)+';"> WinsMarginHome: '+ teamElem.marginWinsHomeScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.noBttsScore)+';"> NoBtts: '+ teamElem.noBttsScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.noGoalsFestScore)+';"> NoGoalsFest: '+ teamElem.noGoalsFestScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.noWinsScore)+';"> NoWins: '+ teamElem.noWinsScore +'   | </span> ' +
@@ -116,6 +117,9 @@ function displayInfo() {
   switch (strategy) {
     case 'WinsMargin':
       document.getElementById("scoreTextInfo").innerHTML = teamElem.marginWinsScore;
+      break;
+    case 'WinsMarginHome':
+      document.getElementById("scoreTextInfo").innerHTML = teamElem.marginWinsHomeScore;
       break;
     case 'WinAndGoals':
       document.getElementById("scoreTextInfo").innerHTML = teamElem.winAndGoalsScore;
@@ -183,6 +187,10 @@ function addDataToTable(statsData) {
   console.log(statsData);
   switch (strategy) {
     case 'WinsMargin':
+      greensRate = statsData.marginWinsRate;
+      totalGreens = statsData.numMarginWins;
+      break;
+    case 'WinsMarginHome':
       greensRate = statsData.marginWinsRate;
       totalGreens = statsData.numMarginWins;
       break;

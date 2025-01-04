@@ -89,6 +89,12 @@ function filterTeams() {
         addTeamToTable("team" + team.id, team, team.marginWinsScore);
       });
       break;
+    case 'WinsMarginHome':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.marginWinsHomeScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.marginWinsHomeScore);
+      });
+      break;
     case 'WinAndGoals':
       let filteredTeams1 = teamsSessionStorage.filter(team => team.sport === 'Football' && team.winAndGoalsScore.includes(score));
       console.log(filteredTeams1);
