@@ -164,7 +164,7 @@ function changeHeadCell (value) {
             streakType = 'noWinAnd25Goals';
             minStreak = 5;
             localStorage.setItem("strategySelected", 'WinAndGoals');
-            document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
+            document.getElementById('longStreaksHeadCell').innerHTML = value + ' || min: ' + minStreak
             break;
         case 'No 2HT > 1HT':
             streakType = 'no2HTFunny';
@@ -203,6 +203,8 @@ function changeHeadCell (value) {
         historicScore = '';
 
         if (histTeamdata != undefined) {
+            //console.log(histTeamdata);
+            
             switch(value) {
                 case 'Wins':
                     if (histTeamdata.noWinsMaxRedRun != null) {
@@ -369,20 +371,47 @@ function addTeamDiv(teamName, teamData, streakType, minStreak, historicMaxRedRun
     localStorage.removeItem("seasonsList")
     if (teamData[streakType + 'MainComp'] >= minStreak || teamData[streakType + 'AllComps'] >= minStreak) {
         var backgroundStyle = '';
-        if ((teamData[streakType + 'MainComp'] >= historicMaxRedRun || teamData[streakType + 'AllComps'] >= historicMaxRedRun) && (historicScore.includes('EXCE') || historicScore.includes('ACCEP'))) {
+        if ((teamData[streakType + 'MainComp'] >= historicMaxRedRun + 3 || teamData[streakType + 'AllComps'] >= historicMaxRedRun + 3) && (historicScore.includes('EXCE') || historicScore.includes('ACCEP'))) {
+            backgroundStyle = 'style="background-color:rgb(237, 170,125);"';
+            appendVisibleLongStreaks(teamData, teamName, historicMaxRedRun, backgroundStyle, historicScore);
+        } else if ((teamData[streakType + 'MainComp'] >= historicMaxRedRun || teamData[streakType + 'AllComps'] >= historicMaxRedRun) && (historicScore.includes('EXCE') || historicScore.includes('ACCEP'))) {
             backgroundStyle = 'style="background-color: #59eb6c;"';
+            appendVisibleLongStreaks(teamData, teamName, historicMaxRedRun, backgroundStyle, historicScore);
         } else if ((teamData[streakType + 'MainComp'] >= historicMaxRedRun-2 || teamData[streakType + 'AllComps'] >= historicMaxRedRun-2) && (historicScore.includes('EXCE') || historicScore.includes('ACCEP'))) {
             backgroundStyle = 'style="background-color: #f0fdca;"';
-        }
-        $(document).ready(function() {
+            appendVisibleLongStreaks(teamData, teamName, historicMaxRedRun, backgroundStyle, historicScore);
+        } else {
+            appendHiddenLongStreaks(teamData, teamName, historicMaxRedRun, historicScore);
+        }        
+    }
+  }
+
+  function appendVisibleLongStreaks(teamData, teamName, historicMaxRedRun, backgroundStyle, historicScore) {
+    $(document).ready(function() {
         $('#footballTableStreaks').append(
             '<tr '+ backgroundStyle +'>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a target="_blank" rel="noopener noreferrer" href="TeamStrategiesHistoricStats.html?team'+teamData['teamID']+'&' + teamName + '" style="color: #4f72d3; text-decoration: underline; font-weight: bold">📖</a></td>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a target="_blank" rel="noopener noreferrer" href="TeamHistoricMatches.html?teamId=team'+teamData['teamID']+'&team=' + teamName + '&season=2024-25" style="color: #4f72d3; text-decoration: underline; font-weight: bold">' + teamName + '</a></td>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData['position'] + ' </td>' +
             '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData[streakType + 'MainComp'] + ' </td>' +
-            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData[streakType + 'AllComps'] + ' </td></tr>'
+            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData[streakType + 'AllComps'] + ' </td>' +
+            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + historicMaxRedRun + ' </td>' +
+            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + historicScore + ' </td></tr>'
         );
         });
-    }
+  }
+
+  function appendHiddenLongStreaks(teamData, teamName, historicMaxRedRun, historicScore) {
+    $(document).ready(function() {
+        $('#footballTableStreaks').append(
+            '<tr class="hidden-row" style="display: none;">' +
+            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a target="_blank" rel="noopener noreferrer" href="TeamStrategiesHistoricStats.html?team'+teamData['teamID']+'&' + teamName + '" style="color: #4f72d3; text-decoration: underline; font-weight: bold">📖</a></td>' +
+            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a target="_blank" rel="noopener noreferrer" href="TeamHistoricMatches.html?teamId=team'+teamData['teamID']+'&team=' + teamName + '&season=2024-25" style="color: #4f72d3; text-decoration: underline; font-weight: bold">' + teamName + '</a></td>' +
+            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData['position'] + ' </td>' +
+            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData[streakType + 'MainComp'] + ' </td>' +
+            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + teamData[streakType + 'AllComps'] + ' </td>' +
+            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + historicMaxRedRun + ' </td>' +
+            '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> ' + historicScore + ' </td></tr>'
+        );
+        });
   }

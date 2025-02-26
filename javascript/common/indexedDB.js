@@ -72,7 +72,7 @@ function readData(id, dateLimit, callback) {
             const result = event.target.result;
             const now = Date.now();
             if (dateLimit === null) {
-                dateLimit = 2;//2 * 24 * 60 * 60 * 1000; // 2 days in milliseconds
+                dateLimit = 2 * 24 * 60 * 60 * 1000; // 2 days in milliseconds
             }
 
             if (result) {
