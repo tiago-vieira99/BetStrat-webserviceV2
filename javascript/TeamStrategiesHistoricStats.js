@@ -78,6 +78,7 @@ function hideLoadingIndicator() {
 function setScoreValuesInfo() {
   document.getElementById("scoreValuesInfo").innerHTML = '<span style="background-color: '+ setStatsBackgroundColor(teamElem.drawsHunterScore)+';"> Draws: '+ teamElem.drawsHunterScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.bttsScore)+';"> Btts: '+ teamElem.bttsScore +'   | </span> ' +
+          '<span style="background-color: '+ setStatsBackgroundColor(teamElem.bttsOneHalfScore)+';"> BttsOneHalf: '+ teamElem.bttsOneHalfScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.cleanSheetScore)+';"> CleanSheet: '+ teamElem.cleanSheetScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.euroHandicapScore)+';"> EuroHandicap: '+ teamElem.euroHandicapScore +'   | </span> ' +
           //'<span style="background-color: '+ setStatsBackgroundColor(teamElem.flipFlopScore)+';"> FlipFlop: '+ teamElem.flipFlopScore +'   | </span> ' +
@@ -91,6 +92,7 @@ function setScoreValuesInfo() {
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.concedeBothHalvesScore)+';"> ConcedeBothHalves: '+ teamElem.concedeBothHalvesScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.winsScore)+';"> Wins: '+ teamElem.winsScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.secondHalfBiggerScore)+';"> SecondHalfBigger: '+ teamElem.secondHalfBiggerScore +'   | </span> ' +
+          '<span style="background-color: '+ setStatsBackgroundColor(teamElem.firstHalfBiggerScore)+';"> FirstHalfBigger: '+ teamElem.firstHalfBiggerScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.winAndGoalsScore)+';"> WinsAndGoals: '+ teamElem.winAndGoalsScore +'   | </span> ' +
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.winBothHalvesScore)+';"> WinBothHalves: '+ teamElem.winBothHalvesScore +'   | </span> ' + 
           '<span style="background-color: '+ setStatsBackgroundColor(teamElem.winFirstHalfScore)+';"> WinFirstHalf: '+ teamElem.winFirstHalfScore +'   | </span> ' +
@@ -130,6 +132,9 @@ function displayInfo() {
     case 'Btts':
       document.getElementById("scoreTextInfo").innerHTML = teamElem.bttsScore;
       break;
+    case 'BttsOneHalf':
+      document.getElementById("scoreTextInfo").innerHTML = teamElem.bttsOneHalfScore;
+      break;
     case 'Draw':
       document.getElementById("scoreTextInfo").innerHTML = teamElem.drawsHunterScore;
       break;
@@ -159,6 +164,9 @@ function displayInfo() {
       break;
     case 'SecondHalfBigger':
       document.getElementById("scoreTextInfo").innerHTML = teamElem.secondHalfBiggerScore;
+      break;
+    case 'FirstHalfBigger':
+      document.getElementById("scoreTextInfo").innerHTML = teamElem.firstHalfBiggerScore;
       break;
     case 'WinBothHalves':
       document.getElementById("scoreTextInfo").innerHTML = teamElem.winBothHalvesScore;
@@ -206,6 +214,10 @@ function addDataToTable(statsData) {
       greensRate = statsData.bttsRate;
       totalGreens = statsData.numBtts;
       break;
+    case 'BttsOneHalf':
+      greensRate = statsData.bttsOneHalfRate;
+      totalGreens = statsData.numBttsOneHalf;
+      break;
     case 'Draw':
       greensRate = statsData.drawRate;
       totalGreens = statsData.numDraws;
@@ -245,6 +257,10 @@ function addDataToTable(statsData) {
     case 'SecondHalfBigger':
       greensRate = statsData.secondHalfBiggerRate;
       totalGreens = statsData.numScondHalfBigger;
+      break;
+    case 'FirstHalfBigger':
+      greensRate = statsData.firstHalfBiggerRate;
+      totalGreens = statsData.numFirstHalfBigger;
       break;
     case 'WinBothHalves':
       greensRate = statsData.winBothHalvesRate;

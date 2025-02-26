@@ -172,6 +172,12 @@ function changeHeadCell (value) {
             localStorage.setItem("strategySelected", 'SecondHalfBigger');
             document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
             break;
+        case 'No 1HT > 2HT':
+            streakType = 'no1HTFunny';
+            minStreak = 3;
+            localStorage.setItem("strategySelected", 'FirstHalfBigger');
+            document.getElementById('longStreaksHeadCell').innerHTML = value + ' | min: ' + minStreak
+            break;
         case 'Win 1HT':
             streakType = 'winFirstHalf';
             minStreak = 4;
@@ -323,6 +329,15 @@ function changeHeadCell (value) {
                         historicAvgRedRun = histTeamdata.secondHalfBiggerAvgRedRun;
                     }
                     historicScore = histTeamdata.secondHalfBiggerScore;
+                    break;
+                case 'No 1HT > 2HT':
+                    if (histTeamdata.firstHalfBiggerMaxRedRun != null) {
+                        historicMaxRedRun = histTeamdata.firstHalfBiggerMaxRedRun;
+                    }
+                    if (histTeamdata.firstHalfBiggerAvgRedRun != null) {
+                        historicAvgRedRun = histTeamdata.firstHalfBiggerAvgRedRun;
+                    }
+                    historicScore = histTeamdata.firstHalfBiggerScore;
                     break;
                 case 'Win 1HT':
                     if (histTeamdata.noWinFirstHalfMaxRedRun != null) {

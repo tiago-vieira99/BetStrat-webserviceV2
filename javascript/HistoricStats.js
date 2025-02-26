@@ -114,6 +114,12 @@ function filterTeams() {
         addTeamToTable("team" + team.id, team, team.bttsScore);
       });
       break;
+    case 'BttsOneHalf':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.bttsOneHalfScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.bttsOneHalfScore);
+      });
+      break;
     case 'Draw':
       filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.drawsHunterScore.includes(score));
       filteredTeams.forEach(function(team) {    
@@ -172,6 +178,12 @@ function filterTeams() {
       filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.secondHalfBiggerScore.includes(score));
       filteredTeams.forEach(function(team) {    
         addTeamToTable("team" + team.id, team, team.secondHalfBiggerScore);
+      });
+      break;
+    case 'FirstHalfBigger':
+      filteredTeams = teamsSessionStorage.filter(team => team.sport === 'Football' && team.firstHalfBiggerScore.includes(score));
+      filteredTeams.forEach(function(team) {    
+        addTeamToTable("team" + team.id, team, team.firstHalfBiggerScore);
       });
       break;
     case 'WinBothHalves':
