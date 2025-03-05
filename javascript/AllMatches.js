@@ -9,6 +9,10 @@ if (ONLY_DRAWS_ID == currentStrategy) {
   strategyPath = GOAL_LINES_PATH;
 } else if (GOALS_FEST_ID == currentStrategy) {
   strategyPath = GOALS_FEST_PATH;
+} else if (GOALS_FEST_KELLY_ID == currentStrategy) {
+  strategyPath = GOALS_FEST_KELLY_PATH;
+} else if (BTTS_ONE_HALF_KELLY_ID == currentStrategy) {
+  strategyPath = BTTS_ONE_HALF_KELLY_PATH;
 }
 
 let matchesSessionStorage;
@@ -36,10 +40,13 @@ var numberOfPages = 1;
 function init() {
   for (let [key, value] of matchesSessionStorage) {
     if (value.season === selectedSeason || selectedSeason === 'all') {
-      if (value.betType != null) {
-        add25MatchLine(key, value);  
-      } else {
-        addMatchLine(key, value);
+      console.log(value);
+      if (value.betType === 'GOALS_FEST' || value.betType === 'BTTS_ONE_HALF') {
+        addKellyMatchLine(key, value);
+      } else if (value.betType === 'MARGIN_WINS') {
+        addMatchLine(key, value);  
+      } else {  
+        add25MatchLine(key, value);
       }
     }
   }
@@ -144,6 +151,17 @@ function addMatchLine(idMatch, match) {
     '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.odd + '</td> ' +
     '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.stake + '</td> ' +
     '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.seqLevel + '</td> ' +
+    '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> <table>  <tr><td style="padding: 0px;"><input id="ftresult' + idMatch + '" type="text" placeholder="result" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white u-input-1" required="required" style="padding-top: 0; padding-bottom: 0; max-width: 70%;"></td> <td> <form><input class="updateBtn" type=button value="✔️" style="width:100%"></form></td> </tr></table></td> </tr>');
+}
+
+function addKellyMatchLine(idMatch, match) {
+  matchesArray.push('<tr id="' + idMatch + '" style=" background-color: '+matchBackgroundColor(match)+';"><td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> <form><input class="deleteBtn" type=button value="❌" style="max-width:80%; position: center;"></form> </td> ' +
+    '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.date + '</td> ' +
+    '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style="text-align: center;"><b>' + match.homeTeam + "&nbsp &nbsp - &nbsp &nbsp" + match.awayTeam + '</b></td> ' +
+    '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.ftresult + '</td> ' +
+    '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.odd + '</td> ' +
+    '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.stake + '</td> ' +
+    '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + match.bankrollPercentage + '</td> ' +
     '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"> <table>  <tr><td style="padding: 0px;"><input id="ftresult' + idMatch + '" type="text" placeholder="result" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white u-input-1" required="required" style="padding-top: 0; padding-bottom: 0; max-width: 70%;"></td> <td> <form><input class="updateBtn" type=button value="✔️" style="width:100%"></form></td> </tr></table></td> </tr>');
 }
 

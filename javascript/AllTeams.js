@@ -16,7 +16,7 @@ var currStake;
 
 setTimeout(function() {
   addBtnListeners();
-}, 5000);
+}, 15000);
 
 function addBtnListeners() {
   var allarchiveButtons = document.querySelectorAll('.archiveBtn');

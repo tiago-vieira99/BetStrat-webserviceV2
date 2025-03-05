@@ -14,6 +14,10 @@ function callGetSeqInfo(stratPath) {
       $("#nummatches-stat").text(myJson.numMatchesPlayed);
       $("#numoversunders-stat").text(myJson.numOvers + "/" + myJson.numUnders);
       $("#stratdescription").text(myJson.description)
+
+      if (stratPath == GOALS_FEST_KELLY_PATH || stratPath == BTTS_ONE_HALF_KELLY_PATH) {
+        callGetNumMatchesBySeason(stratPath, "all");
+      }
     })
     .catch(function(error) {
       console.log("Error: " + error);
@@ -73,13 +77,6 @@ function callGetStatsInfoBySeason(stratPath, season) {
         }
       });
 
-      callGetNumMatchesBySeason(stratPath, season);
-      var successRate = (greenTeams / filteredTeams.length)*100;
-      setTimeout(function() {
-        $("#balance-stat").text(totalBalance.toString().slice(0, 5) + "€");
-        $("#numteams-stat").text(filteredTeams.length);
-        $("#success-stat").text(successRate.toString().slice(0, 5) + "%");
-      }, 720);
     }) 
     .catch(function(error) {
       console.log("Error: " + error);
@@ -101,6 +98,45 @@ function callGetNumMatchesBySeason(stratPath, season) {
         }
       });
       $("#nummatches-stat").text(filteredMatches.length);
+
+      if (stratPath == GOALS_FEST_KELLY_PATH || stratPath == BTTS_ONE_HALF_KELLY_PATH) {
+        var filteredMatches = [];
+        var greenTeams = 0;
+        var totalBalance = 0;
+        var totalInvested = 0;
+        if (season != "all") {
+          var monthYear = season.split('-')[1] + '/' + season.split('-')[0]
+          console.log(monthYear);
+          
+          allMatches.forEach(function(match) {          
+            if (match.date.includes(monthYear)) {
+              filteredMatches.push(match);
+              totalInvested = totalInvested + match.stake;
+              totalBalance = totalBalance + match.balance;
+
+              if (match.balance > 0) {
+                greenTeams++;
+              }
+            }
+          });
+          var successRate = (greenTeams / filteredMatches.length)*100;
+          var roi = 100*totalBalance/totalInvested;
+          $("#roi-stat").text(roi.toString().slice(0, 5) + "%");
+          $("#balance-stat").text(totalBalance.toString().slice(0, 5) + "€");
+          $("#success-stat").text(successRate.toString().slice(0, 5) + "%");
+          $("#nummatches-stat").text(filteredMatches.length);
+        } else {
+          var totalInvested = 0;
+          var totalBalance = 0;
+          allMatches.forEach(function(match) {
+            totalInvested = totalInvested + match.stake;
+            totalBalance = totalBalance + match.balance;
+          });
+          var roi = 100*totalBalance/totalInvested;
+          $("#roi-stat").text(roi.toString().slice(0, 5) + "%");
+          $("#nummatches-stat").text(allMatches.length);
+        }
+      }
     }) 
     .catch(function(error) {
       console.log("Error: " + error);
@@ -404,7 +440,11 @@ function callPostNewMatch(stratPath, match) {
       if (data.status) {
         modalBox("Error", "<p>" + data.error + "</p><p>" + data.message + "</p>");
       } else {
-        modalBox("New Match", "<p><b>Stake:</b> " + data.stake + "</p><p><b>SeqLevel:</b> " + data.seqLevel + "</p>");
+        if (data.betType == 'GOALS_FEST' || data.betType == 'BTTS_ONE_HALF') {
+          modalBox("New Match", "<p><b>Stake:</b> " + data.stake + "</p><p><b>Bankroll %:</b> " + data.bankrollPercentage + "</p>");
+        } else {
+          modalBox("New Match", "<p><b>Stake:</b> " + data.stake + "</p><p><b>SeqLevel:</b> " + data.seqLevel + "</p>");
+        }
         console.log(data);
       }
     })
