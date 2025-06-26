@@ -15,7 +15,7 @@ function callGetSeqInfo(stratPath) {
       $("#numoversunders-stat").text(myJson.numOvers + "/" + myJson.numUnders);
       $("#stratdescription").text(myJson.description)
 
-      if (stratPath == GOALS_FEST_KELLY_PATH || stratPath == BTTS_ONE_HALF_KELLY_PATH) {
+      if (stratPath == GOALS_FEST_KELLY_PATH || stratPath == BTTS_ONE_HALF_KELLY_PATH || stratPath == OVER_25_KELLY_PATH) {
         callGetNumMatchesBySeason(stratPath, "all");
       }
     })
@@ -99,7 +99,7 @@ function callGetNumMatchesBySeason(stratPath, season) {
       });
       $("#nummatches-stat").text(filteredMatches.length);
 
-      if (stratPath == GOALS_FEST_KELLY_PATH || stratPath == BTTS_ONE_HALF_KELLY_PATH) {
+      if (stratPath == GOALS_FEST_KELLY_PATH || stratPath == BTTS_ONE_HALF_KELLY_PATH || stratPath == OVER_25_KELLY_PATH) {
         var filteredMatches = [];
         var greenTeams = 0;
         var totalBalance = 0;
@@ -398,7 +398,7 @@ function callInsertNewTeam(url) {
 
 function callGetNextMatches(stratPath) {
   fetch("http://" + API_URL + "/api/betstrat/" + stratPath + "/nextmatches")
-    .then(function(response) {
+    .then(function(response) {      
       return response.json();
     })
     .then(function(resp) {

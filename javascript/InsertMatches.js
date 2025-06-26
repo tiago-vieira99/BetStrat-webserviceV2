@@ -11,6 +11,8 @@ if (ONLY_DRAWS_ID == currentStrategy) {
   strategyPath = GOALS_FEST_KELLY_PATH;
 } else if (BTTS_ONE_HALF_KELLY_ID == currentStrategy) {
   strategyPath = BTTS_ONE_HALF_KELLY_PATH;
+} else if (OVER_25_KELLY_ID == currentStrategy) {
+  strategyPath = OVER_25_KELLY_PATH;
 }
 
 const map1 = new Map();
@@ -87,6 +89,8 @@ function insertMatchManually(strategyPath) {
     newMatch.set("betType", "BTTS_ONE_HALF")
   } else if (MARGIN_WINS_ID == currentStrategy) {
     newMatch.set("betType", "MARGIN_WINS")
+  } else if (OVER_25_KELLY_ID == currentStrategy) {
+    newMatch.set("betType", "OVER_25")
   }
 
   callPostNewMatch(strategyPath, (Object.fromEntries(newMatch)));

@@ -17,9 +17,11 @@ setTimeout(function () {
 
   addBtnListeners();
 
-}, 2000);
+}, 5000);
 
 function addBtnListeners() {
+  console.log("listeners added!");
+  
   var allUpdateButtons = document.querySelectorAll('.updateBetBtn');
   var allDeleteButtons = document.querySelectorAll('.deleteBetBtn');
 

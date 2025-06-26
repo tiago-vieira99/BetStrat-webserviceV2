@@ -13,6 +13,8 @@ if (ONLY_DRAWS_ID == currentStrategy) {
   strategyPath = GOALS_FEST_KELLY_PATH;
 } else if (BTTS_ONE_HALF_KELLY_ID == currentStrategy) {
   strategyPath = BTTS_ONE_HALF_KELLY_PATH;
+} else if (OVER_25_KELLY_ID == currentStrategy) {
+  strategyPath = OVER_25_KELLY_PATH;
 }
 
 let matchesSessionStorage;
@@ -41,7 +43,7 @@ function init() {
   for (let [key, value] of matchesSessionStorage) {
     if (value.season === selectedSeason || selectedSeason === 'all') {
       console.log(value);
-      if (value.betType === 'GOALS_FEST' || value.betType === 'BTTS_ONE_HALF') {
+      if (value.betType === 'GOALS_FEST' || value.betType === 'BTTS_ONE_HALF' || value.betType === 'OVER_25') {
         addKellyMatchLine(key, value);
       } else if (value.betType === 'MARGIN_WINS') {
         addMatchLine(key, value);  
@@ -71,7 +73,7 @@ async function getAllMatches() {
   try {
       showLoadingIndicator();
 
-      dateLimit = 24 * 60 * 60 * 1000; // 1 days in milliseconds
+      dateLimit = 1;//24 * 60 * 60 * 1000; // 1 days in milliseconds
       readData("allMatches"+strategyPath, dateLimit, function(result, error) {
           if (error) {
               alert("Error: " + error);

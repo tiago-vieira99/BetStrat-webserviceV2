@@ -6,25 +6,25 @@
   <meta charset="utf-8">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <title>Margin Wins</title>
+  <title>OVER 2.5</title>
   <link rel="icon" type="image/x-icon" href="images/favicon-logo-no-background.png">
   <link rel="stylesheet" href="css/nicepage.css" media="screen">
   <link rel="stylesheet" href="css/StrategyPage.css" media="screen">
   <script class="u-script" type="text/javascript" src="javascript/jquery.js" "="" defer=""></script>
     <script class=" u-script" type="text/javascript" src="javascript/nicepage.js" "="" defer=""></script>
     <script class=" u-script" type="text/javascript" src="javascript/common/constants.js" defer=""></script>
-    <script type="text/javascript">
-      var currentStrategy = 2;
-    </script>
-      <link rel="stylesheet" href="css/modalDialogBox.css" media="screen">
-      <script class="u-script" type="text/javascript" src="javascript/common/modalDialogBox.js" defer=""></script>
-  <script class="u-script" type="text/javascript" src="javascript/common/coreAPIcalls.js" defer=""></script>
+  <script type="text/javascript">
+    var currentStrategy = 9;
+    var strategyPath = "jjj";
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script class="u-script" type="text/javascript" src="javascript/MarginWins.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="javascript/common/coreAPIcalls.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="javascript/Over25Kelly.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="javascript/common/moment.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="javascript/InsertMatches.js" defer=""></script>
-  <script class="u-script" type="text/javascript" src="javascript/AllTeams.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="javascript/header.js" defer=""></script>
+  <link rel="stylesheet" href="css/modalDialogBox.css" media="screen">
+  <script class="u-script" type="text/javascript" src="javascript/common/modalDialogBox.js" defer=""></script>
   <meta name=" generator" content="Nicepage 4.16.0, nicepage.com">
   <link id="u-theme-google-font" rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -39,7 +39,7 @@
 		"logo": "images/logo-no-background.png"
 }</script>
   <meta name="theme-color" content="#efa69d">
-  <meta property="og:title" content="Margin Wins">
+  <meta property="og:title" content="OVER 2.5">
   <meta property="og:description" content="">
   <meta property="og:type" content="website">
 </head>
@@ -63,9 +63,8 @@
     </style>
   </header>
   <section class="u-align-center u-clearfix u-grey-10 u-section-1" id="sec-e6e8">
-    <div class="u-clearfix u-sheet u-sheet-1"
-      style="max-width:55%; max-height:55%; margin-top: 7%; margin-bottom: 5%;">
-      <h4 class="u-text u-text-default u-text-1" style="text-shadow: none; text-align: center; margin-bottom: 4%;">Margin Wins</h4>
+    <div class="u-clearfix u-sheet u-sheet-1" style="max-width:55%; max-height:55%; margin-top: 7%; margin-bottom: 5%;">
+      <h4 class="u-text u-text-default u-text-1" style="text-shadow: none; text-align: center; margin-bottom: 4%;">Over 2.5 Goals Kelly</h4>
       <div class="u-border-1 u-border-grey-75 u-container-style u-group u-radius-30 u-shape-round u-white u-group-1">
         <div class="u-container-layout u-container-layout-1" style="
         padding-top: 20px;
@@ -73,27 +72,20 @@
         padding-right: 20px;
         padding-bottom: 0px;
         background-color: rgb(203, 216, 221, 0.2);">
-          <canvas id="graph" style="max-width:100%; max-height:100%;"></canvas>
+          <canvas id="graph"
+          style="max-width:100%; max-height:100%;display:unset; "></canvas>
           <form action="#" style="text-align: center; margin-top: 4%; margin-bottom: 4%;">
-            <label for="lang">Select Season</label>
-            <select id="seasonSelect">
+            <label for="lang">Select Month</label>
+            <select id="monthSelect">
               <option value="all">All</option>
-              <option value="2021">2021</option>
-              <option value="2021-22">2021/22</option>
-              <option value="2022">2022</option>
-              <option value="2022-23">2022/23</option>
-              <option value="2023">2023</option>
-              <option value="2023-24">2023/24</option>
-              <option value="2024-25">2024/25</option>
-              <option value="2025">2025</option>
             </select>
           </form>
         </div>
       </div>
-      <div style="text-align: left; margin-bottom: -5%;">
+      <!-- <div style="text-align: left; margin-bottom: -5%;">
         <p>Description: </p>
         <p id="stratdescription" style="font-weight: unset;"></p>
-      </div>
+      </div> -->
     </div>
   </section>
   <section class="u-align-center u-clearfix u-palette-4-dark-2 u-section-2" id="sec-40f8">
@@ -123,11 +115,11 @@
           <div
             class="u-align-center-md u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-xl u-container-style u-list-item u-radius-50 u-repeater-item u-shape-round u-white u-list-item-3">
             <div class="u-container-layout u-similar-container u-valign-top-xl u-container-layout-3">
-              <img alt="" class="u-align-center u-image u-image-default u-image-3" src="images/files.png"
+              <img alt="" class="u-align-center u-image u-image-default u-image-3" src="images/progress.png"
                 data-image-width="512" data-image-height="512">
-              <h5 id="numteams-stat"
+              <h5 id="roi-stat"
                 class="u-align-center-lg u-align-center-xl u-text u-text-palette-3-dark-1 u-text-5"></h5>
-              <p class="u-align-center-lg u-align-center-xl u-custom-font u-font-raleway u-text u-text-6">Teams</p>
+              <p class="u-align-center-lg u-align-center-xl u-custom-font u-font-raleway u-text u-text-6">ROI</p>
             </div>
           </div>
           <div
@@ -175,35 +167,34 @@
   </script>
 
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-      <a onclick="newMatchManuallyModalBox(MARGIN_WINS_PATH)" style="margin-top: 30px;">Insert Match manually</a>
+      <a onclick="newKellyMatchManuallyModalBox(OVER_25_KELLY_PATH)" style="margin-top: 30px;">Insert Match manually</a>
       <div class="u-align-center u-list u-list-1">
-        <div class="u-repeater u-repeater-1">
-          <div class="u-container-style u-list-item u-repeater-item">
+        <!-- <div class="u-repeater u-repeater-1"> -->
+          <!-- <div class="u-container-style u-list-item u-repeater-item">
             <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-3">
-              <a onclick="newTeamModalBox(MARGIN_WINS_PATH)"
+              <a onclick="newTeamModalBox(GOALS_FEST_PATH)"
                 class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-font u-font-source-sans-pro u-hover-palette-3-dark-2 u-palette-3-dark-1 u-radius-50 u-btn-3">insert
                 team</a>
             </div>
-          </div>
+          </div> -->
           <div class="u-container-style u-list-item u-repeater-item">
             <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-2">
-              <a href="MW-All-Matches.html"
+              <a href="Over25-Kelly-All-Matches.html"
                 class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-font u-font-source-sans-pro u-hover-palette-3-dark-2 u-palette-3-dark-1 u-radius-50 u-btn-2">matches
                 history</a>
             </div>
           </div>
-          <div class="u-container-style u-list-item u-repeater-item">
+          <!-- <div class="u-container-style u-list-item u-repeater-item">
             <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-4">
-              <a href="MW-All-Teams.html"
+              <a href="GF-All-Teams.html"
                 class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-font u-font-source-sans-pro u-hover-palette-3-dark-2 u-palette-3-dark-1 u-radius-50 u-btn-4">list
                 teams</a>
             </div>
-          </div>
-        </div>
+          </div> -->
+        <!-- </div> -->
       </div>
     </div>
   </section>
-
 
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-be3e">
     <div class="u-clearfix u-sheet u-sheet-1">
