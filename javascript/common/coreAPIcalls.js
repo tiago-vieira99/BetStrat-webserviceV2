@@ -440,7 +440,7 @@ function callPostNewMatch(stratPath, match) {
       if (data.status) {
         modalBox("Error", "<p>" + data.error + "</p><p>" + data.message + "</p>");
       } else {
-        if (data.betType == 'GOALS_FEST' || data.betType == 'BTTS_ONE_HALF') {
+        if (data.betType == 'GOALS_FEST' || data.betType == 'BTTS_ONE_HALF' || data.betType == 'OVER_25') {
           modalBox("New Match", "<p><b>Stake:</b> " + data.stake + "</p><p><b>Bankroll %:</b> " + data.bankrollPercentage + "</p>");
         } else {
           modalBox("New Match", "<p><b>Stake:</b> " + data.stake + "</p><p><b>SeqLevel:</b> " + data.seqLevel + "</p>");
