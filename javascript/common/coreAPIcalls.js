@@ -414,7 +414,7 @@ function callGetNextMatches(stratPath) {
       matches.forEach(function(match) {
         var idMatch = "idmatch" + count++;
         map1.set(idMatch, match);
-        addMatchDiv(idMatch, match.date, match.homeTeam, match.awayTeam);
+        addMatchDiv(idMatch, match.date, match.homeTeam, match.awayTeam, match.competition);
       });
 
     })

@@ -66,7 +66,7 @@ function addTeamToTable(idTeam, team, admin, firstStake) {
     $(document).ready(function() {
       $('#archTeamsTable').append(
         '<tr id="' + idTeam + '" style="background-color: '+teamBackgroundColor(team.balance.toString().slice(0, 5))+';"><td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a style="color: black; font-weight: bold;" href="TeamInfoPage.html?'+idTeam+'&'+team.name+'&'+team.strategyID+'"><u>' + team.name + '</u></a></td>' +
-        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style="padding-top: 0; padding-bottom: 0; ' + checkLeftMatchesToPlayColor(team.numMatchesToPlay, team.name, team.admin) +'">' + team.numMatchesPlayed + ' / ' + team.numMatchesToPlay + '</td>' +
+        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style="padding-top: 0; padding-bottom: 0; ">' + team.numMatchesPlayed + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.season + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.oddAvg + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.balance.toString().slice(0, 5) + '</td>' +
@@ -79,7 +79,7 @@ function addTeamToTable(idTeam, team, admin, firstStake) {
       $('#disableTeamsTable').append(
         '<tr id="' + idTeam + '" style="background-color: '+teamBackgroundColor(team.balance.toString().slice(0, 5))+';"><td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a style="color: black; font-weight: bold;" href="TeamInfoPage.html?'+idTeam+'&'+team.name+'&'+team.strategyID+'"><u>' + team.name + '</u></a></td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><label class="switch"><input id="' + idTeam + '" onclick="toggleButton(this);"  type="checkbox" ' + admin + '><span class="slider round"></span></label></td>' +
-        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style= "padding-top: 0; padding-bottom: 0; ' + checkLeftMatchesToPlayColor(team.numMatchesToPlay, team.name, team.admin) +'">' + team.numMatchesPlayed + ' / ' + team.numMatchesToPlay + '</td>' +
+        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style= "padding-top: 0; padding-bottom: 0;">' + team.numMatchesPlayed + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.season + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.oddAvg + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.balance.toString().slice(0, 5) + '</td>' +
@@ -94,7 +94,7 @@ function addTeamToTable(idTeam, team, admin, firstStake) {
       $('#teamsTable').append(
         '<tr id="' + idTeam + '" style="background-color: '+teamBackgroundColor(team.balance.toString().slice(0, 5))+';"><td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a style="color: black; font-weight: bold;" href="TeamInfoPage.html?'+idTeam+'&'+team.name+'&'+team.strategyID+'"><u>' + team.name + '</u></a></td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><label class="switch"><input id="' + idTeam + '" onclick="toggleButton(this);"  type="checkbox" ' + admin + '><span class="slider round"></span></label></td>' +
-        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style="padding-top: 0; padding-bottom: 0; ' + checkLeftMatchesToPlayColor(team.numMatchesToPlay, team.name, team.admin) +'">' + team.numMatchesPlayed + ' / ' + team.numMatchesToPlay + '</td>' +
+        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style="padding-top: 0; padding-bottom: 0; ">' + team.numMatchesPlayed + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.season + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.oddAvg + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.balance.toString().slice(0, 5) + '</td>' +
@@ -112,7 +112,7 @@ function addTeamToTableDrawsStrat(idTeam, team, admin, firstStake) {
     $(document).ready(function() {
       $('#archTeamsTable').append(
         '<tr id="' + idTeam + '" style="background-color: '+teamBackgroundColor(team.balance.toString().slice(0, 5))+';"><td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a style="color: black; font-weight: bold;" href="TeamInfoPage.html?'+idTeam+'&'+team.name+'&'+team.strategyID+'"><u>' + team.name + '</u></a></td>' +
-        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style="padding-top: 0; padding-bottom: 0; ' + checkLeftMatchesToPlayColor(team.numMatchesToPlay, team.name, team.admin) +'">' + team.numMatchesPlayed + ' / ' + team.numMatchesToPlay + '</td>' +
+        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style="padding-top: 0; padding-bottom: 0;">' + team.numMatchesPlayed + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.season + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.oddAvg + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.balance.toString().slice(0, 5) + '</td>' +
@@ -124,7 +124,7 @@ function addTeamToTableDrawsStrat(idTeam, team, admin, firstStake) {
       $('#disableTeamsTable').append(
         '<tr id="' + idTeam + '" style="background-color: '+teamBackgroundColor(team.balance.toString().slice(0, 5))+';"><td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a style="color: black; font-weight: bold;" href="TeamInfoPage.html?'+idTeam+'&'+team.name+'&'+team.strategyID+'"><u>' + team.name + '</u></a></td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><label class="switch"><input id="' + idTeam + '" onclick="toggleButton(this);"  type="checkbox" ' + admin + '><span class="slider round"></span></label></td>' +
-        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style= "padding-top: 0; padding-bottom: 0; ' + checkLeftMatchesToPlayColor(team.numMatchesToPlay, team.name, team.admin) +'">' + team.numMatchesPlayed + ' / ' + team.numMatchesToPlay + '</td>' +
+        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style= "padding-top: 0; padding-bottom: 0;">' + team.numMatchesPlayed + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.season + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.oddAvg + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.balance.toString().slice(0, 5) + '</td>' +
@@ -137,7 +137,7 @@ function addTeamToTableDrawsStrat(idTeam, team, admin, firstStake) {
       $('#teamsTable').append(
         '<tr id="' + idTeam + '" style="background-color: '+teamBackgroundColor(team.balance.toString().slice(0, 5))+';"><td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><a style="color: black; font-weight: bold;" href="TeamInfoPage.html?'+idTeam+'&'+team.name+'&'+team.strategyID+'"><u>' + team.name + '</u></a></td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell"><label class="switch"><input id="' + idTeam + '" onclick="toggleButton(this);"  type="checkbox" ' + admin + '><span class="slider round"></span></label></td>' +
-        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style="padding-top: 0; padding-bottom: 0; ' + checkLeftMatchesToPlayColor(team.numMatchesToPlay, team.name, team.admin) +'">' + team.numMatchesPlayed + ' / ' + team.numMatchesToPlay + '</td>' +
+        '<td class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell" style="padding-top: 0; padding-bottom: 0; ">' + team.numMatchesPlayed + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.season + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.oddAvg + '</td>' +
         '<td style="padding-top: 0; padding-bottom: 0;" class="u-border-1 u-border-grey-40 u-border-no-left u-border-no-right u-table-cell">' + team.balance.toString().slice(0, 5) + '</td>' +

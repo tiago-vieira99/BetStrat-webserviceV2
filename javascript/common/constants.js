@@ -27,7 +27,7 @@ const GREEN_COLOR = '#c6e7d0';
 const RED_COLOR = '#d7cdcd';
 const YELLOW_COLOR = '#e0ffd4';
 
-const CURRENT_SEASON = '2024-25';
+const CURRENT_SEASON = '2025-26';
 
 // const seasonsList = ['2016-17', '2017-18', '2018-19', '2019-20', '2020-21', '2021-22', '2022-23', '2023-24'];
 
