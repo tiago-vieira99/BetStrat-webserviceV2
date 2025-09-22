@@ -43,9 +43,9 @@ function init() {
   for (let [key, value] of matchesSessionStorage) {
     if (value.season === selectedSeason || selectedSeason === 'all') {
       console.log(value);
-      if (value.betType === 'GOALS_FEST' || value.betType === 'BTTS_ONE_HALF' || value.betType === 'OVER_25') {
+      if (value.betType === 'BTTS_ONE_HALF' || value.betType === 'OVER_25') {
         addKellyMatchLine(key, value);
-      } else if (value.betType === 'MARGIN_WINS') {
+      } else if (value.betType === 'MARGIN_WINS' || value.betType === 'GOALS_FEST') {
         addMatchLine(key, value);  
       } else {  
         add25MatchLine(key, value);
