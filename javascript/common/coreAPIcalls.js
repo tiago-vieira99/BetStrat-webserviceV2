@@ -440,7 +440,7 @@ function callPostNewMatch(stratPath, match) {
       if (data.status) {
         modalBox("Error", "<p>" + data.error + "</p><p>" + data.message + "</p>");
       } else {
-        if (data.betType == 'GOALS_FEST' || data.betType == 'BTTS_ONE_HALF' || data.betType == 'OVER_25') {
+        if (data.betType == 'BTTS_ONE_HALF' || data.betType == 'OVER_25') {
           modalBox("New Match", "<p><b>Stake:</b> " + data.stake + "</p><p><b>Bankroll %:</b> " + data.bankrollPercentage + "</p>");
         } else {
           modalBox("New Match", "<p><b>Stake:</b> " + data.stake + "</p><p><b>SeqLevel:</b> " + data.seqLevel + "</p>");
@@ -1335,5 +1335,46 @@ async function callGetStreaks() {
     })
     .catch(function(error) {
       console.log("Error: " + error);
+    });
+}
+
+
+//-------------------------------------------------------------------------------------------
+//---------------------------------       SYNC CALLS      -----------------------------------
+//-------------------------------------------------------------------------------------------
+
+function callTriggerUpdateProgressiveLastMatches() {
+  var url = "http://" + API_URL + "/api/betstrat/sync/progressive-matches/update"
+
+  fetch(url, {
+      method: 'POST'
+    })
+    .then(data => {
+      if (data.error) {
+        modalBox("Error", "<p>" + data.error + "</p><p>" + data.message + "</p>");
+      } else {
+        modalBox("Progressive last matches update triggered!","");
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+function callTriggerUpdateKellyLastMatches() {
+  var url = "http://" + API_URL + "/api/betstrat/sync/kelly-matches/update"
+
+  fetch(url, {
+      method: 'POST'
+    })
+    .then(data => {
+      if (data.error) {
+        modalBox("Error", "<p>" + data.error + "</p><p>" + data.message + "</p>");
+      } else {
+        modalBox("Kelly last matches update triggered!","");
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
     });
 }

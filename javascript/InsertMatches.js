@@ -58,7 +58,6 @@ function addMatchDiv(idMatch, date, homeTeam, awayTeam, competition) {
 }
 
 function insertMatchManually(strategyPath) {
-  console.log("kvjlkvmklm");
   homeTeam = document.querySelector('#homeTeamNewMatch').value;
   awayTeam = document.querySelector('#awayTeamNewMatch').value;
   date = document.querySelector('#dateNewMatch').value;
@@ -83,7 +82,7 @@ function insertMatchManually(strategyPath) {
   newMatch.set("seqLevel", seqLevel);
   newMatch.set("stake", stake);
 
-  if (GOALS_FEST_KELLY_ID == currentStrategy) {
+  if (GOALS_FEST_ID == currentStrategy) {
     newMatch.set("betType", "GOALS_FEST")
   } else if (BTTS_ONE_HALF_KELLY_ID == currentStrategy) {
     newMatch.set("betType", "BTTS_ONE_HALF")
