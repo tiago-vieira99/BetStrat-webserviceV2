@@ -14,6 +14,7 @@ const GOALS_FEST_ID = 5;
 const GOALS_FEST_KELLY_ID = 7;
 const BTTS_ONE_HALF_KELLY_ID = 8;
 const OVER_25_KELLY_ID = 9;
+const UNDER_25_KELLY_ID = 10;
 const ONLY_DRAWS_PATH = "onlydraws";
 const MARGIN_WINS_PATH = "eurohandicap";
 const DRAWS_HUNTER_PATH = "drawshunter";
@@ -22,6 +23,7 @@ const GOALS_FEST_PATH = "goalsfest";
 const GOALS_FEST_KELLY_PATH = "kelly/goalsfest";
 const BTTS_ONE_HALF_KELLY_PATH = "kelly/btts-one-half";
 const OVER_25_KELLY_PATH = "kelly/over-25";
+const UNDER_25_KELLY_PATH = "kelly/under-25";
 
 const GREEN_COLOR = '#c6e7d0';
 const RED_COLOR = '#d7cdcd';

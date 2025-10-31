@@ -15,7 +15,7 @@ function callGetSeqInfo(stratPath) {
       $("#numoversunders-stat").text(myJson.numOvers + "/" + myJson.numUnders);
       $("#stratdescription").text(myJson.description)
 
-      if (stratPath == GOALS_FEST_KELLY_PATH || stratPath == BTTS_ONE_HALF_KELLY_PATH || stratPath == OVER_25_KELLY_PATH) {
+      if (stratPath == GOALS_FEST_KELLY_PATH || stratPath == BTTS_ONE_HALF_KELLY_PATH || stratPath == OVER_25_KELLY_PATH || stratPath == UNDER_25_KELLY_PATH) {
         callGetNumMatchesBySeason(stratPath, "all");
       }
     })
@@ -99,7 +99,7 @@ function callGetNumMatchesBySeason(stratPath, season) {
       });
       $("#nummatches-stat").text(filteredMatches.length);
 
-      if (stratPath == GOALS_FEST_KELLY_PATH || stratPath == BTTS_ONE_HALF_KELLY_PATH || stratPath == OVER_25_KELLY_PATH) {
+      if (stratPath == GOALS_FEST_KELLY_PATH || stratPath == BTTS_ONE_HALF_KELLY_PATH || stratPath == OVER_25_KELLY_PATH || stratPath == UNDER_25_KELLY_PATH) {
         var filteredMatches = [];
         var greenTeams = 0;
         var totalBalance = 0;
@@ -440,7 +440,7 @@ function callPostNewMatch(stratPath, match) {
       if (data.status) {
         modalBox("Error", "<p>" + data.error + "</p><p>" + data.message + "</p>");
       } else {
-        if (data.betType == 'BTTS_ONE_HALF' || data.betType == 'OVER_25') {
+        if (data.betType == 'BTTS_ONE_HALF' || data.betType == 'OVER_25' || data.betType == 'UNDER_25') {
           modalBox("New Match", "<p><b>Stake:</b> " + data.stake + "</p><p><b>Bankroll %:</b> " + data.bankrollPercentage + "</p>");
         } else {
           modalBox("New Match", "<p><b>Stake:</b> " + data.stake + "</p><p><b>SeqLevel:</b> " + data.seqLevel + "</p>");
@@ -960,6 +960,17 @@ function callGetHistoricMatchesByTeam(teamId, season) {
     })
     .then(function(resp) {
       matches = resp;
+      
+      matches.sort(function(a, b) {
+        var matchDateA = a.matchDate.split('/');
+        var matchDateB = b.matchDate.split('/');
+
+        var dateA = Date.parse(matchDateA[1].concat('/',matchDateA[0],'/',matchDateA[2])),
+          dateB = Date.parse(matchDateB[1].concat('/',matchDateB[0],'/',matchDateB[2]))
+        if (dateA < dateB) return -1;
+        if (dateA > dateB) return 1;
+        return 0;
+      });
 
       matches.forEach(function(match) {    
         allMatches.push(match)
