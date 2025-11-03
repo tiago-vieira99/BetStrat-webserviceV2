@@ -15,6 +15,8 @@ if (ONLY_DRAWS_ID == currentStrategy) {
   strategyPath = BTTS_ONE_HALF_KELLY_PATH;
 } else if (OVER_25_KELLY_ID == currentStrategy) {
   strategyPath = OVER_25_KELLY_PATH;
+} else if (UNDER_25_KELLY_ID == currentStrategy) {
+  strategyPath = UNDER_25_KELLY_PATH;
 }
 
 let matchesSessionStorage;
@@ -43,7 +45,7 @@ function init() {
   for (let [key, value] of matchesSessionStorage) {
     if (value.season === selectedSeason || selectedSeason === 'all') {
       console.log(value);
-      if (value.betType === 'BTTS_ONE_HALF' || value.betType === 'OVER_25') {
+      if (value.betType === 'BTTS_ONE_HALF' || value.betType === 'OVER_25' || value.betType === 'UNDER_25') {
         addKellyMatchLine(key, value);
       } else if (value.betType === 'MARGIN_WINS' || value.betType === 'GOALS_FEST') {
         addMatchLine(key, value);  

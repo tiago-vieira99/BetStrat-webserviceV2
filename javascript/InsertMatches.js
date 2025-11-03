@@ -92,6 +92,8 @@ function insertMatchManually(strategyPath) {
     newMatch.set("betType", "MARGIN_WINS")
   } else if (OVER_25_KELLY_ID == currentStrategy) {
     newMatch.set("betType", "OVER_25")
+  } else if (UNDER_25_KELLY_ID == currentStrategy) {
+    newMatch.set("betType", "UNDER_25")
   }
 
   callPostNewMatch(strategyPath, (Object.fromEntries(newMatch)));
