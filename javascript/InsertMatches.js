@@ -13,6 +13,8 @@ if (ONLY_DRAWS_ID == currentStrategy) {
   strategyPath = BTTS_ONE_HALF_KELLY_PATH;
 } else if (OVER_25_KELLY_ID == currentStrategy) {
   strategyPath = OVER_25_KELLY_PATH;
+} else if (UNDER_25_KELLY_ID == currentStrategy) {
+  strategyPath = UNDER_25_KELLY_PATH;
 }
 
 const map1 = new Map();
